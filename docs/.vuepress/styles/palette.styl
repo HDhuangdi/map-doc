@@ -1,0 +1,81 @@
+// 颜色
+$accentColor = #4954E6
+$textColor = rgb(173,186,199)
+$borderColor = rgb(62,76,90)
+$codeBgColor = #363B46
+$arrowBgColor = #ccc
+$badgeTipColor = #42b983
+$badgeWarningColor = darken(#ffe564, 35%)
+$badgeErrorColor = #DA5961
+
+// 布局
+$navbarHeight = 3.6rem
+$sidebarWidth = 20rem
+$contentWidth = 740px
+$homePageWidth = 960px
+
+// 响应式变化点
+$MQNarrow = 959px
+$MQMobile = 719px
+$MQMobileNarrow = 419px
+
+html,body,.navbar,.links,.sidebar,.page {
+  background-color #22272E !important
+}
+.sidebar {
+  width 15rem !important
+}
+.page {
+  padding-left 0rem
+}
+.navbar {
+  border-bottom 0
+}
+.theme-default-content {
+  max-width 900px !important
+}
+code {
+  background-color rgb(54,59,70) !important
+  margin 0 0.25rem !important
+  font-family Consolas,Monaco,Andale Mono,Ubuntu Mono,monospace
+}
+input[aria-label=Search] {
+  background-color #22272E !important
+  border 1px solid rgba(234, 236, 239, 0.5)
+}
+.tip {
+  border-left 0 !important
+  border 2px solid rgb(97, 106, 229) !important
+  border-radius 0.25rem
+  background-color rgba(97, 106, 229, 0.2) !important
+  color #adbac7 !important
+  .custom-block-title {
+    color rgb(97, 106, 229)
+  }
+}
+
+.warning {
+  border-left 0 !important
+  border 2px solid rgb(251,155,95) !important
+  border-radius 0.25rem
+  background-color rgba(251,155,95, 0.2) !important
+  color #adbac7 !important
+  .custom-block-title {
+    color rgb(251,155,95)
+  }
+}
+
+
+table thead tr {
+  background-color rgb(85, 93, 111)
+}
+table th,table td {
+  border 1px solid rgb(62,76,90)
+}
+tbody tr:nth-child(2n) {
+  background-color transparent
+}
+.nav-dropdown {
+  background-color #363B46 !important
+  border 0 !important
+}
