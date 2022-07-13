@@ -45,7 +45,7 @@ module.exports = {
           path: "map",
         },
         {
-          title: "实例属性",
+          title: "属性",
           collapsable: true,
           path: "properties",
         },

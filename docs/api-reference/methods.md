@@ -1146,7 +1146,7 @@ map.setCenter([-74, 38]);
 
 offset\<PointLike> 平移地图所依据的x和y坐标。
 
-options\<AnimationOptions | null> 描述转换的目标和动画的选项对象。我们不建议使用 options.offset，因为这个值会覆盖这个参数的值。
+options\<[AnimationOptions](/api-reference/properties.html#animationoptions) | null> 描述转换的目标和动画的选项对象。我们不建议使用 options.offset，因为这个值会覆盖这个参数的值。
 
 eventData\<Object | null> 由于此方法触发的事件的事件对象。
 
@@ -1166,7 +1166,7 @@ map.panBy([-74, 38], {duration: 5000});
 
 lnglat\<LngLatLike> 要平移地图的位置。
 
-options\<AnimationOptions | null> 描述转换的目标和动画的选项对象。我们不建议使用 options.offset，因为这个值会覆盖这个参数的值。
+options\<[AnimationOptions](/api-reference/properties.html#animationoptions) | null> 描述转换的目标和动画的选项对象。我们不建议使用 options.offset，因为这个值会覆盖这个参数的值。
 
 eventData\<Object | null> 由于此方法触发的事件的事件对象。
 
@@ -1216,7 +1216,7 @@ map.setZoom(5);
 
 zoom\<number> 要设置的缩放级别(0-20)。
 
-options\<AnimationOptions> 动画对象。
+options\<[AnimationOptions](/api-reference/properties.html#animationoptions)> 动画对象。
 
 eventData\<Object | null> 由于此方法触发的事件的事件对象。
 
@@ -1237,7 +1237,7 @@ map.zoomTo(8, {
 
 **参数列表：**
 
-options\<AnimationOptions> 动画对象。
+options\<[AnimationOptions](/api-reference/properties.html#animationoptions)> 动画对象。
 
 eventData\<Object | null> 由于此方法触发的事件的事件对象。
 
@@ -1255,7 +1255,7 @@ map.zoomIn({duration: 1000});
 
 **参数列表：**
 
-options\<AnimationOptions> 动画对象。
+options\<[AnimationOptions](/api-reference/properties.html#animationoptions)> 动画对象。
 
 eventData\<Object | null> 由于此方法触发的事件的事件对象。
 
@@ -1335,7 +1335,7 @@ map.setPadding({left: 300, top: 50});
 
 bearing\<number> 方位角。
 
-options\<EasingOptions> 描述过渡目标和动画的选项。接受CameraOptions和AnimationOptions。
+options\<EasingOptions> 描述过渡目标和动画的选项。接受CameraOptions和[AnimationOptions](/api-reference/properties.html#animationoptions)。
 
 eventData\<Object | null> 由于此方法触发的事件的事件对象。
 
@@ -1353,7 +1353,7 @@ map.rotateTo(30, {duration: 2000});
 
 **参数列表：**
 
-options\<EasingOptions> 描述过渡目标和动画的选项。接受CameraOptions和AnimationOptions。
+options\<EasingOptions> 描述过渡目标和动画的选项。接受CameraOptions和[AnimationOptions](/api-reference/properties.html#animationoptions)。
 
 eventData\<Object | null> 由于此方法触发的事件的事件对象。
 
@@ -1371,7 +1371,7 @@ map.resetNorth({duration: 2000});
 
 **参数列表：**
 
-options\<EasingOptions> 描述过渡目标和动画的选项。接受CameraOptions和AnimationOptions。
+options\<EasingOptions> 描述过渡目标和动画的选项。接受CameraOptions和[AnimationOptions](/api-reference/properties.html#animationoptions)。
 
 eventData\<Object | null> 由于此方法触发的事件的事件对象。
 
@@ -1421,10 +1421,10 @@ map.setPitch(80, {duration: 2000});
 
 bounds\<LngLatBoundsLike> 边界对象。
 
-options\<Object | null> 除了下面的字段外，选项还支持来自AnimationOptions和CameraOptions的所有属性。
+options\<Object | null> 除了下面的字段外，选项还支持来自[AnimationOptions](/api-reference/properties.html#animationoptions)和CameraOptions的所有属性。
 |  名称   | 描述  |
 |  ----  | ----  |
-| **easing\<Function>?** | 动画过渡的缓和功能。详见AnimationOptions |
+| **easing\<Function>?** | 动画过渡的缓和功能。详见[AnimationOptions](/api-reference/properties.html#animationoptions) |
 | **liner\<boolean>** default: false | 如果为true，则使用map.easeTo转换地图。如果为false，则使用map.flyTo转换地图|
 | **maxZoom\<number>?** | 地图视图转换到指定边界时允许的最大缩放级别。 |
 | **offset\<PointLike>** default: [0, 0] | 相对于地图中心的给定边界的中心，以像素为单位 |
@@ -1519,7 +1519,7 @@ map.setFreeCameraOptions(camera);
 
 **参数列表：**
 
-options\<EasingOptions> 描述转换的目标和动画的选项。接受 CameraOptions 和 AnimationOptions。
+options\<EasingOptions> 描述转换的目标和动画的选项。接受 CameraOptions 和 [AnimationOptions](/api-reference/properties.html#animationoptions)。
 
 eventData\<Object | null> 由于此方法触发的事件的事件对象。
 
@@ -1547,7 +1547,7 @@ map.easeTo({
 
 **参数列表：**
 
-options\<Object> 描述过渡目标和动画的选项。接受CameraOptions、AnimationOptions和以下附加选项。
+options\<Object> 描述过渡目标和动画的选项。接受CameraOptions、[AnimationOptions](/api-reference/properties.html#animationoptions)和以下附加选项。
 |  名称   | 描述  |
 |  ----  | ----  |
 | **curve\<number>** default: 1.42 | 曲线的曲率 |
