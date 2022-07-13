@@ -40,19 +40,24 @@ module.exports = {
       ],
       "/api-reference/": [
         {
-          title: "配置",
+          title: "构造配置",
           collapsable: true,
           path: "map",
         },
         {
-          title: "属性",
+          title: "实例属性",
           collapsable: true,
           path: "properties",
         },
         {
-          title: "方法",
+          title: "实例方法",
           collapsable: true,
           path: "methods",
+        },
+        {
+          title: "事件",
+          collapsable: true,
+          path: "events",
         },
       ],
     },

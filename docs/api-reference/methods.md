@@ -2,7 +2,7 @@
 sidebarDepth: 2
 ---
 
-# 方法
+# 实例方法
 
 ## 容器
 ### `getContianer()`
