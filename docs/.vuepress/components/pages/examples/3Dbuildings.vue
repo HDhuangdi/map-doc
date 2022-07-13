@@ -29,7 +29,7 @@ export default {
   },
   methods: {
     async addBuildings() {
-      this.map.addbuildings({ activeZoom: 12, removeZoom: 7, opacity: 0.6 });
+      this.map.addbuildings({ activeZoom: 12, removeZoom: 7, opacity: 0.4 });
     },
   },
   beforeDestroy() {

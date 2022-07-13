@@ -14,7 +14,7 @@ module.exports = {
           { text: "天空盒", target:"_blank",link: "/examples/skybox" },
           { text: "空中飞线", target:"_blank",link: "/examples/flyline" },
           { text: "打点", target:"_blank",link: "/examples/point" },
-          { text: "3D建筑", target:"_blank",link: "/examples/3Dbuildings" },
+          { text: "街景", target:"_blank",link: "/examples/3Dbuildings" },
           { text: "点亮建筑", target:"_blank",link: "/examples/lightup" },
           { text: "聚焦", target:"_blank",link: "/examples/focus" },
         ],
@@ -28,14 +28,14 @@ module.exports = {
           path: "./",
         },
         {
-          title: "投影",
-          collapsable: true,
-          path: "projections",
-        },
-        {
           title: "基本概念",
           collapsable: true,
           path: "basic-concepts",
+        },
+        {
+          title: "投影",
+          collapsable: true,
+          path: "projections",
         },
       ],
       "/api-reference/": [

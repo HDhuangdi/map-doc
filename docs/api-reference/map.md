@@ -31,7 +31,7 @@ new Map(options: Object)
 | **minPitch** | 85 | 最小俯仰角 |
 | **minZoom** | 22 | 最小缩放值 |
 | **style** | {} | 样式对象，详见[样式规范](/style-specification/) |
-| **vignetting** | {<br/>enable: false, <br/>lightHeight: 250, <br/>lightColor: 0xffffff, <br/>strength: 2<br/>} | 暗角配置。enable: 是否启用，lightHeight: 光源高度，lightColor:光源颜色，strength: 光源强度|
+| **vignetting** | {<br/>enable: false, <br/>lightHeight: 250, <br/>lightColor: 0xffffff, <br/>strength: 2<br/>} | 暗角配置<br/>enable: 是否启用，lightHeight: 光源高度，lightColor:光源颜色，strength: 光源强度|
 
 ## 示例
 
