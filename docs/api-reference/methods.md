@@ -47,7 +47,7 @@ const canvas = map.getCanvas();
 
 **参数列表：**
 
-eventData\<object>: 传递给`movestart`、`move`、`resize`、`moveend`事件的事件对象。
+*eventData\<object>*: 传递给`movestart`、`move`、`resize`、`moveend`事件的事件对象。
 
 **返回值：**
 
@@ -64,7 +64,7 @@ if (mapDiv.style.visibility === true) map.resize();
 
 **返回值：**
 
-地图的地理边界, 类型为`LngLatBounds`。
+地图的地理边界, 类型为[LngLatBounds](/api-reference/properties.html#lnglatbounds)。
 
 **示例：**
 ```js
@@ -88,7 +88,7 @@ const maxBounds = map.getMaxBounds();
 
 **参数列表：**
 
-bounds<LngLatBoundsLike | null | undefined>: 要设置的最大界限。如果提供`null`或`undefined`，则该函数将删除地图的最大界限。
+*bounds<[LngLatBoundsLike](/api-reference/properties.html#lnglatboundslike) | null | undefined>*: 要设置的最大界限。如果提供`null`或`undefined`，则该函数将删除地图的最大界限。
 
 **返回值：**
 
@@ -108,7 +108,7 @@ map.setMaxBounds(bounds);
 
 **参数列表：**
 
-minZoom<number | null | undefined> 要设置的最小缩放级别（-2~24）。如果提供`null`或`undefined`，该函数将删除当前最小缩放，并将其重置为-2。
+*minZoom<number | null | undefined>*: 要设置的最小缩放级别（-2~24）。如果提供`null`或`undefined`，该函数将删除当前最小缩放，并将其重置为-2。
 
 **返回值：**
 
@@ -136,7 +136,7 @@ const minZoom = map.getMinZoom();
 
 **参数列表：**
 
-maxZoom<number | null | undefined> 要设置的最大缩放级别。如果提供`null`或`undefined`，该函数将删除当前最大缩放，并将其重置为22。
+*maxZoom<number | null | undefined>*: 要设置的最大缩放级别。如果提供`null`或`undefined`，该函数将删除当前最大缩放，并将其重置为22。
 
 **返回值：**
 
@@ -164,7 +164,7 @@ const maxZoom = map.getMaxZoom();
 
 **参数列表：**
 
-minPitch<number | null | undefined> 要设置的最小俯仰角（0~85）。如果提供`null`或`undefined`，该函数将删除当前最小俯仰角，并将其重置为0。
+*minPitch<number | null | undefined>*: 要设置的最小俯仰角（0~85）。如果提供`null`或`undefined`，该函数将删除当前最小俯仰角，并将其重置为0。
 
 **返回值：**
 
@@ -192,7 +192,7 @@ const minPitch = map.getMinPitch();
 
 **参数列表：**
 
-maxPitch<number | null | undefined> 要设置的最大俯仰角（0~85）。如果提供`null`或`undefined`，该函数将删除当前最大俯仰角，并将其重置为85。
+*maxPitch<number | null | undefined>*: 要设置的最大俯仰角（0~85）。如果提供`null`或`undefined`，该函数将删除当前最大俯仰角，并将其重置为85。
 
 **返回值：**
 
@@ -234,7 +234,7 @@ const worldCopiesRendered = map.getRenderWorldCopies();
 
 **参数列表：**
 
-renderWorldCopies\<boolean> 详情见`getRenderWorldCopies`
+*renderWorldCopies\<boolean>*: 详情见`getRenderWorldCopies`
 
 **返回值：**
 
@@ -263,7 +263,7 @@ const projection = map.getProjection();
 
 **参数列表：**
 
-Projection<ProjectionSpecification | null | string | undefined> 投影对象
+*Projection<ProjectionSpecification | null | string | undefined>*: 投影对象
 
 **返回值：**
 
@@ -286,11 +286,11 @@ map.setProjection({
 
 **参数列表：**
 
-lnglat\<LngLatLike> 地理坐标（经纬度）
+*lnglat\<[LngLatLike](/api-reference/properties.html#lnglatlike)>*: 地理坐标（经纬度）
 
 **返回值：**
 
-Point\<Point> 与lnglat相对应的点，相对于地图的容器。
+Point\<[Point](/api-reference/properties.html#point)> 与lnglat相对应的点，相对于地图的容器。
 
 **示例：**
 ```js
@@ -299,15 +299,15 @@ const point = map.project(coordinate);
 ```
 
 ### `unproject(point)`
-返回表示与指定像素坐标相对应的地理坐标的LngLat。如果地平线可见，并且指定的像素位于地平线之上，则返回与地平线上最接近该点的点对应的LngLat。
+返回表示与指定像素坐标相对应的地理坐标的[LngLat](/api-reference/properties.html#lnglat)。如果地平线可见，并且指定的像素位于地平线之上，则返回与地平线上最接近该点的点对应的[LngLat](/api-reference/properties.html#lnglat)。
 
 **参数列表：**
 
-point\<PointLike> 地理坐标（经纬度）
+*point\<[PointLike](/api-reference/properties.html#pointlike)>*: 地理坐标（经纬度）
 
 **返回值：**
 
-LngLat\<LngLat> 与point相对应的地理坐标。
+LngLat\<[LngLat](/api-reference/properties.html#lnglat)> 与point相对应的地理坐标。
 
 **示例：**
 ```js
@@ -357,11 +357,11 @@ map.isRotating();
 
 **参数列表：**
 
-type\<string> 详见事件章节。
+*type\<string>*: 详见[事件章节](/api-reference/events.html)。
 
-layerIds\<string | Array\<string>> (可选)样式层的 ID。如果不提供 layerID，侦听器将由地图上任何地方发生的相应事件触发。
+*layerIds\<string | Array\<string>>*: (可选)样式层的 ID。如果不提供 layerID，侦听器将由地图上任何地方发生的相应事件触发。
 
-listener\<Function> 监听函数。
+*listener\<Function>*: 监听函数。
 
 **返回值：**
 
@@ -379,11 +379,11 @@ map.on('click', ['countries', 'background'], (e) => {
 
 **参数列表：**
 
-type\<string> 详见事件章节。
+*type\<string>*: 详见[事件章节](/api-reference/events.html)。
 
-layerIds\<string | Array\<string>> (可选)样式层的 ID。如果不提供 layerID，侦听器将由地图上任何地方发生的相应事件触发。
+*layerIds\<string | Array\<string>>*: (可选)样式层的 ID。如果不提供 layerID，侦听器将由地图上任何地方发生的相应事件触发。
 
-listener\<Function> 监听函数。
+*listener\<Function>*: 监听函数。
 
 **返回值：**
 
@@ -401,11 +401,11 @@ map.once('click', ['countries', 'background'], (e) => {
 
 **参数列表：**
 
-type\<string> 详见事件章节。
+*type\<string>* 详见[事件章节](/api-reference/events.html)。
 
-layerIds\<string | Array\<string>> (可选)样式层的 ID。如果不提供 layerID，侦听器将由地图上任何地方发生的相应事件触发。
+*layerIds\<string | Array\<string>>*: (可选)样式层的 ID。如果不提供 layerID，侦听器将由地图上任何地方发生的相应事件触发。
 
-listener\<Function> 监听函数。
+*listener\<Function>*: 监听函数。
 
 **返回值：**
 
@@ -427,7 +427,7 @@ map.off('mousemove', onMove);
 
 **参数列表：**
 
-geometry\<PointLike | Array\<PointLike>> 查询区域的几何形状(以像素为单位) : 可以为一个点或左下和右上的点组成的一个边界框，其中原点在左上角。省略此参数相当于传递一个包含整个 Map 视口的边界框。只支持现有视图中的值。
+*geometry\<[PointLike](/api-reference/properties.html#pointlike) | Array\<[PointLike](/api-reference/properties.html#pointlike)>>* 查询区域的几何形状(以像素为单位) : 可以为一个点或左下和右上的点组成的一个边界框，其中原点在左上角。省略此参数相当于传递一个包含整个 Map 视口的边界框。只支持现有视图中的值。
 
 options\<object>
 
@@ -463,9 +463,9 @@ const features = map.queryRenderedFeatures({layers: ['my-layer-name']});
 
 **参数列表：**
 
-sourceId\<string> 要查询的矢量瓦片或GeoJSON源的ID。
+*sourceId\<string>* 要查询的矢量瓦片或GeoJSON源的ID。
 
-parameters\<object>
+*parameters\<object>*
 
 |  名称   | 描述  |
 |  ----  | ----  |
@@ -493,9 +493,9 @@ const features = map.querySourceFeatures('your-source-id', {
 
 **参数列表：**
 
-style\<object | string | null> 详见样式规范
+*style\<object | string | null>*: 详见[样式规范](/style-specification/)
 
-options\<object>
+*options\<object>*
 
 |  名称   | 描述  |
 |  ----  | ----  |
@@ -542,9 +542,9 @@ const styleLoadStatus = map.isStyleLoaded();
 
 **参数列表：**
 
-id\<string> 要添加的源的 ID，不能与现有源冲突。
+*id\<string>*: 要添加的源的 ID，不能与现有源冲突。
 
-source\<object> 源对象。
+*source\<object>*: 源对象。
 
 **返回值：**
 
@@ -572,7 +572,7 @@ map.addSource('my-data', {
 
 **参数列表：**
 
-id\<string> 源ID
+*id\<string>*: 源ID
 
 **返回值：**
 
@@ -600,7 +600,7 @@ const tilesLoaded = map.areTilesLoaded();
 
 **参数列表：**
 
-id\<string> 源ID
+*id\<string>*: 源ID
 
 **返回值：**
 
@@ -616,7 +616,7 @@ map.removeSource('bathymetry-data');
 
 **参数列表：**
 
-id\<string> 源ID
+*id\<string>*: 源ID
 
 **返回值：**
 
@@ -633,9 +633,9 @@ const sourceObject = map.getSource('points');
 
 **参数列表：**
 
-id\<string> 图像id。
+*id\<string>*: 图像id。
 
-image\<HTMLImageElement> HTML图片对象。
+*image\<HTMLImageElement>*: HTML图片对象。
 
 **示例：**
 ```js
@@ -652,9 +652,9 @@ img.onload = function () {
 
 **参数列表：**
 
-id\<string> 图像id。
+*id\<string>*: 图像id。
 
-image\<HTMLImageElement> HTML图片对象。
+*image\<HTMLImageElement>*: HTML图片对象。
 
 **示例：**
 ```js
@@ -671,7 +671,7 @@ img.onload = function () {
 
 **参数列表：**
 
-id\<string> 图像id。
+*id\<string>*: 图像id。
 
 **返回值：**
 
@@ -687,7 +687,7 @@ const catIconExists = map.hasImage('cat');
 
 **参数列表：**
 
-id\<string> 图像id。
+*id\<string>*: 图像id。
 
 **示例：**
 ```js
@@ -699,9 +699,9 @@ if (map.hasImage('cat')) map.removeImage('cat');
 
 **参数列表：**
 
-url\<string> 图像url。
+*url\<string>*: 图像url。
 
-callback\<Function> 在加载图像时调用，`callback(error, data)`
+*callback\<Function>*: 在加载图像时调用，`callback(error, data)`
 
 **示例：**
 ```js
@@ -729,9 +729,9 @@ const allImages = map.listImages();
 
 **参数列表：**
 
-layer\<string> 样式对象。详见样式规范。
+*layer\<string>*: 样式对象。详见[样式规范](/style-specification/)。
 
-beforeId\<string> 现有图层的 ID，新图层将在此图层之前插入，从而使新图层显示在这个图层之下。如果没有指定这个参数，图层将被追加到图层数组的末尾，并在所有其他图层之上显示。
+*beforeId\<string>*: 现有图层的 ID，新图层将在此图层之前插入，从而使新图层显示在这个图层之下。如果没有指定这个参数，图层将被追加到图层数组的末尾，并在所有其他图层之上显示。
 
 **返回值：**
 
@@ -747,9 +747,9 @@ map.addLayer({...});
 
 **参数列表：**
 
-id\<string> 需要移动的图层id。
+*id\<string>*: 需要移动的图层id。
 
-beforeId\<string> 现有图层的 ID，新图层将移到此图层之前，从而使新图层显示在这个图层之下。如果没有指定这个参数，图层将被移动到图层数组的末尾，并在所有其他图层之上显示。
+*beforeId\<string>*: 现有图层的 ID，新图层将移到此图层之前，从而使新图层显示在这个图层之下。如果没有指定这个参数，图层将被移动到图层数组的末尾，并在所有其他图层之上显示。
 
 **返回值：**
 
@@ -765,7 +765,7 @@ map.moveLayer('polygon', 'country-label');
 
 **参数列表：**
 
-id\<string> 需要移除的图层id。
+*id\<string>*: 需要移除的图层id。
 
 **返回值：**
 
@@ -781,7 +781,7 @@ if (map.getLayer('state-data')) map.removeLayer('state-data');
 
 **参数列表：**
 
-id\<string> 图层id。
+*id\<string>*: 图层id。
 
 **返回值：**
 
@@ -797,11 +797,11 @@ const stateDataLayer = map.getLayer('state-data');
 
 **参数列表：**
 
-layerId\<string> 图层id。
+*layerId\<string>*: 图层id。
 
-minzoom\<number> 最小缩放。
+*minzoom\<number>*: 最小缩放。
 
-maxzoom\<number> 最大缩放。
+*maxzoom\<number>*: 最大缩放。
 
 **返回值：**
 
@@ -817,9 +817,9 @@ map.setLayerZoomRange('my-layer', 2, 5);
 
 **参数列表：**
 
-layerId\<string> 图层id。
+*layerId\<string>*: 图层id。
 
-filter\<Array | null | undefined> 过滤器对象，详见样式规范。
+*filter\<Array | null | undefined>*: 过滤器对象，详见[样式规范](/style-specification/)。
 
 **返回值：**
 
@@ -835,7 +835,7 @@ map.setFilter('my-layer', ['==', ['get', 'name'], 'motorway']);
 
 **参数列表：**
 
-layerId\<string> 图层id。
+*layerId\<string>*: 图层id。
 
 **返回值：**
 
@@ -851,11 +851,11 @@ const filter = map.getFilter('myLayer');
 
 **参数列表：**
 
-layerId\<string> 图层id。
+*layerId\<string>*: 图层id。
 
-name\<string> 要设置的`paint`的名称。
+*name\<string>*: 要设置的`paint`的名称。
 
-value\<any> 要设置的`paint`的值。
+*value\<any>*: 要设置的`paint`的值。
 
 **返回值：**
 
@@ -871,9 +871,9 @@ map.setPaintProperty('my-layer', 'fill-color', '#faafee');
 
 **参数列表：**
 
-layerId\<string> 图层id。
+*layerId\<string>*: 图层id。
 
-name\<string> 要获取的`paint`的名称。
+*name\<string>*: 要获取的`paint`的名称。
 
 **返回值：**
 
@@ -889,11 +889,11 @@ const paintProperty = map.getPaintProperty('mySymbolLayer', 'icon-color');
 
 **参数列表：**
 
-layerId\<string> 图层id。
+*layerId\<string>*: 图层id。
 
-name\<string> 要设置的`layout`的名称。
+*name\<string>*: 要设置的`layout`的名称。
 
-value\<any> 要设置的`layout`的值。
+*value\<any>*: 要设置的`layout`的值。
 
 **返回值：**
 
@@ -909,9 +909,9 @@ map.setLayoutProperty('my-layer', 'visibility', 'none');
 
 **参数列表：**
 
-layerId\<string> 图层id。
+*layerId\<string>*: 图层id。
 
-name\<string> 要获取的`layout`的名称。
+*name\<string>*: 要获取的`layout`的名称。
 
 **返回值：**
 
@@ -928,7 +928,7 @@ const layoutProperty = map.getLayoutProperty('mySymbolLayer', 'icon-anchor');
 
 **参数列表：**
 
-light\<LightSpecification> 详见样式规范。
+*light\<LightSpecification>*: 详见[样式规范](/style-specification/)。
 
 **返回值：**
 
@@ -960,7 +960,7 @@ const light = map.getLight();
 
 **参数列表：**
 
-fog\<FogSpecification> 详见样式规范。
+*fog\<FogSpecification>*: 详见[样式规范](/style-specification/)。
 
 **返回值：**
 
@@ -996,14 +996,14 @@ const fog = map.getFog();
 
 **参数列表：**
 
-feature\<Object>
+*feature\<Object>*:
 |  名称   | 描述  |
 |  ----  | ----  |
 | **id\<number \| string>** | 要素的唯一id |
 | **source\<string>** | 要素的矢量或GeoJSON源的id |
 | **sourceLayer\<string>** | （可选）对于矢量瓦片源，需要sourceLayer |
 
-state\<Object> 一组键值对。这些值应该是有效的JSON类型。
+*state\<Object>*: 一组键值对。这些值应该是有效的JSON类型。
 
 **返回值：**
 
@@ -1030,14 +1030,14 @@ map.on('mousemove', 'my-layer', (e) => {
 
 **参数列表：**
 
-feature\<Object>
+*feature\<Object>*:
 |  名称   | 描述  |
 |  ----  | ----  |
 | **id\<number \| string>** | 要素的唯一id |
 | **source\<string>** | 要素的矢量或GeoJSON源的id |
 | **sourceLayer\<string>** | （可选）对于矢量瓦片源，需要sourceLayer |
 
-key\<string> (可选)要重置的要素状态的键。
+*key\<string>*: (可选)要重置的要素状态的键。
 
 **返回值：**
 
@@ -1055,7 +1055,7 @@ map.removeFeatureState({
 
 **参数列表：**
 
-feature\<Object>
+*feature\<Object>*:
 |  名称   | 描述  |
 |  ----  | ----  |
 | **id\<number \| string>** | 要素的唯一id |
@@ -1126,9 +1126,9 @@ const {lng, lat} = map.getCenter();
 
 **参数列表：**
 
-center\<LngLatLike> 要设置的中心点。
+*center\<[LngLatLike](/api-reference/properties.html#lnglatlike)>*: 要设置的中心点。
 
-eventData\<Object | null> 由于此方法触发的事件的事件对象。
+*eventData\<Object | null>*: 由于此方法触发的事件的事件对象。
 
 **返回值：**
 
@@ -1144,11 +1144,11 @@ map.setCenter([-74, 38]);
 
 **参数列表：**
 
-offset\<PointLike> 平移地图所依据的x和y坐标。
+*offset\<[PointLike](/api-reference/properties.html#pointlike)>*: 平移地图所依据的x和y坐标。
 
-options\<[AnimationOptions](/api-reference/properties.html#animationoptions) | null> 描述转换的目标和动画的选项对象。我们不建议使用 options.offset，因为这个值会覆盖这个参数的值。
+*options\<[AnimationOptions](/api-reference/properties.html#animationoptions) | null>*: 描述转换的目标和动画的选项对象。我们不建议使用 options.offset，因为这个值会覆盖这个参数的值。
 
-eventData\<Object | null> 由于此方法触发的事件的事件对象。
+*eventData\<Object | null>*: 由于此方法触发的事件的事件对象。
 
 **返回值：**
 
@@ -1164,11 +1164,11 @@ map.panBy([-74, 38], {duration: 5000});
 
 **参数列表：**
 
-lnglat\<LngLatLike> 要平移地图的位置。
+*lnglat\<[LngLatLike](/api-reference/properties.html#lnglatlike)>*: 要平移地图的位置。
 
-options\<[AnimationOptions](/api-reference/properties.html#animationoptions) | null> 描述转换的目标和动画的选项对象。我们不建议使用 options.offset，因为这个值会覆盖这个参数的值。
+*options\<[AnimationOptions](/api-reference/properties.html#animationoptions) | null>*: 描述转换的目标和动画的选项对象。我们不建议使用 options.offset，因为这个值会覆盖这个参数的值。
 
-eventData\<Object | null> 由于此方法触发的事件的事件对象。
+*eventData\<Object | null>*: 由于此方法触发的事件的事件对象。
 
 **返回值：**
 
@@ -1196,9 +1196,9 @@ map.getZoom();
 
 **参数列表：**
 
-zoom\<number> 要设置的缩放级别(0-20)。
+*zoom\<number>*: 要设置的缩放级别(0-20)。
 
-eventData\<Object | null> 由于此方法触发的事件的事件对象。
+*eventData\<Object | null>*: 由于此方法触发的事件的事件对象。
 
 **返回值：**
 
@@ -1214,11 +1214,11 @@ map.setZoom(5);
 
 **参数列表：**
 
-zoom\<number> 要设置的缩放级别(0-20)。
+*zoom\<number>*: 要设置的缩放级别(0-20)。
 
-options\<[AnimationOptions](/api-reference/properties.html#animationoptions)> 动画对象。
+*options\<[AnimationOptions](/api-reference/properties.html#animationoptions)>*: 动画对象。
 
-eventData\<Object | null> 由于此方法触发的事件的事件对象。
+*eventData\<Object | null>*: 由于此方法触发的事件的事件对象。
 
 **返回值：**
 
@@ -1237,9 +1237,9 @@ map.zoomTo(8, {
 
 **参数列表：**
 
-options\<[AnimationOptions](/api-reference/properties.html#animationoptions)> 动画对象。
+*options\<[AnimationOptions](/api-reference/properties.html#animationoptions)>*: 动画对象。
 
-eventData\<Object | null> 由于此方法触发的事件的事件对象。
+*eventData\<Object | null>*: 由于此方法触发的事件的事件对象。
 
 **返回值：**
 
@@ -1255,9 +1255,9 @@ map.zoomIn({duration: 1000});
 
 **参数列表：**
 
-options\<[AnimationOptions](/api-reference/properties.html#animationoptions)> 动画对象。
+*options\<[AnimationOptions](/api-reference/properties.html#animationoptions)>*: 动画对象。
 
-eventData\<Object | null> 由于此方法触发的事件的事件对象。
+*eventData\<Object | null>*: 由于此方法触发的事件的事件对象。
 
 **返回值：**
 
@@ -1285,9 +1285,9 @@ const bearing = map.getBearing();
 
 **参数列表：**
 
-bearing\<number> 方位角。
+*bearing\<number>*: 方位角。
 
-eventData\<Object | null> 由于此方法触发的事件的事件对象。
+*eventData\<Object | null>*: 由于此方法触发的事件的事件对象。
 
 **返回值：**
 
@@ -1315,9 +1315,9 @@ const padding = map.getPadding();
 
 **参数列表：**
 
-padding\<PaddingOptions> 所需的填充。格式：{left:number，right:number，top:number，bottom:number}。
+*padding\<[PaddingOptions](/api-reference/properties.html#paddingoptions)>*: 所需的填充。格式：{left:number，right:number，top:number，bottom:number}。
 
-eventData\<Object | null> 由于此方法触发的事件的事件对象。
+*eventData\<Object | null>*: 由于此方法触发的事件的事件对象。
 
 **返回值：**
 
@@ -1333,11 +1333,11 @@ map.setPadding({left: 300, top: 50});
 
 **参数列表：**
 
-bearing\<number> 方位角。
+*bearing\<number>*: 方位角。
 
-options\<EasingOptions> 描述过渡目标和动画的选项。接受CameraOptions和[AnimationOptions](/api-reference/properties.html#animationoptions)。
+*options\<EasingOptions>*: 描述过渡目标和动画的选项。接受[CameraOptions](/api-reference/properties.html#cameraoptions)。和[AnimationOptions](/api-reference/properties.html#animationoptions)。
 
-eventData\<Object | null> 由于此方法触发的事件的事件对象。
+*eventData\<Object | null>*: 由于此方法触发的事件的事件对象。
 
 **返回值：**
 
@@ -1353,9 +1353,9 @@ map.rotateTo(30, {duration: 2000});
 
 **参数列表：**
 
-options\<EasingOptions> 描述过渡目标和动画的选项。接受CameraOptions和[AnimationOptions](/api-reference/properties.html#animationoptions)。
+*options\<EasingOptions>*: 描述过渡目标和动画的选项。接受[CameraOptions](/api-reference/properties.html#cameraoptions)和[AnimationOptions](/api-reference/properties.html#animationoptions)。
 
-eventData\<Object | null> 由于此方法触发的事件的事件对象。
+*eventData\<Object | null>*: 由于此方法触发的事件的事件对象。
 
 **返回值：**
 
@@ -1371,9 +1371,9 @@ map.resetNorth({duration: 2000});
 
 **参数列表：**
 
-options\<EasingOptions> 描述过渡目标和动画的选项。接受CameraOptions和[AnimationOptions](/api-reference/properties.html#animationoptions)。
+*options\<EasingOptions>*: 描述过渡目标和动画的选项。接受[CameraOptions](/api-reference/properties.html#cameraoptions)和[AnimationOptions](/api-reference/properties.html#animationoptions)。
 
-eventData\<Object | null> 由于此方法触发的事件的事件对象。
+*eventData\<Object | null>*: 由于此方法触发的事件的事件对象。
 
 **返回值：**
 
@@ -1401,9 +1401,9 @@ const pitch = map.getPitch();
 
 **参数列表：**
 
-pitch\<number> 俯仰角。
+*pitch\<number>*: 俯仰角。
 
-eventData\<Object | null> 由于此方法触发的事件的事件对象。
+*eventData\<Object | null>*: 由于此方法触发的事件的事件对象。
 
 **返回值：**
 
@@ -1419,19 +1419,19 @@ map.setPitch(80, {duration: 2000});
 
 **参数列表：**
 
-bounds\<LngLatBoundsLike> 边界对象。
+*bounds\<[LngLatBoundsLike](/api-reference/properties.html#lnglatboundslike)>*: 边界对象。
 
-options\<Object | null> 除了下面的字段外，选项还支持来自[AnimationOptions](/api-reference/properties.html#animationoptions)和CameraOptions的所有属性。
+*options\<Object | null>*: 除了下面的字段外，选项还支持来自[AnimationOptions](/api-reference/properties.html#animationoptions)和[CameraOptions](/api-reference/properties.html#cameraoptions)的所有属性。
 |  名称   | 描述  |
 |  ----  | ----  |
 | **easing\<Function>?** | 动画过渡的缓和功能。详见[AnimationOptions](/api-reference/properties.html#animationoptions) |
 | **liner\<boolean>** default: false | 如果为true，则使用map.easeTo转换地图。如果为false，则使用map.flyTo转换地图|
 | **maxZoom\<number>?** | 地图视图转换到指定边界时允许的最大缩放级别。 |
-| **offset\<PointLike>** default: [0, 0] | 相对于地图中心的给定边界的中心，以像素为单位 |
-| **padding\<number \| PaddingOptions>?** | 要添加到给定边界的内边距（以像素为单位） |
+| **offset\<[PointLike](/api-reference/properties.html#pointlike)>** default: [0, 0] | 相对于地图中心的给定边界的中心，以像素为单位 |
+| **padding\<number \| [PaddingOptions](/api-reference/properties.html#paddingoptions)>?** | 要添加到给定边界的内边距（以像素为单位） |
 
 
-eventData\<Object | null> 由于此方法触发的事件的事件对象。
+*eventData\<Object | null>*: 由于此方法触发的事件的事件对象。
 
 **返回值：**
 
@@ -1450,9 +1450,9 @@ map.fitBounds(bbox, {
 
 **参数列表：**
 
-options\<CameraOptions> 配置对象
+*options\<[CameraOptions](/api-reference/properties.html#cameraoptions)>*: 配置对象
 
-eventData\<Object | null> 由于此方法触发的事件的事件对象。
+*eventData\<Object | null>*: 由于此方法触发的事件的事件对象。
 
 **返回值：**
 
@@ -1473,7 +1473,7 @@ map.jumpTo({
 
 **返回值：**
 
-FreeCameraOptions 相机状态对象。
+[FreeCameraOptions](/api-reference/properties.html#freecameraoptions) 相机状态对象。
 
 **示例：**
 ```js
@@ -1493,13 +1493,13 @@ map.setFreeCameraOptions(camera);
 
 **参数列表：**
 
-options\<FreeCameraOptions> 配置对象
+*options\<[FreeCameraOptions](/api-reference/properties.html#freecameraoptions)>*: 配置对象
 
-eventData\<Object | null> 由于此方法触发的事件的事件对象。
+*eventData\<Object | null>*: 由于此方法触发的事件的事件对象。
 
 **返回值：**
 
-FreeCameraOptions 相机状态对象。
+[FreeCameraOptions](/api-reference/properties.html#freecameraoptions) 相机状态对象。
 
 **示例：**
 ```js
@@ -1519,13 +1519,13 @@ map.setFreeCameraOptions(camera);
 
 **参数列表：**
 
-options\<EasingOptions> 描述转换的目标和动画的选项。接受 CameraOptions 和 [AnimationOptions](/api-reference/properties.html#animationoptions)。
+*options\<EasingOptions>*: 描述转换的目标和动画的选项。接受 [CameraOptions](/api-reference/properties.html#cameraoptions) 和 [AnimationOptions](/api-reference/properties.html#animationoptions)。
 
-eventData\<Object | null> 由于此方法触发的事件的事件对象。
+*eventData\<Object | null>*: 由于此方法触发的事件的事件对象。
 
 **返回值：**
 
-FreeCameraOptions 相机状态对象。
+[FreeCameraOptions](/api-reference/properties.html#freecameraoptions) 相机状态对象。
 
 **示例：**
 ```js
@@ -1547,7 +1547,7 @@ map.easeTo({
 
 **参数列表：**
 
-options\<Object> 描述过渡目标和动画的选项。接受CameraOptions、[AnimationOptions](/api-reference/properties.html#animationoptions)和以下附加选项。
+*options\<Object>*: 描述过渡目标和动画的选项。接受[CameraOptions](/api-reference/properties.html#cameraoptions)、[AnimationOptions](/api-reference/properties.html#animationoptions)和以下附加选项。
 |  名称   | 描述  |
 |  ----  | ----  |
 | **curve\<number>** default: 1.42 | 曲线的曲率 |
@@ -1560,7 +1560,7 @@ eventData\<Object | null> 由于此方法触发的事件的事件对象。
 
 **返回值：**
 
-FreeCameraOptions 相机状态对象。
+[FreeCameraOptions](/api-reference/properties.html#freecameraoptions) 相机状态对象。
 
 **示例：**
 ```js
