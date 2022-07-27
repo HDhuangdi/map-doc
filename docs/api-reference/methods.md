@@ -288,7 +288,7 @@ map.setFlotsam({
 
 各个参数的示意图如下：
 
-<img src="./images/dof.png"/>
+<img src="../assets/images/dof.png"/>
 
 **示例：**
 ```js

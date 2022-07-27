@@ -1,7 +1,15 @@
+const resolve = path => require('path').resolve(__dirname, path)
+
 module.exports = {
   title: "地图",
   description: "新监管态势出品",
-  configureWebpack: {},
+  configureWebpack: {
+    resolve: {
+      alias: {
+        'docs': resolve('../')     // 路径别名
+      }
+    }
+  },
   themeConfig: {
     nav: [
       { text: "教程", link: "/guide/" },
@@ -48,14 +56,14 @@ module.exports = {
           path: "map",
         },
         {
-          title: "属性",
-          collapsable: true,
-          path: "properties",
-        },
-        {
           title: "实例方法",
           collapsable: true,
           path: "methods",
+        },
+        {
+          title: "公用类",
+          collapsable: true,
+          path: "common-class",
         },
         {
           title: "事件",

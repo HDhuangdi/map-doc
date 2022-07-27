@@ -21,6 +21,7 @@ navbar: false
 import mapboxgl from "comments-map";
 import "comments-map/dist/mapbox-gl.css";
 import style from "./mapStyle.js";
+import geojson from "docs/assets/json/hangzhou_motorway.json";
 
 export default {
   data: () => ({
@@ -29,17 +30,99 @@ export default {
   mounted() {
     this.map = new mapboxgl.Map({
       container: "map-container",
-      zoom: 11,
-      center: [120.0971, 30.3032],
-      pitch: 0,
+      zoom: 15,
+      center: [120.10603, 30.13324],
+      pitch: 61,
+      bearing: -17.6,
       style,
-      hash: false,
+      hash: true,
       antialias: true,
       fixedZoom: true,
       vignetting: {
         enable: false,
       },
     });
+    this.map.on("map.ready", () => {
+      this.addBuildings()
+      this.addRoads();
+      this.setDOF()
+    })
+  },
+  methods: {
+    addRoads() {
+      this.map.addSource("hangzhou_motorway", {
+        type: "geojson",
+        data: geojson,
+      });
+
+      this.map.addLayer({
+        id: "hangzhou_motorway_layer",
+        type: "line",
+        source: "hangzhou_motorway",
+        layout: {
+          "line-join": "miter",
+          "line-cap": "butt",
+        },
+        paint: {
+          "line-color": "#f00",
+          "line-width": 30,
+          "line-opacity": 0.5,
+          "line-blur": 50,
+ 
+        },
+      }, '3d-buildings');
+      this.map.addLayer({
+        id: "hangzhou_motorway_layer2",
+        type: "line",
+        source: "hangzhou_motorway",
+        layout: {
+          "line-join": "miter",
+          "line-cap": "butt",
+        },
+        paint: {
+          "line-color": "#F1401E",
+          "line-width": 10,
+          "line-opacity": 0.2,
+          "line-blur": 5,
+ 
+        },
+      }, '3d-buildings');
+      this.map.addLayer({
+        id: "hangzhou_motorway_layer3",
+        type: "line",
+        source: "hangzhou_motorway",
+        layout: {
+          "line-join": "miter",
+          "line-cap": "butt",
+        },
+        paint: {
+          "line-color": "#FFD372",
+          "line-width": 2,
+          "line-opacity": 0.1,
+          "line-blur": 1,
+        },
+      }, '3d-buildings');
+    },
+    addBuildings() {
+      this.map.addBuildings({
+        activeZoom: 12,
+        removeZoom: 7,
+        opacity: 1,
+        sourceLayer: "building",
+        heightField: "render_height",
+        buildingColor: "#fff",
+      });
+    },
+    setDOF() {
+      this.map.setDOF({
+        enable: true,
+        blurRadius: 8,
+        near: 0.45,
+        nearRange: 0.1,
+        far: 0.55,
+        farRange: 0.25,
+      });
+    }
   },
   beforeDestroy() {
     this.map.destroy()
@@ -68,7 +151,7 @@ export default {
     z-index: 2;
     pointer-events: none;
     background: #000;
-    opacity: 0.3;
+    opacity: 0.5;
   }
   .center {
     width: 260px;

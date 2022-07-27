@@ -1,4 +1,4 @@
-# 属性
+# 公用类
 
 ## AnimationOptions
 常用于地图涉及动画的移动方法的选项，如 `map.panBy` 和 `map.easeTo`，用于控制动画的持续时间等功能。所有属性都是可选的

@@ -29,13 +29,13 @@ export default {
   },
   methods: {
     async addMarker() {
-      const { image } = await resolveImage(require('./images/base_png.png'))
+      const { image } = await resolveImage(require('docs/assets/images/base_png.png'))
       this.map.addMarker({
         id: "markerTest",
         header: {
           fragment: `
             <p>这是1号打点</p>
-            <img src="${require('./images/icon.png')}" />
+            <img src="${require('docs/assets/images/icon.png')}" />
           `,
           style: {
             color: "#fff",

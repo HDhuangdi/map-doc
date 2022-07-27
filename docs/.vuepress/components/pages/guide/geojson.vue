@@ -6,7 +6,7 @@
 import mapboxgl from "comments-map";
 import "comments-map/dist/mapbox-gl.css";
 import style from "./quick-start-style.js";
-import geojson from "./hangzhou_motorway.json";
+import geojson from "docs/assets/json/hangzhou_motorway.json";
 
 export default {
   data: () => ({

@@ -35,12 +35,12 @@ export default {
   methods: {
     async addBuildings() {
       const textures = await resolveImages([
-        require("./images/building9.png"),
-        require("./images/building10.png"),
-        require("./images/building12.png"),
-        require("./images/building11.png"),
-        require("./images/building13.png"),
-        require("./images/building14.png"),
+        require("docs/assets/images/building9.png"),
+        require("docs/assets/images/building10.png"),
+        require("docs/assets/images/building12.png"),
+        require("docs/assets/images/building11.png"),
+        require("docs/assets/images/building13.png"),
+        require("docs/assets/images/building14.png"),
       ]);
       this.map.addBuildings({
         textures,

@@ -43,7 +43,6 @@ export default {
         require("./images/building11.png"),
         require("./images/building13.png"),
         require("./images/building14.png"),
-        require("./images/sky.png"),
       ]);
       this.map.addBuildings({
         textures: textures.slice(0, 6),
@@ -54,19 +53,9 @@ export default {
         buildingColor: "#fff",
         mixinStrength: 3,
       });
-      this.map.addSkyBox({
-        textures: [
-          textures[6], // 右
-          textures[6], // 左
-          textures[6], // 上
-          textures[6], // 下
-          textures[6], // 前
-          textures[6], // 后
-        ],
-      });
     },
     async snow() {
-      const { image } = await resolveImage(require("./images/snow.png"));
+      const { image } = await resolveImage(require("docs/assets/images/snow.png"));
       this.map.setFlotsam({
         coord: [120.20853164716578, 30.25113591444385],
         texture: image,
