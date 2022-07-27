@@ -10,7 +10,7 @@ navbar: false
       <h1>地图</h1>
       <p>新监管态势感知出品</p>
       <div class="buttons">
-        <button>配置指南</button>
+        <button @click="$router.push('/api-reference/map')">配置指南</button>
         <button @click="$router.push('/guide')">快速入门</button>
       </div>
     </div>
@@ -26,16 +26,20 @@ import geojson from "docs/assets/json/hangzhou_motorway.json";
 export default {
   data: () => ({
     map: null,
+    blur: 50,
+    duration: 1000,
+    frameId: 0,
+    timer: 0
   }),
   mounted() {
     this.map = new mapboxgl.Map({
       container: "map-container",
-      zoom: 15,
-      center: [120.10603, 30.13324],
-      pitch: 61,
-      bearing: -17.6,
+      zoom: 15.7,
+      center: [120.233817, 30.305606],
+      pitch: 71,
+      bearing: 0,
       style,
-      hash: true,
+      hash: false,
       antialias: true,
       fixedZoom: true,
       vignetting: {
@@ -45,7 +49,9 @@ export default {
     this.map.on("map.ready", () => {
       this.addBuildings()
       this.addRoads();
-      this.setDOF()
+      this.setDOF();
+      this.setRotate()
+      this.setBreath()
     })
   },
   methods: {
@@ -68,7 +74,10 @@ export default {
           "line-width": 30,
           "line-opacity": 0.5,
           "line-blur": 50,
- 
+          "line-opacity-transition": {
+            "duration": this.duration,
+            "delay": 0
+          }
         },
       }, '3d-buildings');
       this.map.addLayer({
@@ -98,7 +107,7 @@ export default {
         paint: {
           "line-color": "#FFD372",
           "line-width": 2,
-          "line-opacity": 0.1,
+          "line-opacity": 1,
           "line-blur": 1,
         },
       }, '3d-buildings');
@@ -116,16 +125,35 @@ export default {
     setDOF() {
       this.map.setDOF({
         enable: true,
-        blurRadius: 8,
-        near: 0.45,
+        blurRadius: 6,
+        near: 0.55,
         nearRange: 0.1,
-        far: 0.55,
-        farRange: 0.25,
+        far: 0.65,
+        farRange: 0.1,
       });
+    },
+    setRotate() {
+      const bearing = this.map.getBearing();
+      this.map.rotateTo(bearing + 0.1, { duration: 0 });
+      this.frameId = requestAnimationFrame(() => this.setRotate.call(this, false));
+    },
+    setBreath() {
+      this.blur = 1
+      this.map.setPaintProperty('hangzhou_motorway_layer', 'line-opacity', this.blur)
+      this.timer = setInterval(() => {
+        if (this.blur === 1) {
+          this.blur = 0.5
+        } else {
+          this.blur = 1
+        }
+        this.map.setPaintProperty('hangzhou_motorway_layer', 'line-opacity', this.blur)
+      }, this.duration);
     }
   },
   beforeDestroy() {
     this.map.destroy()
+    cancelAnimationFrame(this.frameId)
+    clearInterval(this.timer)
   },
 };
 </script>
@@ -151,7 +179,7 @@ export default {
     z-index: 2;
     pointer-events: none;
     background: #000;
-    opacity: 0.5;
+    opacity: 0.4;
   }
   .center {
     width: 260px;

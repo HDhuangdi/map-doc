@@ -21,7 +21,7 @@ export default {
     light: {
         anchor: "map",
         color: "#fff",
-        intensity: 0.4,
+        intensity: 0.6,
         position: [10, 90, 45]
     },
     layers: [

@@ -42,7 +42,7 @@ map.addBuildings({
 *options\<object>* 所有配置项都是可选的
 |  名称   | 描述  |
 |  ----  | ----  |
-| **bounds\<[LngLatBounds](/api-reference/properties.html#lnglatbounds)>** | 防护罩中心点 |
+| **bounds\<[LngLatBounds](/api-reference/common-class.html#lnglatbounds)>** | 防护罩中心点 |
 | **coverColor\<string>** default: '#2959F0' | 防护罩色。 |
 | **coverOpacity\<number>** default: 1 | 防护罩透明度 |
 | **scanColor\<string>** default: '#3F95FF' | 冲击波颜色 |
@@ -362,7 +362,7 @@ if (mapDiv.style.visibility === true) map.resize();
 
 **返回值：**
 
-地图的地理边界, 类型为[LngLatBounds](/api-reference/properties.html#lnglatbounds)。
+地图的地理边界, 类型为[LngLatBounds](/api-reference/common-class.html#lnglatbounds)。
 
 **示例：**
 ```js
@@ -386,7 +386,7 @@ const maxBounds = map.getMaxBounds();
 
 **参数列表：**
 
-*bounds<[LngLatBoundsLike](/api-reference/properties.html#lnglatboundslike) | null | undefined>*: 要设置的最大界限。如果提供`null`或`undefined`，则该函数将删除地图的最大界限。
+*bounds<[LngLatBoundsLike](/api-reference/common-class.html#lnglatboundslike) | null | undefined>*: 要设置的最大界限。如果提供`null`或`undefined`，则该函数将删除地图的最大界限。
 
 **返回值：**
 
@@ -584,11 +584,11 @@ map.setProjection({
 
 **参数列表：**
 
-*lnglat\<[LngLatLike](/api-reference/properties.html#lnglatlike)>*: 地理坐标（经纬度）
+*lnglat\<[LngLatLike](/api-reference/common-class.html#lnglatlike)>*: 地理坐标（经纬度）
 
 **返回值：**
 
-Point\<[Point](/api-reference/properties.html#point)> 与lnglat相对应的点，相对于地图的容器。
+Point\<[Point](/api-reference/common-class.html#point)> 与lnglat相对应的点，相对于地图的容器。
 
 **示例：**
 ```js
@@ -597,15 +597,15 @@ const point = map.project(coordinate);
 ```
 
 ### `unproject(point)`
-返回表示与指定像素坐标相对应的地理坐标的[LngLat](/api-reference/properties.html#lnglat)。如果地平线可见，并且指定的像素位于地平线之上，则返回与地平线上最接近该点的点对应的[LngLat](/api-reference/properties.html#lnglat)。
+返回表示与指定像素坐标相对应的地理坐标的[LngLat](/api-reference/common-class.html#lnglat)。如果地平线可见，并且指定的像素位于地平线之上，则返回与地平线上最接近该点的点对应的[LngLat](/api-reference/common-class.html#lnglat)。
 
 **参数列表：**
 
-*point\<[PointLike](/api-reference/properties.html#pointlike)>*: 地理坐标（经纬度）
+*point\<[PointLike](/api-reference/common-class.html#pointlike)>*: 地理坐标（经纬度）
 
 **返回值：**
 
-LngLat\<[LngLat](/api-reference/properties.html#lnglat)> 与point相对应的地理坐标。
+LngLat\<[LngLat](/api-reference/common-class.html#lnglat)> 与point相对应的地理坐标。
 
 **示例：**
 ```js
@@ -725,7 +725,7 @@ map.off('mousemove', onMove);
 
 **参数列表：**
 
-*geometry\<[PointLike](/api-reference/properties.html#pointlike) | Array\<[PointLike](/api-reference/properties.html#pointlike)>>* 查询区域的几何形状(以像素为单位) : 可以为一个点或左下和右上的点组成的一个边界框，其中原点在左上角。省略此参数相当于传递一个包含整个 Map 视口的边界框。只支持现有视图中的值。
+*geometry\<[PointLike](/api-reference/common-class.html#pointlike) | Array\<[PointLike](/api-reference/common-class.html#pointlike)>>* 查询区域的几何形状(以像素为单位) : 可以为一个点或左下和右上的点组成的一个边界框，其中原点在左上角。省略此参数相当于传递一个包含整个 Map 视口的边界框。只支持现有视图中的值。
 
 *options\<object>*
 |  名称   | 描述  |
@@ -1423,7 +1423,7 @@ const {lng, lat} = map.getCenter();
 
 **参数列表：**
 
-*center\<[LngLatLike](/api-reference/properties.html#lnglatlike)>*: 要设置的中心点。
+*center\<[LngLatLike](/api-reference/common-class.html#lnglatlike)>*: 要设置的中心点。
 
 *eventData\<Object | null>*: 由于此方法触发的事件的事件对象。
 
@@ -1441,9 +1441,9 @@ map.setCenter([-74, 38]);
 
 **参数列表：**
 
-*offset\<[PointLike](/api-reference/properties.html#pointlike)>*: 平移地图所依据的x和y坐标。
+*offset\<[PointLike](/api-reference/common-class.html#pointlike)>*: 平移地图所依据的x和y坐标。
 
-*options\<[AnimationOptions](/api-reference/properties.html#animationoptions) | null>*: 描述转换的目标和动画的选项对象。我们不建议使用 options.offset，因为这个值会覆盖这个参数的值。
+*options\<[AnimationOptions](/api-reference/common-class.html#animationoptions) | null>*: 描述转换的目标和动画的选项对象。我们不建议使用 options.offset，因为这个值会覆盖这个参数的值。
 
 *eventData\<Object | null>*: 由于此方法触发的事件的事件对象。
 
@@ -1461,9 +1461,9 @@ map.panBy([-74, 38], {duration: 5000});
 
 **参数列表：**
 
-*lnglat\<[LngLatLike](/api-reference/properties.html#lnglatlike)>*: 要平移地图的位置。
+*lnglat\<[LngLatLike](/api-reference/common-class.html#lnglatlike)>*: 要平移地图的位置。
 
-*options\<[AnimationOptions](/api-reference/properties.html#animationoptions) | null>*: 描述转换的目标和动画的选项对象。我们不建议使用 options.offset，因为这个值会覆盖这个参数的值。
+*options\<[AnimationOptions](/api-reference/common-class.html#animationoptions) | null>*: 描述转换的目标和动画的选项对象。我们不建议使用 options.offset，因为这个值会覆盖这个参数的值。
 
 *eventData\<Object | null>*: 由于此方法触发的事件的事件对象。
 
@@ -1513,7 +1513,7 @@ map.setZoom(5);
 
 *zoom\<number>*: 要设置的缩放级别(0-20)。
 
-*options\<[AnimationOptions](/api-reference/properties.html#animationoptions)>*: 动画对象。
+*options\<[AnimationOptions](/api-reference/common-class.html#animationoptions)>*: 动画对象。
 
 *eventData\<Object | null>*: 由于此方法触发的事件的事件对象。
 
@@ -1534,7 +1534,7 @@ map.zoomTo(8, {
 
 **参数列表：**
 
-*options\<[AnimationOptions](/api-reference/properties.html#animationoptions)>*: 动画对象。
+*options\<[AnimationOptions](/api-reference/common-class.html#animationoptions)>*: 动画对象。
 
 *eventData\<Object | null>*: 由于此方法触发的事件的事件对象。
 
@@ -1552,7 +1552,7 @@ map.zoomIn({duration: 1000});
 
 **参数列表：**
 
-*options\<[AnimationOptions](/api-reference/properties.html#animationoptions)>*: 动画对象。
+*options\<[AnimationOptions](/api-reference/common-class.html#animationoptions)>*: 动画对象。
 
 *eventData\<Object | null>*: 由于此方法触发的事件的事件对象。
 
@@ -1612,7 +1612,7 @@ const padding = map.getPadding();
 
 **参数列表：**
 
-*padding\<[PaddingOptions](/api-reference/properties.html#paddingoptions)>*: 所需的填充。格式：{left:number，right:number，top:number，bottom:number}。
+*padding\<[PaddingOptions](/api-reference/common-class.html#paddingoptions)>*: 所需的填充。格式：{left:number，right:number，top:number，bottom:number}。
 
 *eventData\<Object | null>*: 由于此方法触发的事件的事件对象。
 
@@ -1632,7 +1632,7 @@ map.setPadding({left: 300, top: 50});
 
 *bearing\<number>*: 方位角。
 
-*options\<EasingOptions>*: 描述过渡目标和动画的选项。接受[CameraOptions](/api-reference/properties.html#cameraoptions)。和[AnimationOptions](/api-reference/properties.html#animationoptions)。
+*options\<EasingOptions>*: 描述过渡目标和动画的选项。接受[CameraOptions](/api-reference/common-class.html#cameraoptions)。和[AnimationOptions](/api-reference/common-class.html#animationoptions)。
 
 *eventData\<Object | null>*: 由于此方法触发的事件的事件对象。
 
@@ -1650,7 +1650,7 @@ map.rotateTo(30, {duration: 2000});
 
 **参数列表：**
 
-*options\<EasingOptions>*: 描述过渡目标和动画的选项。接受[CameraOptions](/api-reference/properties.html#cameraoptions)和[AnimationOptions](/api-reference/properties.html#animationoptions)。
+*options\<EasingOptions>*: 描述过渡目标和动画的选项。接受[CameraOptions](/api-reference/common-class.html#cameraoptions)和[AnimationOptions](/api-reference/common-class.html#animationoptions)。
 
 *eventData\<Object | null>*: 由于此方法触发的事件的事件对象。
 
@@ -1668,7 +1668,7 @@ map.resetNorth({duration: 2000});
 
 **参数列表：**
 
-*options\<EasingOptions>*: 描述过渡目标和动画的选项。接受[CameraOptions](/api-reference/properties.html#cameraoptions)和[AnimationOptions](/api-reference/properties.html#animationoptions)。
+*options\<EasingOptions>*: 描述过渡目标和动画的选项。接受[CameraOptions](/api-reference/common-class.html#cameraoptions)和[AnimationOptions](/api-reference/common-class.html#animationoptions)。
 
 *eventData\<Object | null>*: 由于此方法触发的事件的事件对象。
 
@@ -1716,16 +1716,16 @@ map.setPitch(80, {duration: 2000});
 
 **参数列表：**
 
-*bounds\<[LngLatBoundsLike](/api-reference/properties.html#lnglatboundslike)>*: 边界对象。
+*bounds\<[LngLatBoundsLike](/api-reference/common-class.html#lnglatboundslike)>*: 边界对象。
 
-*options\<Object | null>*: 除了下面的字段外，选项还支持来自[AnimationOptions](/api-reference/properties.html#animationoptions)和[CameraOptions](/api-reference/properties.html#cameraoptions)的所有属性。
+*options\<Object | null>*: 除了下面的字段外，选项还支持来自[AnimationOptions](/api-reference/common-class.html#animationoptions)和[CameraOptions](/api-reference/common-class.html#cameraoptions)的所有属性。
 |  名称   | 描述  |
 |  ----  | ----  |
-| **easing\<Function>?** | 动画过渡的缓和功能。详见[AnimationOptions](/api-reference/properties.html#animationoptions) |
+| **easing\<Function>?** | 动画过渡的缓和功能。详见[AnimationOptions](/api-reference/common-class.html#animationoptions) |
 | **liner\<boolean>** default: false | 如果为true，则使用map.easeTo转换地图。如果为false，则使用map.flyTo转换地图|
 | **maxZoom\<number>?** | 地图视图转换到指定边界时允许的最大缩放级别。 |
-| **offset\<[PointLike](/api-reference/properties.html#pointlike)>** default: [0, 0] | 相对于地图中心的给定边界的中心，以像素为单位 |
-| **padding\<number \| [PaddingOptions](/api-reference/properties.html#paddingoptions)>?** | 要添加到给定边界的内边距（以像素为单位） |
+| **offset\<[PointLike](/api-reference/common-class.html#pointlike)>** default: [0, 0] | 相对于地图中心的给定边界的中心，以像素为单位 |
+| **padding\<number \| [PaddingOptions](/api-reference/common-class.html#paddingoptions)>?** | 要添加到给定边界的内边距（以像素为单位） |
 
 
 *eventData\<Object | null>*: 由于此方法触发的事件的事件对象。
@@ -1747,7 +1747,7 @@ map.fitBounds(bbox, {
 
 **参数列表：**
 
-*options\<[CameraOptions](/api-reference/properties.html#cameraoptions)>*: 配置对象
+*options\<[CameraOptions](/api-reference/common-class.html#cameraoptions)>*: 配置对象
 
 *eventData\<Object | null>*: 由于此方法触发的事件的事件对象。
 
@@ -1770,7 +1770,7 @@ map.jumpTo({
 
 **返回值：**
 
-[FreeCameraOptions](/api-reference/properties.html#freecameraoptions) 相机状态对象。
+[FreeCameraOptions](/api-reference/common-class.html#freecameraoptions) 相机状态对象。
 
 **示例：**
 ```js
@@ -1790,13 +1790,13 @@ map.setFreeCameraOptions(camera);
 
 **参数列表：**
 
-*options\<[FreeCameraOptions](/api-reference/properties.html#freecameraoptions)>*: 配置对象
+*options\<[FreeCameraOptions](/api-reference/common-class.html#freecameraoptions)>*: 配置对象
 
 *eventData\<Object | null>*: 由于此方法触发的事件的事件对象。
 
 **返回值：**
 
-[FreeCameraOptions](/api-reference/properties.html#freecameraoptions) 相机状态对象。
+[FreeCameraOptions](/api-reference/common-class.html#freecameraoptions) 相机状态对象。
 
 **示例：**
 ```js
@@ -1816,13 +1816,13 @@ map.setFreeCameraOptions(camera);
 
 **参数列表：**
 
-*options\<EasingOptions>*: 描述转换的目标和动画的选项。接受 [CameraOptions](/api-reference/properties.html#cameraoptions) 和 [AnimationOptions](/api-reference/properties.html#animationoptions)。
+*options\<EasingOptions>*: 描述转换的目标和动画的选项。接受 [CameraOptions](/api-reference/common-class.html#cameraoptions) 和 [AnimationOptions](/api-reference/common-class.html#animationoptions)。
 
 *eventData\<Object | null>*: 由于此方法触发的事件的事件对象。
 
 **返回值：**
 
-[FreeCameraOptions](/api-reference/properties.html#freecameraoptions) 相机状态对象。
+[FreeCameraOptions](/api-reference/common-class.html#freecameraoptions) 相机状态对象。
 
 **示例：**
 ```js
@@ -1844,7 +1844,7 @@ map.easeTo({
 
 **参数列表：**
 
-*options\<Object>*: 描述过渡目标和动画的选项。接受[CameraOptions](/api-reference/properties.html#cameraoptions)、[AnimationOptions](/api-reference/properties.html#animationoptions)和以下附加选项。
+*options\<Object>*: 描述过渡目标和动画的选项。接受[CameraOptions](/api-reference/common-class.html#cameraoptions)、[AnimationOptions](/api-reference/common-class.html#animationoptions)和以下附加选项。
 |  名称   | 描述  |
 |  ----  | ----  |
 | **curve\<number>** default: 1.42 | 曲线的曲率 |
@@ -1857,7 +1857,7 @@ eventData\<Object | null> 由于此方法触发的事件的事件对象。
 
 **返回值：**
 
-[FreeCameraOptions](/api-reference/properties.html#freecameraoptions) 相机状态对象。
+[FreeCameraOptions](/api-reference/common-class.html#freecameraoptions) 相机状态对象。
 
 **示例：**
 ```js
