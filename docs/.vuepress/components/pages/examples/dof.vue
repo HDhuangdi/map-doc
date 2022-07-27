@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <div id="map-container2"></div>
+    <div id="map-container"></div>
     <button @click="focus">聚焦</button>
   </div>
 </template>
@@ -9,7 +9,6 @@
 import mapboxgl from "comments-map";
 import "comments-map/dist/mapbox-gl.css";
 import style from "./style.js";
-import { resolveImages } from "./utils";
 
 export default {
   data: () => ({
@@ -17,18 +16,14 @@ export default {
   }),
   mounted() {
     this.map = new mapboxgl.Map({
-      container: "map-container2",
-      zoom: 10.26,
-      center: [120.1569, 30.2204],
-      pitch: 38,
+      container: "map-container",
+      zoom: 15.9,
+      center: [120.168788, 30.230241],
+      pitch: 71,
+      bearing: 161.1,
       style,
       hash: false,
       antialias: true,
-      vignetting: {
-        enable: true,
-        lightHeight: 170,
-        strength: 2
-      },
     });
     this.map.on("map.ready", () => {
       this.addBuildings();
@@ -36,37 +31,51 @@ export default {
   },
   methods: {
     async addBuildings() {
-      const textures = await resolveImages([
-        require("./images/building9.png"),
-        require("./images/building10.png"),
-        require("./images/building12.png"),
-        require("./images/building11.png"),
-        require("./images/building13.png"),
-        require("./images/building14.png"),
-      ]);
-      this.map.addbuildings({
-        textures,
-        roofcolor: "auto",
+      this.map.addBuildings({
+        activeZoom: 12,
+        removeZoom: 7,
+        opacity: 1,
+        sourceLayer: "building",
+        before: "poi-railway-zh",
+        heightField: "render_height",
+      });
+    },
+    setDOF() {
+      this.map.setDOF({
+        enable: true,
+        blurRadius: 8,
+        near: 0.42,
+        nearRange: 0.17,
+        far: 0.59,
+        farRange: 0.1,
       });
     },
     focus() {
-      this.map.once("click", this.map.unfocus);
-      this.map.once("wheel", this.map.unfocus);
+      this.setDOF();
+      this.map.once("click", this.unfocus);
+      this.map.once("wheel", this.unfocus);
       this.map.focus(
         {
           center: [120.20853164716578, 30.25113591444385],
           zoom: 15.5,
-          pitch: 47,
+          pitch: 63,
+          // rotation: false,
           lightOptions: {
             enable: true,
+            height: 70,
           },
         },
-        () => {
-          console.log("聚焦动画结束");
-        }
+        () => {}
       );
     },
+    unfocus() {
+      this.map.unfocus();
+      this.map.setDOF({
+        enable: false,
+      });
+    },
   },
+
   beforeDestroy() {
     if (this.map) this.map.destroy();
   },
@@ -88,7 +97,7 @@ export default {
     color: #fff;
   }
 }
-#map-container2 {
+#map-container {
   height: 500px;
 }
 </style>

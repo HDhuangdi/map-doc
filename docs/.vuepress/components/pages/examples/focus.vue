@@ -50,6 +50,8 @@ export default {
       });
     },
     focus() {
+      this.map.once("click", this.map.unfocus);
+      this.map.once("wheel", this.map.unfocus);
       this.map.focus(
         {
           center: [120.20853164716578, 30.25113591444385],

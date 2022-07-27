@@ -28,7 +28,7 @@ export default {
   },
   methods: {
     async addSkyBox() {
-      const { image } = await resolveImage(require("./images/sky.jpg"));
+      const { image } = await resolveImage(require("./images/sky.png"));
       this.map.addSkyBox({
         textures: [
           image, // 右

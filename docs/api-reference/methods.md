@@ -3,6 +3,304 @@ sidebarDepth: 2
 ---
 
 # 实例方法
+## 常用
+### `addBuildings(options)`
+在地图中添加3D建筑。
+
+**参数列表：**
+
+*options\<object>* 所有配置项都是可选的
+|  名称   | 描述  |
+|  ----  | ----  |
+| **textures\<Array\<HTMLImageElement>>** | 建筑贴图，必须为6张或者0张 |
+| **roofcolor\<string>** default: 'auto' | 屋顶色，若未设置`textures`则忽略此项。 |
+| **activeZoom\<number>** default: 13 | 在此缩放值显示建筑。 |
+| **removeZoom\<number>** default: 7 | 在此缩放值删除建筑。 |
+| **buildingColor\<string>** default: '#fff' | 建筑色，若设置`textures`则改颜色和贴图进行混合，混合参数为`mixinStrength` |
+| **opacity\<string>** default: 1 | 建筑透明度 |
+| **sourceLayer\<string>** default: 'buildings' | 适量瓦片源图层。 |
+| **heightField\<string>** default: 'height' | 源数据中用于生成建筑高度的字段。 |
+| **before\<string>** default: null | 将建筑图层添加到那个图层之前，默认添加在图层列表末尾。 |
+| **mixinStrength\<number>** default: 1 | 混合建筑贴图和建筑颜色的参数。 |
+
+
+**示例：**
+```js
+map.addBuildings({
+  buildingColor: '#fff',
+  activeZoom: 12,
+  removeZoom: 7,
+  opacity: 0.2
+});
+```
+
+### `addCover(options)`
+在地图中添加防护罩。
+
+**参数列表：**
+
+*options\<object>* 所有配置项都是可选的
+|  名称   | 描述  |
+|  ----  | ----  |
+| **bounds\<[LngLatBounds](/api-reference/properties.html#lnglatbounds)>** | 防护罩中心点 |
+| **coverColor\<string>** default: '#2959F0' | 防护罩色。 |
+| **coverOpacity\<number>** default: 1 | 防护罩透明度 |
+| **scanColor\<string>** default: '#3F95FF' | 冲击波颜色 |
+| **scanOpacity\<number>** default: 1| 冲击波透明度 |
+| **scanWidthFactor\<number>** default: 0.06 | 冲击波宽度系数 |
+| **speed\<number>** default: 0.01 | 冲击波速度系数 |
+
+
+**示例：**
+```js
+map.addCover({
+  bounds
+});
+```
+
+### `addSkyBox(options)`
+添加天空盒。
+
+::: tip
+注意：由于`WebGL`相关限制，天空盒贴图的大小必须为2的n次幂，比如：1024×1024、4096×4096。
+:::
+
+**参数列表：**
+
+*options\<object>*
+|  名称   | 描述  |
+|  ----  | ----  |
+| **textures\<Array\<HTMLImageElement>>** | 贴图数组，一共需要添加6张贴图，分别对应右、左、上、下、前、后 |
+
+
+**示例：**
+```js
+map.addCover({
+  textures: [right, left, top, bottom, front, back]
+});
+```
+
+### `addMarker(options)`
+地图打点。
+
+**参数列表：**
+
+*options\<object>* 除`id`外，所有参数都是可选的。
+|  名称   | 描述  |
+|  ----  | ----  |
+| **id\<string>** | 打点id |
+| **header\<{fragment: string, style: Object, scale: Stops}>** | 打点头部的配置，`fragment`为`HTML`片段，`style`为`css`样式, `scale`为Stops数组 |
+| **body\<{show: boolean, width: number, color: string}>** | 打点中部的配置，`show`为是否显示 ，`width`为中部宽度，`color`为中部整体颜色|
+| **base\<{image: HTMLImageElement, size: Array\<number>, depthTest: boolean}>** | 打点底部的配置，`image`为图片对象，`size`为图片大小, `depthTest`为是否开启深度测试（是否会被建筑遮挡） |
+| **coord\<Array\<number>>** | 打点经纬度 |
+| **altitude\<number>** | 打点整体高度 |
+| **onclick\<Function>** | 点击事件 |
+
+**默认值：**
+```js
+{
+  id: "",
+  header: {
+      fragment: null,
+      scale: [
+          [16, 1.5],
+          [15, 1],
+          [10, 0.3],
+          [5, 0],
+      ],
+      style: {}
+  },
+  body: {
+      show: true,
+      color: "#FFF",
+      width: 1,
+  },
+  base: {
+      image: null,
+      size: [10, 10],
+  },
+  coord: [0, 0],
+  altitude: 0,
+  onclick: () => {},
+}
+```
+**示例：**
+```js
+map.addCover({
+    id: "markerTest",
+    header: {
+        fragment: `
+            <p>这是1号打点</p>
+            <img src="../../debug/textures/icon.png" />
+        `,
+        style: {
+            color: "#fff",
+            display: "flex",
+            "flex-direction": "column",
+            "align-items": "center",
+        },
+    },
+    body: {
+        color: "#FFB557",
+    },
+    base: {
+        image: texture,
+    },
+    coord: [120.20853164716578, 30.25113591444385],
+    altitude: 400,
+    onclick: (e) => {
+        console.log(e);
+    },
+});
+```
+
+### `lightUpBuilding(options)`
+点亮建筑。
+
+**参数列表：**
+
+*options\<object>*
+|  名称   | 描述  |
+|  ----  | ----  |
+| **coord\<Array\<number>>** default: [0, 0] | 建筑所处的经纬度 |
+| **raduis\<number>** default: 0.000006 | 点亮半径 |
+| **color\<string>** default: 'yellow' | 点亮颜色 |
+
+
+**示例：**
+```js
+map.lightUpBuilding({
+    coord: [lng, lat],
+    color: 'yellow'
+});
+```
+
+### `setFlotsam(options)`
+设置漂浮物。
+
+**参数列表：**
+
+*options\<object>*
+|  名称   | 描述  |
+|  ----  | ----  |
+| **coord\<Array\<number>>** default: [0, 0] | 漂浮物区域中心经纬度 |
+| **texture\<HTMLImageElement>** | 漂浮物贴图 |
+| **altitude\<number>** default: 5000 | 漂浮物开始发射的高度，单位 米 |
+| **raduis\<number>** default: 0.0002 | 漂浮物开始发射的半径 |
+| **deathAge\<number>** default: 10 | 漂浮物从开始到消失的时间 |
+| **perSecond\<number>** default: 200 | 每秒钟发射漂浮物的个数 |
+| **sizeRange\<Array\<number>>** default: [10, 30] | 漂浮物的的大小范围 |
+
+**示例：**
+```js
+map.setFlotsam({
+    coord: [120.20853164716578, 30.25113591444385],
+    texture: snow,
+    altitude: 3000,
+    raduis: 0.0002,
+    deathAge: 10,
+    perSecond: 200,
+    sizeRange: [10, 50]
+})
+```
+
+### `focus(options, callback)`
+让地图聚焦某处。
+
+**参数列表：**
+
+*options\<object>*
+|  名称   | 描述  |
+|  ----  | ----  |
+| **center\<Array\<number>>** default: [0, 0] | 聚焦中心经纬度 |
+| **zoom\<number>** default: 18 | 聚焦时地图的缩放值 |
+| **pitch\<number>** default: 47 | 聚焦时地图的俯仰角 |
+| **rotation\<boolean>** default: true | 聚焦时相机是否要旋转 |
+| **lightOptions\<{enable: boolean, height: number, duration: number}>** default: {enable: true, duration: 300, height: 60} | 聚焦时的聚光灯效果设置 |
+
+*callback\<Function>* 聚焦动画结束后的回调函数
+
+**示例：**
+```js
+ map.focus(
+  {
+      center: [lng, lat],
+      zoom: 15.5,
+      pitch: 47,
+      lightOptions: {
+          enable: true,
+          height: 70,
+      },
+  },
+  () => {console.log('聚焦结束')}
+);
+```
+
+### `addFlyLine(options)`
+在地图中添加飞线
+
+**参数列表：**
+
+*options\<object>*
+|  名称   | 描述  |
+|  ----  | ----  |
+| **src\<Array\<number>>** default: [0, 0] | 飞线起点经纬度 |
+| **dest\<Array\<number>>** default: [0, 0] | 飞线终点经纬度 |
+| **lineColor\<string>** default: '#FB5431' | 飞线颜色 |
+| **backgroundColor\<string>** default: '#FB5431' | 飞线背景线颜色 |
+| **backgroundOpacity\<number>** default: 0.5 | 飞线背景线透明度 |
+| **size\<number>** default: 5 | 飞线大小 |
+| **points\<number>** default: 1000 | 飞线细分数 |
+| **altitude\<number>** default: 400000 | 飞线高度，单位 米 |
+
+**示例：**
+```js
+ map.addFlyLine({
+    src: [-79.493023, 36.471726],
+    dest: [120.20853164716578, 30.25113591444385],
+    lineColor: "#FB5431",
+    backgroundColor: "#FB5431",
+    backgroundOpacity: 0.5,
+    size: 5,
+    altitude: 6000000,
+    points: 10000,
+});
+```
+
+### `setDOF(options)`
+在地图中设置景深。
+
+**参数列表：**
+
+*options\<object>*
+|  名称   | 描述  |
+|  ----  | ----  |
+| **enable\<boolean>** default: false | 是否开启 |
+| **blurRadius\<number>** default: 7 | 模糊半径 |
+| **near\<number>** default: 0.45 | 近视点 |
+| **nearRange\<number>** default: 0.15 | 近视范围 |
+| **far\<number>** default: 0.6 | 远视点 |
+| **farRange\<number>** default: 0.1 | 远视范围 |
+
+关于参数的解释：
+
+从相机位置，到离相机最远的点，距离为1。也就是说，完全模糊区域（近） + 近视范围 + 聚焦区域 + 远视范围 + 完全模糊区域（远） = 1
+
+各个参数的示意图如下：
+
+<img src="./images/dof.png"/>
+
+**示例：**
+```js
+ map.setDOF({
+    enable: true,
+    blurRadius: 8,
+    near: 0.42,
+    nearRange: 0.17,
+    far: 0.59,
+    farRange: 0.1,
+});
+```
 
 ## 容器
 ### `getContianer()`
@@ -317,7 +615,7 @@ map.on('click', (e) => {
 ```
 ## 移动
 ### `isMoving()`
-地图正在平移、缩放、旋转或改名俯仰角，返回true。
+地图正在平移、缩放、旋转或改变俯仰角，返回true。
 
 **返回值：**
 
@@ -429,8 +727,7 @@ map.off('mousemove', onMove);
 
 *geometry\<[PointLike](/api-reference/properties.html#pointlike) | Array\<[PointLike](/api-reference/properties.html#pointlike)>>* 查询区域的几何形状(以像素为单位) : 可以为一个点或左下和右上的点组成的一个边界框，其中原点在左上角。省略此参数相当于传递一个包含整个 Map 视口的边界框。只支持现有视图中的值。
 
-options\<object>
-
+*options\<object>*
 |  名称   | 描述  |
 |  ----  | ----  |
 | **filter\<Array>?** | 限制查询结果的筛选器 |

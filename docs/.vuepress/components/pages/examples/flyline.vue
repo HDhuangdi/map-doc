@@ -34,7 +34,7 @@ export default {
         backgroundColor: "#FB5431",
         backgroundOpacity: 0.5,
         size: 5,
-        height: 6000000,
+        altitude: 6000000,
         points: 10000,
       });
     },

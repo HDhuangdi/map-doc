@@ -42,9 +42,14 @@ export default {
         require("./images/building13.png"),
         require("./images/building14.png"),
       ]);
-      this.map.addbuildings({
+      this.map.addBuildings({
         textures,
         roofcolor: "auto",
+        sourceLayer: "building",
+        before: "poi-railway-zh",
+        heightField: "render_height",
+        buildingColor: "#fff",
+        mixinStrength: 3,
       });
     },
   },

@@ -17,6 +17,6 @@
     "vuepress-theme-reco": "^1.6.13"
   },
   "dependencies": {
-    "comments-map": "0.0.1-beta.8"
+    "comments-map": "0.0.1-beta.11"
   }
 }

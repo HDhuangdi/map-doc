@@ -29,7 +29,14 @@ export default {
   },
   methods: {
     async addBuildings() {
-      this.map.addbuildings({ activeZoom: 12, removeZoom: 7, opacity: 0.4 });
+      this.map.addBuildings({
+        activeZoom: 12,
+        removeZoom: 7,
+        opacity: 0.6,
+        sourceLayer: "building",
+        before: "poi-railway-zh",
+        heightField: "render_height",
+      });
     },
   },
   beforeDestroy() {

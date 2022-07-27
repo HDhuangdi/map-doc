@@ -18,9 +18,8 @@ export default {
       zoom: 15,
       center: [120.20911, 30.24809],
       pitch: 61,
-      bearing: -86.4,
+      bearing: -20,
       style,
-      hash: false,
       antialias: true,
       minZoom: 15,
       maxZoom: 15,
@@ -44,10 +43,26 @@ export default {
         require("./images/building11.png"),
         require("./images/building13.png"),
         require("./images/building14.png"),
+        require("./images/sky.png"),
       ]);
-      this.map.addbuildings({
-        textures,
+      this.map.addBuildings({
+        textures: textures.slice(0, 6),
         roofcolor: "#777880",
+        sourceLayer: "building",
+        before: "poi-railway-zh",
+        heightField: "render_height",
+        buildingColor: "#fff",
+        mixinStrength: 3,
+      });
+      this.map.addSkyBox({
+        textures: [
+          textures[6], // 右
+          textures[6], // 左
+          textures[6], // 上
+          textures[6], // 下
+          textures[6], // 前
+          textures[6], // 后
+        ],
       });
     },
     async snow() {
@@ -55,7 +70,7 @@ export default {
       this.map.setFlotsam({
         coord: [120.20853164716578, 30.25113591444385],
         texture: image,
-        height: 3000,
+        height: 800,
         raduis: 0.0002,
         deathAge: 10,
         perSecond: 400,
