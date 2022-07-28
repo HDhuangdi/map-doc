@@ -5,7 +5,7 @@
     @mouseenter="hovering = true"
     @mouseleave="hovering = false"
   >
-    <div class="source-bg">
+    <div class="source-bg" v-if="isMounted">
       <slot name="source"></slot>
     </div>
     <div class="meta" ref="meta">
@@ -30,6 +30,7 @@
 export default {
   data() {
     return {
+      isMounted: false,
       hovering: false,
       isExpanded: false,
       fixedControl: false,
@@ -126,6 +127,7 @@ export default {
         sourceCode.style.width = "100%";
         sourceCode.borderRight = "none";
       }
+      this.isMounted = true;
     });
   },
 
@@ -151,7 +153,7 @@ export default {
   }
 
   .source-bg {
-    background-color: #363B46;
+    background-color: #363b46;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
   }
@@ -175,7 +177,7 @@ export default {
     border-radius: 3px;
     font-size: 14px;
     line-height: 22px;
-    color: rgb(173,186,199);
+    color: rgb(173, 186, 199);
     word-break: break-word;
     margin: 10px;
     background-color: #4c5362;
@@ -186,7 +188,7 @@ export default {
     }
 
     code {
-      background-color: #363B46;
+      background-color: #363b46;
       margin: 0 4px;
       display: inline-block;
       padding: 1px 5px;

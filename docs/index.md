@@ -18,7 +18,6 @@ navbar: false
 </template>
 
 <script>
-import mapboxgl from "comments-map";
 import "comments-map/dist/mapbox-gl.css";
 import style from "./mapStyle.js";
 import geojson from "docs/assets/json/hangzhou_motorway.json";
@@ -32,26 +31,30 @@ export default {
     timer: 0
   }),
   mounted() {
-    this.map = new mapboxgl.Map({
-      container: "map-container",
-      zoom: 15.7,
-      center: [120.233817, 30.305606],
-      pitch: 71,
-      bearing: 0,
-      style,
-      hash: false,
-      antialias: true,
-      fixedZoom: true,
-      vignetting: {
-        enable: false,
-      },
-    });
-    this.map.on("map.ready", () => {
-      this.addBuildings()
-      this.addRoads();
-      this.setDOF();
-      this.setRotate()
-      this.setBreath()
+    window.devicePixelRatio = 2
+    import('comments-map').then(module => {
+      const mapboxgl = module.default
+      this.map = new mapboxgl.Map({
+        container: "map-container",
+        zoom: 15.7,
+        center: [120.233817, 30.305606],
+        pitch: 71,
+        bearing: 0,
+        style,
+        hash: false,
+        antialias: true,
+        fixedZoom: true,
+        vignetting: {
+          enable: false,
+        },
+      });
+      this.map.on("map.ready", () => {
+        this.addBuildings()
+        this.addRoads();
+        this.setDOF();
+        this.setRotate()
+        this.setBreath()
+      })
     })
   },
   methods: {
