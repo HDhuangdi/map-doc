@@ -1,6 +1,7 @@
 const resolve = path => require('path').resolve(__dirname, path)
 
 module.exports = {
+  base: '/map-doc/',
   title: "地图",
   description: "新监管态势出品",
   configureWebpack: {
