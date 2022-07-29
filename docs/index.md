@@ -117,7 +117,7 @@ export default {
     },
     addBuildings() {
       this.map.addBuildings({
-        activeZoom: 12,
+        activeZoom: 9,
         removeZoom: 7,
         opacity: 1,
         sourceLayer: "building",
@@ -128,11 +128,11 @@ export default {
     setDOF() {
       this.map.setDOF({
         enable: true,
-        blurRadius: 6,
+        blurRadius: 8,
         near: 0.55,
         nearRange: 0.1,
         far: 0.65,
-        farRange: 0.1,
+        farRange: 0.15,
       });
     },
     setRotate() {
