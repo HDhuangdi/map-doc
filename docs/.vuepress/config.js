@@ -1,7 +1,9 @@
 const resolve = path => require('path').resolve(__dirname, path)
 
+const BASE_URL = '/map-doc/'
+
 module.exports = {
-  base: '/map-doc/',
+  base: BASE_URL,
   title: "地图",
   description: "新监管态势出品",
   configureWebpack: {
@@ -19,16 +21,16 @@ module.exports = {
       {
         text: "样例",
         items: [
-          { text: "中心高光", target:"_blank", link: "/examples/center-lighting" },
-          { text: "天空盒", target:"_blank",link: "/examples/skybox" },
-          { text: "空中飞线", target:"_blank",link: "/examples/flyline" },
-          { text: "打点", target:"_blank",link: "/examples/point" },
-          { text: "街景", target:"_blank",link: "/examples/3Dbuildings" },
-          { text: "景深", target:"_blank",link: "/examples/dof" },
-          { text: "雪天", target:"_blank",link: "/examples/flotsam" },
-          { text: "点亮建筑", target:"_blank",link: "/examples/lightup" },
-          { text: "聚焦", target:"_blank",link: "/examples/focus" },
-          { text: "防护罩", target:"_blank",link: "/examples/cover" },
+          { text: "中心高光", target:"_blank", link: BASE_URL + "examples/center-lighting" },
+          { text: "天空盒", target:"_blank",link: BASE_URL + "examples/skybox" },
+          { text: "空中飞线", target:"_blank",link: BASE_URL + "examples/flyline" },
+          { text: "打点", target:"_blank",link: BASE_URL + "examples/point" },
+          { text: "街景", target:"_blank",link: BASE_URL + "examples/3Dbuildings" },
+          { text: "景深", target:"_blank",link: BASE_URL + "examples/dof" },
+          { text: "雪天", target:"_blank",link: BASE_URL + "examples/flotsam" },
+          { text: "点亮建筑", target:"_blank",link: BASE_URL + "examples/lightup" },
+          { text: "聚焦", target:"_blank",link: BASE_URL + "examples/focus" },
+          { text: "防护罩", target:"_blank",link: BASE_URL + "examples/cover" },
         ],
       },
     ],
