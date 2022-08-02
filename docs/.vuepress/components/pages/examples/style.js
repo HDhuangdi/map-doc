@@ -13,16 +13,16 @@ export default {
             attribution: "&copy; DBappSecurity",
             maxZoom: 14,
             minZoom: 0,
-            tiles: ["http://10.20.178.179:6032/tiles/{z}/{x}/{y}.pbf"],
+            tiles: ["https://camap.91ctf.com/tiles/{z}/{x}/{y}.pbf"],
         },
     },
     sprite: "",
-    glyphs: "http://10.20.178.179:6032/fonts/{fontstack}/{range}.pbf",
+    glyphs: "https://camap.91ctf.com/fonts/{fontstack}/{range}.pbf",
     light: {
         anchor: "map",
-        color: "#fff",
-        intensity: 0.6,
-        position: [10, 90, 45]
+        color: "#EAEAEA",
+        intensity: 0.35,
+        position: [10, 0, 0]
     },
     layers: [
         {
