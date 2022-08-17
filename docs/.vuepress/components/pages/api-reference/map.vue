@@ -20,11 +20,7 @@ export default {
       style,
       hash: false,
       antialias: true,
-      vignetting: {
-        enable: true,
-        lightHeight: 160,
-        strength: 2
-      },
+      devicePixelRatio: 2,
     });
   },
   beforeDestroy() {

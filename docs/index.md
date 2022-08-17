@@ -44,9 +44,7 @@ export default {
         hash: false,
         antialias: true,
         fixedZoom: true,
-        vignetting: {
-          enable: false,
-        },
+        devicePixelRatio: 2
       });
       this.map.on("map.ready", () => {
         this.addBuildings()
@@ -63,7 +61,6 @@ export default {
         type: "geojson",
         data: geojson,
       });
-
       this.map.addLayer({
         id: "hangzhou_motorway_layer",
         type: "line",

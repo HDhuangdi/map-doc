@@ -27,6 +27,7 @@ export default {
         lightHeight: 170,
         strength: 2
       },
+      devicePixelRatio: 2,
     });
     this.map.on("map.ready", () => {
       this.addBuildings();

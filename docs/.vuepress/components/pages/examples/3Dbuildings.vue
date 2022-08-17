@@ -1,5 +1,5 @@
 <template>
-  <div id="map-container"></div>
+  <div id="map-container2"></div>
 </template>
 
 <script>
@@ -14,7 +14,7 @@ export default {
   }),
   mounted() {
     this.map = new mapboxgl.Map({
-      container: "map-container",
+      container: "map-container2",
       zoom: 15,
       center: [120.18773, 30.23019],
       pitch: 61,
@@ -22,6 +22,7 @@ export default {
       style,
       hash: false,
       antialias: true,
+      devicePixelRatio: 2
     });
     this.map.on("map.ready", () => {
       this.addBuildings();
@@ -29,13 +30,25 @@ export default {
   },
   methods: {
     async addBuildings() {
+      const textures = await resolveImages([
+        require("docs/assets/images/building9.png"),
+        require("docs/assets/images/building10.png"),
+        require("docs/assets/images/building12.png"),
+        require("docs/assets/images/building11.png"),
+        require("docs/assets/images/building13.png"),
+        require("docs/assets/images/building14.png"),
+      ]);
       this.map.addBuildings({
-        activeZoom: 12,
-        removeZoom: 7,
-        opacity: 0.6,
+        textures,
+        roofcolor: "auto",
         sourceLayer: "building",
         before: "poi-railway-zh",
         heightField: "render_height",
+        buildingColor: "#fff",
+        mixinStrength: 10,
+        light: {
+          color: "#3477D8",
+        },
       });
     },
   },
@@ -46,7 +59,7 @@ export default {
 </script>
 
 <style lang="less" scoped>
-#map-container {
+#map-container2 {
   height: 500px;
 }
 </style>

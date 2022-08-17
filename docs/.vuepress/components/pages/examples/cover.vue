@@ -22,6 +22,7 @@ export default {
       style,
       hash: false,
       antialias: true,
+      devicePixelRatio: 2,
       vignetting: {
         enable: true,
         lightHeight: 170,

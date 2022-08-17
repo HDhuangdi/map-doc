@@ -21,6 +21,7 @@ export default {
       style,
       hash: false,
       antialias: true,
+      devicePixelRatio: 2,
     });
     this.map.on("map.ready", () => {
       this.addSkyBox();

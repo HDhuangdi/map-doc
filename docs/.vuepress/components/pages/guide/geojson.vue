@@ -23,6 +23,7 @@ export default {
       hash: false,
       antialias: true,
       fixedZoom: true,
+      devicePixelRatio: 2,
     });
     this.map.on("map.ready", () => {
       this.addRoads();

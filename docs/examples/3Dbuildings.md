@@ -12,7 +12,7 @@
 并不是所有城市都有3D建筑资源，如需添加特定城市的资源，需联系地图引擎管理员。
 :::
 
-## 建筑白模
+
 <demo-block>
 ::: slot source
 <pages-examples-3Dbuildings></pages-examples-3Dbuildings>
@@ -20,33 +20,6 @@
 
 ::: slot sourceCode
 <<< @/docs/.vuepress/components/pages/examples/3Dbuildings.vue
-:::
-
-</demo-block>
- 
-## 贴图
-
-<demo-block>
-::: slot source
-<pages-examples-3Dbuildings2></pages-examples-3Dbuildings2>
-:::
-
-::: slot sourceCode
-<<< @/docs/.vuepress/components/pages/examples/3Dbuildings2.vue
-:::
-
-</demo-block>
-
-## 可更改屋顶颜色
-(渲染大量3D建筑时，可能会有所卡顿)
-
-<demo-block>
-::: slot source
-<pages-examples-3Dbuildings3></pages-examples-3Dbuildings3>
-:::
-
-::: slot sourceCode
-<<< @/docs/.vuepress/components/pages/examples/3Dbuildings3.vue
 :::
 
 </demo-block>
