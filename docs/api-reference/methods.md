@@ -22,6 +22,7 @@ sidebarDepth: 2
 | **heightField\<string>** default: 'height' | 源数据中用于生成建筑高度的字段。 |
 | **before\<string>** default: null | 将建筑图层添加到那个图层之前，默认添加在图层列表末尾。 |
 | **mixinStrength\<number>** default: 1 | 混合建筑贴图和建筑颜色的参数。 |
+| **light\<object>** default: {color: '#000'} | 建筑打光配置，注：颜色采用加法算法，故如不需打光，设置`color: '#000'`即可 |
 
 
 **示例：**
@@ -159,7 +160,7 @@ map.addCover({
 
 **参数列表：**
 
-*options\<object>*
+*options\<object>* 所有配置项都是可选的
 |  名称   | 描述  |
 |  ----  | ----  |
 | **coord\<Array\<number>>** default: [0, 0] | 建筑所处的经纬度 |
@@ -180,7 +181,7 @@ map.lightUpBuilding({
 
 **参数列表：**
 
-*options\<object>*
+*options\<object>* 除`texture`外，所有配置项都是可选的
 |  名称   | 描述  |
 |  ----  | ----  |
 | **coord\<Array\<number>>** default: [0, 0] | 漂浮物区域中心经纬度 |
@@ -209,7 +210,7 @@ map.setFlotsam({
 
 **参数列表：**
 
-*options\<object>*
+*options\<object>* 所有配置项都是可选的
 |  名称   | 描述  |
 |  ----  | ----  |
 | **center\<Array\<number>>** default: [0, 0] | 聚焦中心经纬度 |
@@ -241,7 +242,7 @@ map.setFlotsam({
 
 **参数列表：**
 
-*options\<object>*
+*options\<object>* 所有配置项都是可选的
 |  名称   | 描述  |
 |  ----  | ----  |
 | **src\<Array\<number>>** default: [0, 0] | 飞线起点经纬度 |
@@ -272,7 +273,7 @@ map.setFlotsam({
 
 **参数列表：**
 
-*options\<object>*
+*options\<object>* 所有配置项都是可选的
 |  名称   | 描述  |
 |  ----  | ----  |
 | **enable\<boolean>** default: false | 是否开启 |
@@ -299,6 +300,64 @@ map.setFlotsam({
     nearRange: 0.17,
     far: 0.59,
     farRange: 0.1,
+});
+```
+
+### `addStreamerLayer(geojson, options)`
+在地图中添加地面流光。
+
+**参数列表：**
+
+*geojson\<geojson>* 需要添加流光的地理线条，其类型必须为`MultiLineString`，格式如下：
+```json
+{
+  "type": "FeatureCollection",
+  "name": "xxxx",
+  "crs": {
+    "type": "name",
+    "properties": { },
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "properties": { },
+      "geometry": {
+          "type": "MultiLineString",
+          "coordinates": [
+            [
+              [119.857096, 30.259975],
+              [119.853097, 30.259962]
+            ],
+            [
+              [119.857365, 30.259774],
+              [119.857187, 30.259771]
+            ]
+          ]
+      }
+    }
+  ]
+}
+```
+
+*options\<object>* 所有配置项都是可选的
+|  名称   | 描述  |
+|  ----  | ----  |
+| **lineWidth\<number>** default: 1 | 流光线条宽度，如需线宽1以上，必须配置`fatLine: true` |
+| **length\<number>** default: 0.3 | 流光线段占总线长百分比 |
+| **minLength\<number>** default: 0 | 该线条长度以下的线条不展示流光效果，单位：米 |
+| **lineColor\<color>** default: "#fff" | 流光线条颜色 |
+| **blurRadius\<number>** default: 10 | 流光发光半径 |
+| **blurStrength\<number>** default: 3 | 流光发光强度 |
+| **fatLine\<boolean>** default: false | 是否启用线宽大于1的线条 |
+
+**示例：**
+```js
+map.addStreamerLayer(geojson, {
+  lineColor: '#FFF',
+  blurRadius: 10,
+  blurStrength: 2,
+  length: 0.5,
+  minLength: 500,
 });
 ```
 
@@ -1779,7 +1838,7 @@ const camera = map.getFreeCameraOptions();
 const position = [138.72649, 35.33974];
 const altitude = 3000;
 
-camera.position = mapboxgl.MercatorCoordinate.fromLngLat(position, altitude);
+camera.position = arkmap.MercatorCoordinate.fromLngLat(position, altitude);
 camera.lookAtPoint([138.73036, 35.36197]);
 
 map.setFreeCameraOptions(camera);
@@ -1805,7 +1864,7 @@ const camera = map.getFreeCameraOptions();
 const position = [138.72649, 35.33974];
 const altitude = 3000;
 
-camera.position = mapboxgl.MercatorCoordinate.fromLngLat(position, altitude);
+camera.position = arkmap.MercatorCoordinate.fromLngLat(position, altitude);
 camera.lookAtPoint([138.73036, 35.36197]);
 
 map.setFreeCameraOptions(camera);

@@ -3,8 +3,8 @@
 </template>
 
 <script>
-import mapboxgl from "comments-map";
-import "comments-map/dist/mapbox-gl.css";
+import arkmap from "ark-map";
+import "ark-map/dist/ark-map.css";
 import style from "./style.js";
 import { resolveImage } from "./utils";
 
@@ -13,7 +13,7 @@ export default {
     map: null,
   }),
   mounted() {
-    this.map = new mapboxgl.Map({
+    this.map = new arkmap.Map({
       container: "map-container2",
       zoom: 13.25,
       center: [120.19731, 30.24484],
@@ -62,9 +62,9 @@ export default {
       });
     },
     addCover() {
-      let sw = new mapboxgl.LngLat(120.20699429436985, 30.24897095608023);
-      let ne = new mapboxgl.LngLat(120.20987317259807, 30.25286609745055);
-      const bounds = new mapboxgl.LngLatBounds(sw, ne);
+      let sw = new arkmap.LngLat(120.20699429436985, 30.24897095608023);
+      let ne = new arkmap.LngLat(120.20987317259807, 30.25286609745055);
+      const bounds = new arkmap.LngLatBounds(sw, ne);
       this.map.addCover({
         bounds,
         coverOpacity: 0.8,

@@ -18,7 +18,7 @@ navbar: false
 </template>
 
 <script>
-import "comments-map/dist/mapbox-gl.css";
+import "ark-map/dist/ark-map.css";
 import style from "./mapStyle.js";
 import geojson from "docs/assets/json/hangzhou_motorway.json";
 
@@ -32,9 +32,9 @@ export default {
   }),
   mounted() {
     window.devicePixelRatio = 2
-    import('comments-map').then(module => {
-      const mapboxgl = module.default
-      this.map = new mapboxgl.Map({
+    import('ark-map').then(module => {
+      const arkmap = module.default
+      this.map = new arkmap.Map({
         container: "map-container",
         zoom: 15.7,
         center: [120.233817, 30.305606],

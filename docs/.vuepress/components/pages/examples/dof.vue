@@ -6,8 +6,8 @@
 </template>
 
 <script>
-import mapboxgl from "comments-map";
-import "comments-map/dist/mapbox-gl.css";
+import arkmap from "ark-map";
+import "ark-map/dist/ark-map.css";
 import style from "./style.js";
 
 export default {
@@ -15,7 +15,7 @@ export default {
     map: null,
   }),
   mounted() {
-    this.map = new mapboxgl.Map({
+    this.map = new arkmap.Map({
       container: "map-container",
       zoom: 15.9,
       center: [120.168788, 30.230241],

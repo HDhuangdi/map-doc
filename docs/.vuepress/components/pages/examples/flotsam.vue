@@ -3,8 +3,8 @@
 </template>
 
 <script>
-import mapboxgl from "comments-map";
-import "comments-map/dist/mapbox-gl.css";
+import arkmap from "ark-map";
+import "ark-map/dist/ark-map.css";
 import style from "./style.js";
 import { resolveImages, resolveImage } from "./utils";
 
@@ -13,7 +13,7 @@ export default {
     map: null,
   }),
   mounted() {
-    this.map = new mapboxgl.Map({
+    this.map = new arkmap.Map({
       container: "map-container4",
       zoom: 15,
       center: [120.20911, 30.24809],
@@ -60,7 +60,7 @@ export default {
       this.map.setFlotsam({
         coord: [120.20853164716578, 30.25113591444385],
         texture: image,
-        height: 800,
+        altitude: 800,
         raduis: 0.0002,
         deathAge: 10,
         perSecond: 400,

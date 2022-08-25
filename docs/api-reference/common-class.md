@@ -57,7 +57,7 @@ const camera = map.getFreeCameraOptions();
 const position = [138.72649, 35.33974];
 const altitude = 3000;
 
-camera.position = mapboxgl.MercatorCoordinate.fromLngLat(position, altitude);
+camera.position = arkmap.MercatorCoordinate.fromLngLat(position, altitude);
 camera.lookAtPoint([138.73036, 35.36197]);
 
 map.setFreeCameraOptions(camera);
@@ -94,7 +94,7 @@ new LngLat(lng: number, lat: number)
 *lat\<number>*: 纬度。
 
 ```js
-const ll = new mapboxgl.LngLat(-123.9749, 40.7736);
+const ll = new arkmap.LngLat(-123.9749, 40.7736);
 console.log(ll.lng); // = -123.9749
 ```
 
@@ -113,7 +113,7 @@ input\<LngLatLike> 要转换的两个数字或对象的数组，或要返回的`
 **实例：**
 ```js
 const arr = [-73.9749, 40.7736];
-const ll = mapboxgl.LngLat.convert(arr);
+const ll = arkmap.LngLat.convert(arr);
 console.log(ll);   // = LngLat {lng: -73.9749, lat: 40.7736}
 ```
 
@@ -127,7 +127,7 @@ console.log(ll);   // = LngLat {lng: -73.9749, lat: 40.7736}
 
 **实例：**
 ```js
-const ll = new mapboxgl.LngLat(286.0251, 40.7736);
+const ll = new arkmap.LngLat(286.0251, 40.7736);
 const wrapped = ll.wrap();
 console.log(wrapped.lng); // = -73.9749
 ```
@@ -141,7 +141,7 @@ console.log(wrapped.lng); // = -73.9749
 
 **实例：**
 ```js
-const ll = new mapboxgl.LngLat(-73.9749, 40.7736);
+const ll = new arkmap.LngLat(-73.9749, 40.7736);
 ll.toArray(); // = [-73.9749, 40.7736]
 ```
 
@@ -154,7 +154,7 @@ ll.toArray(); // = [-73.9749, 40.7736]
 
 **实例：**
 ```js
-const ll = new mapboxgl.LngLat(-73.9749, 40.7736);
+const ll = new arkmap.LngLat(-73.9749, 40.7736);
 ll.toString(); // = "LngLat(-73.9749, 40.7736)"
 ```
 
@@ -171,8 +171,8 @@ lngLat\<LngLat> 要计算到的距离的坐标。
 
 **实例：**
 ```js
-const newYork = new mapboxgl.LngLat(-74.0060, 40.7128);
-const losAngeles = new mapboxgl.LngLat(-118.2437, 34.0522);
+const newYork = new arkmap.LngLat(-74.0060, 40.7128);
+const losAngeles = new arkmap.LngLat(-118.2437, 34.0522);
 newYork.distanceTo(losAngeles); // 3935751.690893987
 ```
 
@@ -189,7 +189,7 @@ radius\<number> (default 0) 半径。
 
 **示例：**
 ```js
-const ll = new mapboxgl.LngLat(-73.9749, 40.7736);
+const ll = new arkmap.LngLat(-73.9749, 40.7736);
 ll.toBounds(100).toArray(); // = [[-73.97501862141328, 40.77351016847229], [-73.97478137858673, 40.77368983152771]]
 ```
 
@@ -205,9 +205,9 @@ new LngLatBounds(sw: LngLatLike?, ne: LngLatLike?)
 *ne\<LngLatLike?>*: 边界框的东北角。
 
 ```js
-const sw = new mapboxgl.LngLat(-73.9876, 40.7661);
-const ne = new mapboxgl.LngLat(-73.9397, 40.8002);
-const llb = new mapboxgl.LngLatBounds(sw, ne);
+const sw = new arkmap.LngLat(-73.9876, 40.7661);
+const ne = new arkmap.LngLat(-73.9397, 40.8002);
+const llb = new arkmap.LngLatBounds(sw, ne);
 ```
 
 ### 静态方法
@@ -225,7 +225,7 @@ input\<LngLatLike> 要转换的两个坐标的数组，或要返回的`LngLatBou
 **实例：**
 ```js
 const arr = [[-73.9876, 40.7661], [-73.9397, 40.8002]];
-const llb = mapboxgl.LngLatBounds.convert(arr);
+const llb = arkmap.LngLatBounds.convert(arr);
 console.log(llb);   // = LngLatBounds {_sw: LngLat {lng: -73.9876, lat: 40.7661}, _ne: LngLat {lng: -73.9397, lat: 40.8002}}
 ```
 
@@ -243,9 +243,9 @@ ne\<LngLatLike> 描述边界框东北角的类LngLatLike对象。
 
 **实例：**
 ```js
-const sw = new mapboxgl.LngLat(-73.9876, 40.7661);
-const ne = new mapboxgl.LngLat(-73.9397, 40.8002);
-const llb = new mapboxgl.LngLatBounds(sw, ne);
+const sw = new arkmap.LngLat(-73.9876, 40.7661);
+const ne = new arkmap.LngLat(-73.9397, 40.8002);
+const llb = new arkmap.LngLatBounds(sw, ne);
 llb.setNorthEast([-73.9397, 42.8002]);
 ```
 
@@ -262,9 +262,9 @@ sw\<LngLatLike> 描述边界框西南角的类LngLatLike对象。
 
 **实例：**
 ```js
-const sw = new mapboxgl.LngLat(-73.9876, 40.7661);
-const ne = new mapboxgl.LngLat(-73.9397, 40.8002);
-const llb = new mapboxgl.LngLatBounds(sw, ne);
+const sw = new arkmap.LngLat(-73.9876, 40.7661);
+const ne = new arkmap.LngLat(-73.9397, 40.8002);
+const llb = new arkmap.LngLatBounds(sw, ne);
 llb.setSouthWest([-73.9876, 40.2661]);
 ```
 
@@ -281,9 +281,9 @@ obj\<LngLatLike | LngLatBoundsLike> 要扩展到的对象。
 
 **实例：**
 ```js
-const sw = new mapboxgl.LngLat(-73.9876, 40.7661);
-const ne = new mapboxgl.LngLat(-73.9397, 40.8002);
-const llb = new mapboxgl.LngLatBounds(sw, ne);
+const sw = new arkmap.LngLat(-73.9876, 40.7661);
+const ne = new arkmap.LngLat(-73.9397, 40.8002);
+const llb = new arkmap.LngLatBounds(sw, ne);
 llb.extend([-72.9876, 42.2661]);
 ```
 #### `getCenter()`
@@ -295,7 +295,7 @@ llb.extend([-72.9876, 42.2661]);
 
 **实例：**
 ```js
-const llb = new mapboxgl.LngLatBounds([-73.9876, 40.7661], [-73.9397, 40.8002]);
+const llb = new arkmap.LngLatBounds([-73.9876, 40.7661], [-73.9397, 40.8002]);
 llb.getCenter(); // = LngLat {lng: -73.96365, lat: 40.78315}
 ```
 
@@ -308,7 +308,7 @@ llb.getCenter(); // = LngLat {lng: -73.96365, lat: 40.78315}
 
 **实例：**
 ```js
-const llb = new mapboxgl.LngLatBounds([-73.9876, 40.7661], [-73.9397, 40.8002]);
+const llb = new arkmap.LngLatBounds([-73.9876, 40.7661], [-73.9397, 40.8002]);
 llb.getSouthWest(); // LngLat {lng: -73.9876, lat: 40.7661}
 ```
 
@@ -321,7 +321,7 @@ llb.getSouthWest(); // LngLat {lng: -73.9876, lat: 40.7661}
 
 **实例：**
 ```js
-const llb = new mapboxgl.LngLatBounds([-73.9876, 40.7661], [-73.9397, 40.8002]);
+const llb = new arkmap.LngLatBounds([-73.9876, 40.7661], [-73.9397, 40.8002]);
 llb.getSouthEast(); // LngLat {lng: -73.9397, lat: 40.7661}
 ```
 
@@ -334,7 +334,7 @@ llb.getSouthEast(); // LngLat {lng: -73.9397, lat: 40.7661}
 
 **实例：**
 ```js
-const llb = new mapboxgl.LngLatBounds([-73.9876, 40.7661], [-73.9397, 40.8002]);
+const llb = new arkmap.LngLatBounds([-73.9876, 40.7661], [-73.9397, 40.8002]);
 llb.getNorthEast(); // LngLat {lng: -73.9397, lat: 40.8002}
 ```
 
@@ -347,7 +347,7 @@ llb.getNorthEast(); // LngLat {lng: -73.9397, lat: 40.8002}
 
 **实例：**
 ```js
-const llb = new mapboxgl.LngLatBounds([-73.9876, 40.7661], [-73.9397, 40.8002]);
+const llb = new arkmap.LngLatBounds([-73.9876, 40.7661], [-73.9397, 40.8002]);
 llb.getNorthWest(); // LngLat {lng: -73.9876, lat: 40.8002}
 ```
 
@@ -360,7 +360,7 @@ number 西边缘。
 
 **实例：**
 ```js
-const llb = new mapboxgl.LngLatBounds([-73.9876, 40.7661], [-73.9397, 40.8002]);
+const llb = new arkmap.LngLatBounds([-73.9876, 40.7661], [-73.9397, 40.8002]);
 llb.getWest(); // -73.9876
 ```
 
@@ -373,7 +373,7 @@ number 南边缘。
 
 **实例：**
 ```js
-const llb = new mapboxgl.LngLatBounds([-73.9876, 40.7661], [-73.9397, 40.8002]);
+const llb = new arkmap.LngLatBounds([-73.9876, 40.7661], [-73.9397, 40.8002]);
 llb.getSouth(); // 40.7661
 ```
 
@@ -386,7 +386,7 @@ number 东边缘。
 
 **实例：**
 ```js
-const llb = new mapboxgl.LngLatBounds([-73.9876, 40.7661], [-73.9397, 40.8002]);
+const llb = new arkmap.LngLatBounds([-73.9876, 40.7661], [-73.9397, 40.8002]);
 llb.getEast(); // -73.9397
 ```
 
@@ -399,7 +399,7 @@ number 北边缘。
 
 **实例：**
 ```js
-const llb = new mapboxgl.LngLatBounds([-73.9876, 40.7661], [-73.9397, 40.8002]);
+const llb = new arkmap.LngLatBounds([-73.9876, 40.7661], [-73.9397, 40.8002]);
 llb.getNorth(); // 40.8002
 ```
 
@@ -412,7 +412,7 @@ llb.getNorth(); // 40.8002
 
 **实例：**
 ```js
-const llb = new mapboxgl.LngLatBounds([-73.9876, 40.7661], [-73.9397, 40.8002]);
+const llb = new arkmap.LngLatBounds([-73.9876, 40.7661], [-73.9397, 40.8002]);
 llb.toArray(); // = [[-73.9876, 40.7661], [-73.9397, 40.8002]]
 ```
 
@@ -425,7 +425,7 @@ llb.toArray(); // = [[-73.9876, 40.7661], [-73.9397, 40.8002]]
 
 **实例：**
 ```js
-const llb = new mapboxgl.LngLatBounds([-73.9876, 40.7661], [-73.9397, 40.8002]);
+const llb = new arkmap.LngLatBounds([-73.9876, 40.7661], [-73.9397, 40.8002]);
 llb.toString(); // = "LngLatBounds(LngLat(-73.9876, 40.7661), LngLat(-73.9397, 40.8002))"
 ```
 
@@ -438,7 +438,7 @@ llb.toString(); // = "LngLatBounds(LngLat(-73.9876, 40.7661), LngLat(-73.9397, 4
 
 **实例：**
 ```js
-const llb = new mapboxgl.LngLatBounds();
+const llb = new arkmap.LngLatBounds();
 llb.isEmpty(); // true
 llb.setNorthEast([-73.9876, 40.7661]);
 llb.setSouthWest([-73.9397, 40.8002]);
@@ -458,11 +458,11 @@ lnglat\<LngLatLike> 需要检查的坐标。
 
 **实例：**
 ```js
-const llb = new mapboxgl.LngLatBounds(
-  new mapboxgl.LngLat(-73.9876, 40.7661),
-  new mapboxgl.LngLat(-73.9397, 40.8002)
+const llb = new arkmap.LngLatBounds(
+  new arkmap.LngLat(-73.9876, 40.7661),
+  new arkmap.LngLat(-73.9397, 40.8002)
 );
-const ll = new mapboxgl.LngLat(-73.9567, 40.7789);
+const ll = new arkmap.LngLat(-73.9567, 40.7789);
 console.log(llb.contains(ll)); // = true
 ```
 
@@ -471,11 +471,11 @@ console.log(llb.contains(ll)); // = true
 
 以下示例都属于`LngLatBoundsLike`:
 ```js
-const v1 = new mapboxgl.LngLatBounds(
-  new mapboxgl.LngLat(-73.9876, 40.7661),
-  new mapboxgl.LngLat(-73.9397, 40.8002)
+const v1 = new arkmap.LngLatBounds(
+  new arkmap.LngLat(-73.9876, 40.7661),
+  new arkmap.LngLat(-73.9397, 40.8002)
 );
-const v2 = new mapboxgl.LngLatBounds([-73.9876, 40.7661], [-73.9397, 40.8002]);
+const v2 = new arkmap.LngLatBounds([-73.9876, 40.7661], [-73.9397, 40.8002]);
 const v3 = [[-73.9876, 40.7661], [-73.9397, 40.8002]];
 ```
 
@@ -484,7 +484,7 @@ const v3 = [[-73.9876, 40.7661], [-73.9397, 40.8002]];
 
 以下示例都属于`LngLatLike`:
 ```js
-const v1 = new mapboxgl.LngLat(-122.420679, 37.772537);
+const v1 = new arkmap.LngLat(-122.420679, 37.772537);
 const v2 = [-122.420679, 37.772537];
 const v3 = {lng: -122.420679, lat: 37.772537};
 ```
@@ -504,7 +504,7 @@ new MercatorCoordinate(x: number, y: number, z: number)
 *z\<number>*: (default 0) z分量。
 
 ```js
-const nullIsland = new mapboxgl.MercatorCoordinate(0.5, 0.5, 0);
+const nullIsland = new arkmap.MercatorCoordinate(0.5, 0.5, 0);
 ```
 ### 静态方法
 #### `fromLngLat(lngLatLike, altitude)`
@@ -522,7 +522,7 @@ MercatorCoordinate 墨卡托坐标。
 
 **实例：**
 ```js
-const coord = mapboxgl.MercatorCoordinate.fromLngLat({lng: 0, lat: 0}, 0);
+const coord = arkmap.MercatorCoordinate.fromLngLat({lng: 0, lat: 0}, 0);
 console.log(coord); // MercatorCoordinate(0.5, 0.5, 0)
 ```
 ### 实例方法
@@ -535,7 +535,7 @@ LngLat 坐标。
 
 **实例：**
 ```js
-const coord = new mapboxgl.MercatorCoordinate(0.5, 0.5, 0);
+const coord = new arkmap.MercatorCoordinate(0.5, 0.5, 0);
 const lngLat = coord.toLngLat(); // LngLat(0, 0)
 ```
 
@@ -548,7 +548,7 @@ const lngLat = coord.toLngLat(); // LngLat(0, 0)
 
 **实例：**
 ```js
-const coord = new mapboxgl.MercatorCoordinate(0, 0, 0.02);
+const coord = new arkmap.MercatorCoordinate(0, 0, 0.02);
 coord.toAltitude(); // 6914.281956295339
 ```
 
@@ -562,16 +562,16 @@ coord.toAltitude(); // 6914.281956295339
 **实例：**
 ```js
 // 计算一个墨卡托坐标往西150米后的新的墨卡托坐标
-const coord = new mapboxgl.MercatorCoordinate(0.5, 0.25, 0);
+const coord = new arkmap.MercatorCoordinate(0.5, 0.25, 0);
 const offsetInMeters = 150;
 const offsetInMercatorCoordinateUnits = offsetInMeters * coord.meterInMercatorCoordinateUnits();
-const westCoord = new mapboxgl.MercatorCoordinate(coord.x - offsetInMercatorCoordinateUnits, coord.y, coord.z);
+const westCoord = new arkmap.MercatorCoordinate(coord.x - offsetInMercatorCoordinateUnits, coord.y, coord.z);
 ```
 
 ## Point
 点几何体对象，其x和y属性以像素表示屏幕坐标。
 ```js
-const point = new mapboxgl.Point(-77, 38);
+const point = new arkmap.Point(-77, 38);
 ```
 
 ## PointLike
@@ -579,6 +579,6 @@ const point = new mapboxgl.Point(-77, 38);
 
 以下示例都属于`PointLike`:
 ```js
-const p1 = new mapboxgl.Point(-77, 38);
+const p1 = new arkmap.Point(-77, 38);
 const p2 = [-77, 38];
 ```

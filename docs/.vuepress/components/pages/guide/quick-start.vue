@@ -3,8 +3,8 @@
 </template>
 
 <script>
-import mapboxgl from "comments-map";
-import "comments-map/dist/mapbox-gl.css";
+import arkmap from "ark-map";
+import "ark-map/dist/ark-map.css";
 import style from "./quick-start-style.js";
 
 export default {
@@ -12,7 +12,7 @@ export default {
     map: null,
   }),
   mounted() {
-    this.map = new mapboxgl.Map({
+    this.map = new arkmap.Map({
       container: "map-container",
       zoom: 12,
       center: [120.18773, 30.23019],
