@@ -7,7 +7,7 @@ navbar: false
     <div id="map-container"></div>
     <div class="mask"></div>
     <div class="center">
-      <h1>地图</h1>
+      <h1>ARK MAP</h1>
       <p>新监管态势感知出品</p>
       <div class="buttons">
         <button @click="$router.push('/api-reference/map')">配置指南</button>
