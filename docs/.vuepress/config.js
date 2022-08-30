@@ -4,7 +4,7 @@ const BASE_URL = '/map-doc/'
 
 module.exports = {
   base: BASE_URL,
-  title: "ARK MAP 方舟地图",
+  title: "ARK MAP",
   description: "新监管态势出品",
   configureWebpack: {
     resolve: {
