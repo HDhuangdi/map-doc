@@ -32,6 +32,7 @@ module.exports = {
           { text: "聚焦", target:"_blank",link: BASE_URL + "examples/focus" },
           { text: "防护罩", target:"_blank",link: BASE_URL + "examples/cover" },
           { text: "热力图", target:"_blank",link: BASE_URL + "examples/heatmap" },
+          { text: "路网导航", target:"_blank",link: BASE_URL + "examples/navigation" },
         ],
       },
     ],
@@ -63,6 +64,11 @@ module.exports = {
           title: "实例方法",
           collapsable: true,
           path: "methods",
+        },
+        {
+          title: "公用方法",
+          collapsable: true,
+          path: "common-methods",
         },
         {
           title: "公用类",

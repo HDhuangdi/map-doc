@@ -1,4 +1,52 @@
+---
+sidebarDepth: 2
+---
+
 # 公用类
+
+## Navigation
+导航类，用于根据geojson路网计算导航路径
+### 参数
+*routeNetwork\<geojson>*: 一个type为`LineString`的geojson路网。
+
+### 静态方法
+#### `genDirvingInfo(path)`
+根据传入的导航路线数组，输出每个点和下一个点之间需要变换的角度、两点之间的距离的信息集合。
+
+**参数列表：**
+
+*path\<Array\<Array\<number>>>* 一个导航路线数组
+
+**返回值：**
+
+dirvingInfo 一个集合, 存储着每个点和下一个点之间需要变换的角度、两点之间的距离的信息。
+
+**示例：**
+```js
+const navigation = new arkmap.Navigation(network)
+const way = navigation.findWay(start, end);
+const info = Navigation.genDirvingInfo(way);
+```
+
+### 实例方法
+#### `findWay(point1, point2)`
+根据俩个经纬度点，在路网中寻找连接路线。
+
+**参数列表：**
+
+*point1\<Array\<number>>* 一个经纬度数组
+
+*point2\<Array\<number>>* 一个经纬度数组
+
+**返回值：**
+
+ways 一个由众多点组成的导航路线。
+
+**示例：**
+```js
+const navigation = new arkmap.Navigation(network)
+const way = navigation.findWay(start, end);
+```
 
 ## AnimationOptions
 常用于地图涉及动画的移动方法的选项，如 `map.panBy` 和 `map.easeTo`，用于控制动画的持续时间等功能。所有属性都是可选的
@@ -559,7 +607,7 @@ coord.toAltitude(); // 6914.281956295339
 
 以墨卡托坐标单位表示的1米距离
 
-**实例：**
+**示例：**
 ```js
 // 计算一个墨卡托坐标往西150米后的新的墨卡托坐标
 const coord = new arkmap.MercatorCoordinate(0.5, 0.25, 0);

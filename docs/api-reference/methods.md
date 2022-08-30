@@ -3,7 +3,7 @@ sidebarDepth: 2
 ---
 
 # 实例方法
-## 常用
+## 高级
 ### `addBuildings(options)`
 在地图中添加3D建筑。
 
@@ -35,6 +35,14 @@ map.addBuildings({
 });
 ```
 
+### `removeBuilding()`
+在地图中移除3D建筑。
+
+**示例：**
+```js
+map.removeBuilding();
+```
+
 ### `addCover(options)`
 在地图中添加防护罩。
 
@@ -51,12 +59,29 @@ map.addBuildings({
 | **scanWidthFactor\<number>** default: 0.06 | 冲击波宽度系数 |
 | **speed\<number>** default: 0.01 | 冲击波速度系数 |
 
+**返回值：**
+
+防护罩唯一id。
+
 
 **示例：**
 ```js
 map.addCover({
   bounds
 });
+```
+
+### `removeCover(id)`
+在地图中移除防护罩。
+
+**参数列表：**
+
+*id\<string>* 要移除的防护罩的id
+
+
+**示例：**
+```js
+map.addCover(id);
 ```
 
 ### `addSkyBox(options)`
@@ -125,9 +150,15 @@ map.addCover({
   onclick: () => {},
 }
 ```
+
+**返回值：**
+
+打点唯一id。
+
+
 **示例：**
 ```js
-map.addCover({
+map.addMarker({
     id: "markerTest",
     header: {
         fragment: `
@@ -153,6 +184,64 @@ map.addCover({
         console.log(e);
     },
 });
+```
+
+### `removeMarker(id)`
+在地图上移除打点。
+
+**参数列表：**
+
+*id\<string>* 打点id。
+
+**示例：**
+```js
+map.removeMarker(id);
+```
+
+### `addPopup(options)`
+地图添加popup浮窗。
+
+**参数列表：**
+
+*options\<object>* 所有参数都是可选的。
+|  名称   | 描述  |
+|  ----  | ----  |
+| **content\<string>** | 浮窗内容 |
+| **style\<object>** | 样式配置，css样式|
+| **scale\<Stops>** | 缩放配置 |
+| **coord\<Array\<number>>** | 浮窗经纬度 |
+| **altitude\<number>** | 浮窗整体高度 |
+| **onclick\<Function>** | 点击事件 |
+
+**返回值：**
+
+浮窗唯一id。
+
+**示例：**
+```js
+map.addPopup({
+  coord: [lnglat.lng, lnglat.lat],
+  altitude: 600,
+  content: 'asdasdasds',
+  style: {
+    width: '100px',
+    height: '100px',
+    background: '#fff'
+  },
+  onclick:() => { console.log(1111); },
+})
+```
+
+### `removePopup(id)`
+地图移除popup浮窗。
+
+**参数列表：**
+
+*id\<string>* 浮窗唯一id。
+
+**示例：**
+```js
+map.removePopup(id)
 ```
 
 ### `lightUpBuilding(options)`
@@ -254,6 +343,10 @@ map.setFlotsam({
 | **points\<number>** default: 1000 | 飞线细分数 |
 | **altitude\<number>** default: 400000 | 飞线高度，单位 米 |
 
+**返回值：**
+
+飞线的唯一id。
+
 **示例：**
 ```js
  map.addFlyLine({
@@ -266,6 +359,18 @@ map.setFlotsam({
     altitude: 6000000,
     points: 10000,
 });
+```
+
+### `removeFlyLine(id)`
+在地图中移除飞线
+
+**参数列表：**
+
+*id\<string>* 飞线的唯一id
+
+**示例：**
+```js
+ map.removeFlyLine(id);
 ```
 
 ### `setDOF(options)`
@@ -303,7 +408,7 @@ map.setFlotsam({
 });
 ```
 
-### `addStreamerLayer(geojson, options)`
+### `addStreamer(geojson, options)`
 在地图中添加地面流光。
 
 **参数列表：**
@@ -350,6 +455,10 @@ map.setFlotsam({
 | **blurStrength\<number>** default: 3 | 流光发光强度 |
 | **fatLine\<boolean>** default: false | 是否启用线宽大于1的线条 |
 
+**返回值：**
+
+流光特效唯一id。
+
 **示例：**
 ```js
 map.addStreamerLayer(geojson, {
@@ -359,6 +468,74 @@ map.addStreamerLayer(geojson, {
   length: 0.5,
   minLength: 500,
 });
+```
+
+### `removeStreamer(id)`
+在地图中移除地面流光。
+
+**参数列表：**
+
+*id\<string>* 流光特效唯一id。
+
+**示例：**
+```js
+map.removeStreamer(id);
+```
+
+### `add3DModel(obj, options)`
+在地图中添加3D模型。
+
+**参数列表：**
+
+*obj\<obj>* 通过`loadObj`公共方法导入模型后，返回的obj对象
+
+*options\<object>* 所有配置项都是可选的
+|  名称   | 描述  |
+|  ----  | ----  |
+| **texture\<HTMLImageElement>** default: null | 模型的贴图 |
+| **color\<string>** default: "#fff" | 模型的颜色，当配置`texture`属性后，该属性无效 |
+| **rotation\<Array\<{axis: string, angle: number}>>** default: [] | 模型旋转信息数组, `axis`为需要绕哪个坐标轴旋转，可选值:`"x"`, `"y"`, `"z"`；`angle`为需要旋转的角度 |
+| **scale\<number>** default: 1 | 模型缩放数值 |
+| **coord\<Array\<number>>** default: [0, 0] | 模型所在经纬度 |
+| **altitude\<number>** default: 0 | 模型所在海拔高度 |
+| **animate\<Function>** default: (delta, obj) => {} | 每帧渲染时会执行的函数，传递参数：帧间隔时间，单位ms；3D模型对象 |
+
+**返回值：**
+
+模型唯一id。
+
+**示例：**
+```js
+const car = await arkmap.loadObj("car.obj");
+const pm = map.add3DModel(
+  {
+    color: "#fff",
+    rotation: [
+      {
+        axis: "x",
+        angle: Math.PI / 2,
+      },
+      {
+        axis: "y",
+        angle: Math.PI / 2,
+      },
+    ],
+    scale: 0.000001,
+  }
+);
+```
+
+### `remove3DModel(id)`
+在地图中移除3D模型。
+
+**参数列表：**
+
+*id\<string>* 要移除的模型的id
+
+
+**示例：**
+```js
+map.remove3DModel(id);
 ```
 
 ## 容器
@@ -1081,7 +1258,7 @@ const allImages = map.listImages();
 
 ## 图层
 ### `addLayer(layer, beforeId?)`
-将Mapbox样式图层添加到地图的样式中。
+将样式图层添加到地图的样式中。
 
 **参数列表：**
 
