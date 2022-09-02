@@ -19,6 +19,6 @@
   "dependencies": {
     "@turf/distance": "^6.5.0",
     "@turf/helpers": "^6.5.0",
-    "ark-map": "0.0.1-beta.7"
+    "ark-map": "0.0.1-beta.9"
   }
 }

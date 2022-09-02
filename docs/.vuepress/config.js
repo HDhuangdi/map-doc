@@ -18,6 +18,10 @@ module.exports = {
       { text: "教程", link: "/guide/" },
       { text: "API参考", link: "/api-reference/map" },
       { text: "样式规范", link: "/style-specification/" },
+      { text: "大屏", items: [
+          { text: "重大安保", target:"_blank", link: BASE_URL + "screen/zb" },
+        ]
+      },
       {
         text: "样例",
         items: [
