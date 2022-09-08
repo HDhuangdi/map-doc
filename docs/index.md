@@ -31,7 +31,6 @@ export default {
     timer: 0
   }),
   mounted() {
-    window.devicePixelRatio = 2
     import('ark-map').then(module => {
       const arkmap = module.default
       this.map = new arkmap.Map({
@@ -79,7 +78,7 @@ export default {
             "delay": 0
           }
         },
-      }, '3d-buildings');
+      }, 'bb');
       this.map.addLayer({
         id: "hangzhou_motorway_layer2",
         type: "line",
@@ -95,7 +94,7 @@ export default {
           "line-blur": 5,
  
         },
-      }, '3d-buildings');
+      }, 'bb');
       this.map.addLayer({
         id: "hangzhou_motorway_layer3",
         type: "line",
@@ -110,15 +109,17 @@ export default {
           "line-opacity": 1,
           "line-blur": 1,
         },
-      }, '3d-buildings');
+      }, 'bb');
     },
     addBuildings() {
       this.map.addBuildings({
+        layerId: 'bb',
         activeZoom: 9,
         removeZoom: 7,
         opacity: 1,
         sourceLayer: "building",
         heightField: "render_height",
+        before: "highway_name_other",
         buildingColor: "#fff",
       });
     },

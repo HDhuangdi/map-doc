@@ -1,6 +1,6 @@
 <template>
   <div class="main">
-    <div class="header">重大活动安保指挥</div>
+    <div class="header">重大活动安保</div>
     <div id="map"></div>
     <Bottom></Bottom>
     <Left></Left>
@@ -15,7 +15,9 @@ import style from "../style.js";
 import Bottom from "./bottom.vue";
 import Left from "./left.vue";
 import Right from "./right.vue";
-import { adapteSize, resolveImages } from "../utils";
+import roads from "./roads";
+import units from "./units";
+import { adapteSize, resolveImages, resolveImage } from "../utils";
 
 export default {
   components: { Bottom, Left, Right },
@@ -42,7 +44,12 @@ export default {
     });
     this.map.on("map.ready", () => {
       this.addBuildings();
+      this.addStreamers();
+      this.addMarkers();
     });
+    this.map.on("click", (e) => {
+      console.log(e);
+    })
   },
   methods: {
     async addBuildings() {
@@ -70,6 +77,58 @@ export default {
           color: "#0885F4",
           strength: 1.3,
         },
+      });
+    },
+    addStreamers() {
+      this.map.addStreamer(roads, {
+        lineColor: "#FFF",
+        blurRadius: 10,
+        blurStrength: 2,
+        length: 0.5,
+        minLength: 1500,
+      });
+    },
+    async addMarkers() {
+      const bases = await resolveImages([
+      require("./images/base.png"),
+      require("./images/base_danger.png"),
+      ]
+        
+        // require("./images/marker_icon.png"),
+        // require("./images/marker_icon_danger.png"),
+      );
+      units.forEach((unit) => {
+        this.map.addMarker({
+          id: "markerTest",
+          header: {
+            fragment: `
+              <p>${unit.name}</p>
+              <img src=${
+                unit.type === "danger"
+                  ? require("./images/marker_icon_danger.png")
+                  : require("./images/marker_icon.png")
+              } />
+            `,
+            style: {
+              color: "#fff",
+              display: "flex",
+              "flex-direction": "column",
+              "align-items": "center",
+            },
+          },
+          body: {
+            width: 2,
+            color: unit.type === "danger" ? 'red' : "#FFB557",
+          },
+          base: {
+            image: unit.type === "danger" ? bases[1] : bases[0],
+          },
+          coord: unit.lnglat,
+          altitude: 400,
+          onclick: (e) => {
+            console.log(e);
+          },
+        });
       });
     },
   },
