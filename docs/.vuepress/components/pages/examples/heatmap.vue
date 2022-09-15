@@ -21,8 +21,9 @@ export default {
       bearing: -8.8,
       style,
       hash: false,
-      antialias: true,
-      devicePixelRatio: 2,
+      antialias: false,
+      devicePixelRatio: 1,
+      qualityPreset: "low"
     });
     this.map.on("map.ready", () => {
       this.map.addSource("heatmap-data", { type: "geojson", data: json });

@@ -22,14 +22,15 @@ export default {
   mounted() {
     this.map = new arkmap.Map({
       container: "map-container2",
-      zoom: 2.31,
-      center: [110.61, 37.23],
-      pitch: 16,
-      bearing: -8.8,
+      zoom: 7.96,
+      center: [119.617, 29.939],
+      pitch: 0,
+      bearing: -14.4,
       style,
-      hash: true,
-      antialias: true,
-      devicePixelRatio: 2,
+      hash: false,
+      antialias: false,
+      devicePixelRatio: 1,
+      qualityPreset: "low"
     });
     this.map.on("map.ready", () => {
       this.dataProcess();
