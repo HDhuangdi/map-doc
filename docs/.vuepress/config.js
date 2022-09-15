@@ -1,6 +1,6 @@
 const resolve = path => require('path').resolve(__dirname, path)
 
-const BASE_URL = '/map-doc/'
+const BASE_URL = './'
 
 module.exports = {
   base: BASE_URL,
