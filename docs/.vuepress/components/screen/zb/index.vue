@@ -135,19 +135,6 @@ export default {
 };
 </script>
 
-<style lang="less">
-// html,body,
-#app,
-.theme-container,
-.page,
-.theme-default-content {
-  margin: 0 !important;
-  padding: 0 !important;
-  height: 100% !important;
-  width: 100% !important;
-  max-width: none !important;
-}
-</style>
 <style lang="less" scoped>
 @font-face {
   font-family: "kuhei";
@@ -159,7 +146,12 @@ export default {
 }
 .main {
   margin-top: 0 !important;
-  position: relative;
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  margin: 0 !important;
   height: 100%;
   width: 100%;
   .header {
