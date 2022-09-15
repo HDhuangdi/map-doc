@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import arkmap from "ark-map";
+import arkmap from "ark-map/dist/ark-map-dev";
 import "ark-map/dist/ark-map.css";
 import style from "../style.js";
 import Bottom from "./bottom.vue";
@@ -17,7 +17,7 @@ import Left from "./left.vue";
 import Right from "./right.vue";
 import roads from "./roads";
 import units from "./units";
-import { adapteSize, resolveImages, resolveImage } from "../utils";
+import { adapteSize, resolveImages } from "../utils";
 
 export default {
   components: { Bottom, Left, Right },
@@ -34,10 +34,9 @@ export default {
       pitch: 66,
       bearing: -18.4,
       style,
-      hash: true,
-      antialias: true,
-      fixedZoom: true,
-      qualityPreset: "low",
+      hash: false,
+      antialias: false,
+      qualityPreset: "high",
       vignetting: {
         enable: false,
       },
@@ -49,7 +48,7 @@ export default {
     });
     this.map.on("click", (e) => {
       console.log(e);
-    })
+    });
   },
   methods: {
     async addBuildings() {
@@ -86,17 +85,15 @@ export default {
         blurStrength: 2,
         length: 0.5,
         minLength: 1500,
+        // fatLine: true,
+        // lineWidth: 3
       });
     },
     async addMarkers() {
       const bases = await resolveImages([
-      require("./images/base.png"),
-      require("./images/base_danger.png"),
-      ]
-        
-        // require("./images/marker_icon.png"),
-        // require("./images/marker_icon_danger.png"),
-      );
+        require("./images/base.png"),
+        require("./images/base_danger.png"),
+      ]);
       units.forEach((unit) => {
         this.map.addMarker({
           id: "markerTest",
@@ -118,7 +115,7 @@ export default {
           },
           body: {
             width: 2,
-            color: unit.type === "danger" ? 'red' : "#FFB557",
+            color: unit.type === "danger" ? "red" : "#FFB557",
           },
           base: {
             image: unit.type === "danger" ? bases[1] : bases[0],

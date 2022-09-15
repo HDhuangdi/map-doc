@@ -1,5 +1,5 @@
 <template>
-  <div id="map-container"></div>
+  <div id="map-container1"></div>
 </template>
 
 <script>
@@ -14,7 +14,7 @@ export default {
   }),
   mounted() {
     this.map = new arkmap.Map({
-      container: "map-container",
+      container: "map-container1",
       zoom: 2.31,
       center: [110.61, 37.23],
       pitch: 16,
@@ -152,7 +152,7 @@ export default {
 </script>
 
 <style lang="less" scoped>
-#map-container {
+#map-container1 {
   height: 500px;
 }
 </style>
