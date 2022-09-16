@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import arkmap from "ark-map/dist/ark-map-dev";
+import arkmap from "ark-map";
 import "ark-map/dist/ark-map.css";
 import style from "../style.js";
 import Bottom from "./bottom.vue";

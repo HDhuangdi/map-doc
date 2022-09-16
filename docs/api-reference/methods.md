@@ -538,6 +538,56 @@ const pm = map.add3DModel(
 map.remove3DModel(id);
 ```
 
+### `add3DModel(obj, options)`
+在地图中添加光墙。
+
+**参数列表：**
+
+*options\<object>* 所有配置项都是可选的
+|  名称   | 描述  |
+|  ----  | ----  |
+| **path\<Array\<number>>** default: [] | 墙体的路径 |
+| **color\<string>** default: "#fff" | 墙体的颜色 |
+| **opacity\<number>** default: 1 | 墙体的透明度 |
+| **height\<number>** default: 100 | 墙体的高度，单位：米 |
+| **flowTexture\<HTMLImageElement>** default: null | 墙体的浮动纹理贴图 |
+| **flowSpeed\<number>** default: 0.006 | 墙体的浮动纹理的浮动速度 |
+
+**返回值：**
+
+光墙唯一id。
+
+**示例：**
+```js
+const id = map.addWall({
+  path: [
+      [120.18964919661755, 30.199703307742638],
+      [120.19642321440693, 30.202811279073572],
+      [120.19812973291562, 30.194346435262744],
+      [120.19093729792775, 30.19372665437173],
+      [120.18964919661755, 30.199703307742638],
+  ],
+  color: "#f00",
+  opacity: 1,
+  height: 500,
+  flowSpeed: 0.006,
+  flowTexture: image,
+});
+```
+
+### `removeWall(id)`
+在地图中移除光墙。
+
+**参数列表：**
+
+*id\<string>* 要移除的光墙的id
+
+
+**示例：**
+```js
+map.removeWall(id);
+```
+
 ## 容器
 ### `getContianer()`
 返回地图的HTML元素。
