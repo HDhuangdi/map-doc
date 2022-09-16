@@ -115,9 +115,9 @@ map.addCover({
 |  名称   | 描述  |
 |  ----  | ----  |
 | **id\<string>** | 打点id |
-| **header\<{fragment: string, style: Object, scale: Stops}>** | 打点头部的配置，`fragment`为`HTML`片段，`style`为`css`样式, `scale`为Stops数组 |
+| **header\<{show: boolean, fragment: string, style: Object, scale: Stops}>** | 打点头部的配置，`show`为是否显示 ，`fragment`为`HTML`片段，`style`为`css`样式, `scale`为Stops数组 |
 | **body\<{show: boolean, width: number, color: string}>** | 打点中部的配置，`show`为是否显示 ，`width`为中部宽度，`color`为中部整体颜色|
-| **base\<{image: HTMLImageElement, size: Array\<number>}>** | 打点底部的配置，`image`为图片对象，`size`为图片大小|
+| **base\<{show: boolean, image: HTMLImageElement, size: Array\<number>}>** | 打点底部的配置，`show`为是否显示 ，`image`为图片对象，`size`为图片大小|
 | **coord\<Array\<number>>** | 打点经纬度 |
 | **altitude\<number>** | 打点整体高度 |
 | **onclick\<Function>** | 点击事件 |

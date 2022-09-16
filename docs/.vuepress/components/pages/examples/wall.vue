@@ -27,6 +27,7 @@ export default {
     this.map.on("map.ready", () => {
       this.addBuildings();
       this.addWall();
+      this.addMarker()
     });
   },
   methods: {
@@ -42,7 +43,6 @@ export default {
       const { image } = await resolveImage(
         require("docs/assets/images/wall.png")
       );
-      this.map.on('click', e=>console.log(e))
       this.map.addWall({
         path: [
           [120.18407730056299, 30.17904486379676],
@@ -58,6 +58,34 @@ export default {
         flowTexture: image,
       });
     },
+    async addMarker() {
+      this.map.addMarker({
+        id: "markerTest",
+        header: {
+          fragment: `
+            <p style="font-size: 20px; transform: translateY(30px); color: #4CFFFF">重点关注区域</p>
+            <img src="${require('docs/assets/images/marker.png')}" />
+          `,
+          style: {
+            color: "#fff",
+            display: "flex",
+            "flex-direction": "column",
+            "align-items": "center",
+          },
+        },
+        body: {
+          show: false
+        },
+        base: {
+          show: false
+        },
+        coord: [120.20662438160196, 30.186494405934937],
+        altitude: 200,
+        onclick: (e) => {
+          console.log(e);
+        },
+      });
+    }
   },
   beforeDestroy() {
     if (this.map) this.map.destroy();
