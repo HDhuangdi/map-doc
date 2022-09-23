@@ -8,7 +8,7 @@ navbar: false
     <div class="mask"></div>
     <div class="center">
       <h1>ARK MAP</h1>
-      <p>新监管态势感知出品</p>
+      <p>杭州水科出品</p>
       <div class="buttons">
         <button @click="$router.push('/api-reference/map')">配置指南</button>
         <button @click="$router.push('/guide')">快速入门</button>
