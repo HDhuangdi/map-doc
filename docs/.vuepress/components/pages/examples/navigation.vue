@@ -5,7 +5,7 @@
     <div class="tips">
       <p v-show="!start">请选择起始点</p>
       <p v-show="start && !end">请选择结束点</p>
-      <p v-show="start && end">当前路程： {{distance.toFixed(3)}} km</p>
+      <p v-show="start && end">当前路程： {{ distance.toFixed(3) }} km</p>
     </div>
   </div>
 </template>
@@ -27,8 +27,10 @@ export default {
     hasLine: false,
     routePointsSourceCache: null,
     distance: 0,
+    navigation: null,
   }),
   mounted() {
+    this.navigation = new arkmap.Navigation(routeNetwork);
     this.map = new arkmap.Map({
       container: "map-container",
       zoom: 14,
@@ -40,223 +42,99 @@ export default {
       antialias: true,
       devicePixelRatio: 2,
     });
-    this.map.on("map.ready", () => {
-      this.addRoutePoints();
-      this.registerEvents();
-    });
+    this.map.on("click", this.drawPoint.bind(this));
   },
   methods: {
-    // 添加路网提示点
-    addRoutePoints() {
-      let source;
-      if (this.routePointsSourceCache) {
-        source = this.routePointsSourceCache;
-      } else {
-        const points = [];
-        routeNetwork.features.forEach((feature) => {
-          feature.geometry.coordinates.forEach((coord) => {
-            points.push({
-              geometry: {
-                coordinates: coord,
-                type: "Point",
-              },
-              type: "Feature",
-              properties: { coord },
-            });
-          });
-        });
-        const pointJson = {
-          type: "FeatureCollection",
-          features: points,
-        };
-        source = {
-          type: "geojson",
-          data: pointJson,
-          generateId: true,
-        };
+    drawPoint(e) {
+      if (this.start && this.end) return;
+      
+      if (!this.start) {
+        this.start = [e.lngLat.lng, e.lngLat.lat];
+        this.drawMapPoint("start-point", this.start);
+      } else if (!this.end) {
+        this.end = [e.lngLat.lng, e.lngLat.lat];
+        this.drawMapPoint("end-point", this.end);
       }
 
-      this.map.addSource("nav-point", source);
-      this.map.addLayer({
-        id: "nav-points",
-        type: "circle",
-        source: "nav-point",
-        paint: {
-          "circle-radius": {
-            stops: [
-              [10, 0],
-              [14, 5],
-              [16, 15],
-            ],
+      if (this.start && this.end) {
+        this.removeMapPoint("start-point");
+        this.removeMapPoint("end-point");
+        this.drawPath();
+      }
+    },
+    async drawPath() {
+      const res = await this.navigation.findWayFuzzy(this.start, this.end);
+      this.calcDistance(res.path);
+      const json = {
+        type: "FeatureCollection",
+        name: "path",
+        crs: {
+          type: "name",
+          properties: { name: "urn:ogc:def:crs:OGC:1.3:CRS84" },
+        },
+        features: [
+          {
+            type: "Feature",
+            properties: {},
+            geometry: {
+              type: "LineString",
+              coordinates: res.path,
+            },
           },
-          // 如果 feature-state == 1 则为红色，否则为白色
-          "circle-color": [
-            "case",
-            ["==", ["feature-state", "opa"], null],
-            "#fff",
-            ["==", ["feature-state", "opa"], 1],
-            "#F1401E",
-            "#fff",
-          ],
-          "circle-opacity": ["number", ["feature-state", "opa"], 0.1],
+        ],
+      };
+      this.map.addSource("nav-path", {
+        type: "geojson",
+        data: json,
+      });
+      this.map.addLayer({
+        id: "nav-line",
+        type: "line",
+        source: "nav-path",
+        layout: {
+          "line-join": "miter",
+          "line-cap": "butt",
+        },
+        paint: {
+          "line-color": "#F1401E",
+          "line-width": 5,
+          "line-opacity": 1,
+          "line-blur": 0,
         },
       });
     },
-    // 注册鼠标事件
-    registerEvents() {
-      this.map.on("mousemove", (e) => {
-        if (this.hasLine) return;
-        if (this.hovered) {
-          this.map.setFeatureState(this.hovered, {
-            opa: 0.1,
-          });
-        }
-      });
-      this.map.on("mousemove", "nav-points", (e) => {
-        if (this.hasLine) return;
-        const features = this.map.queryRenderedFeatures(e.point, {
-          layers: ["nav-points"],
-        });
-        const feature = features[0];
-        if (feature.layer.paint["circle-radius"] > 0) {
-          this.map.setFeatureState(feature, {
-            opa: 1,
-          });
-        }
-        this.hovered = feature;
-      });
-      this.map.on("click", "nav-points", this.chosePoint.bind(this));
-    },
-    // 鼠标点击选择路网点
-    chosePoint(e) {
-      if (this.hasLine) return;
-      const features = this.map.queryRenderedFeatures(e.point, {
-        layers: ["nav-points"],
-      });
-      const feature = features[0];
-      const coord = JSON.parse(feature.properties.coord);
-      let points = [];
-      if (this.start && !this.end) {
-        this.end = {
-          feat: feature,
-          coord,
-        };
-        points = [
-          {
-            geometry: {
-              coordinates: coord,
-              type: "Point",
-            },
-            type: "Feature",
-            properties: { coord },
-          },
-          {
-            geometry: {
-              coordinates: this.start.coord,
-              type: "Point",
-            },
-            type: "Feature",
-            properties: { coord },
-          },
-        ];
-      }
-      if (!this.start && !this.end) {
-        this.start = {
-          feat: feature,
-          coord,
-        };
-        points = [
-          {
-            geometry: {
-              coordinates: coord,
-              type: "Point",
-            },
-            type: "Feature",
-            properties: { coord },
-          },
-        ];
-      }
-      this.removeLineLayer();
+    drawMapPoint(name, coord) {
       const source = {
         type: "FeatureCollection",
-        features: points,
+        features: [
+          {
+            geometry: {
+              coordinates: coord,
+              type: "Point",
+            },
+            type: "Feature",
+            properties: { coord },
+          },
+        ],
       };
-      this.addLineLayer(source);
-      this.hasLine = this.start && this.end;
-    },
-    // 添加导航路线
-    addLineLayer(source) {
-      this.map.addSource("two-point-source", {
+      this.map.addSource(name, {
         type: "geojson",
         data: source,
         generateId: true,
       });
       this.map.addLayer({
-        id: "two-point",
+        id: name,
         type: "circle",
-        source: "two-point-source",
+        source: name,
         paint: {
           "circle-radius": 10,
           "circle-color": "#F1401E",
         },
       });
-      if (this.start && this.end) {
-        if (this.map.getLayer("nav-points")) {
-          this.map.removeLayer("nav-points");
-          this.map.removeSource("nav-point");
-        }
-        const navigation = new arkmap.Navigation(routeNetwork);
-        const way = navigation.findWay(this.start.coord, this.end.coord);
-        this.calcDistance(way);
-        const json = {
-          type: "FeatureCollection",
-          name: "path",
-          crs: {
-            type: "name",
-            properties: { name: "urn:ogc:def:crs:OGC:1.3:CRS84" },
-          },
-          features: [
-            {
-              type: "Feature",
-              properties: {},
-              geometry: {
-                type: "LineString",
-                coordinates: way,
-              },
-            },
-          ],
-        };
-        this.map.addSource("nav-path", {
-          type: "geojson",
-          data: json,
-        });
-        this.map.addLayer({
-          id: "nav-line",
-          type: "line",
-          source: "nav-path",
-          layout: {
-            "line-join": "miter",
-            "line-cap": "butt",
-          },
-          paint: {
-            "line-color": "#F1401E",
-            "line-width": 5,
-            "line-opacity": 1,
-            "line-blur": 0,
-          },
-        });
-      }
     },
-    // 移除导航路线
-    removeLineLayer() {
-      if (this.map.getLayer("two-point")) {
-        this.map.removeLayer("two-point");
-        this.map.removeSource("two-point-source");
-      }
-      if (this.map.getLayer("nav-line")) {
-        this.map.removeLayer("nav-line");
-        this.map.removeSource("nav-path");
-      }
+    removeMapPoint(name) {
+      this.map.removeLayer(name);
+      this.map.removeSource(name);
     },
     calcDistance(way) {
       let acc = 0;
@@ -271,11 +149,13 @@ export default {
     },
     // 清除
     clear() {
-      this.removeLineLayer();
-      this.hasLine = false;
+      if (this.map.getLayer("nav-line")) {
+        this.map.removeLayer("nav-line");
+        this.map.removeSource("nav-path");
+      }
       this.start = null;
       this.end = null;
-      this.addRoutePoints();
+      this.distance = 0;
     },
   },
   beforeDestroy() {
@@ -305,7 +185,7 @@ export default {
     top: 20px;
     width: 200px;
     height: 50px;
-    background-color: #363B46;
+    background-color: #363b46;
     border-radius: 10px;
     display: flex;
     align-items: center;
