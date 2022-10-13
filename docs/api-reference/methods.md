@@ -507,7 +507,7 @@ map.removeStreamer(id);
 **示例：**
 ```js
 const car = await arkmap.loadObj("car.obj");
-const pm = map.add3DModel(
+const modelId = map.add3DModel(
   {
     color: "#fff",
     rotation: [
@@ -538,7 +538,52 @@ const pm = map.add3DModel(
 map.remove3DModel(id);
 ```
 
-### `add3DModel(obj, options)`
+### `pathMoving(modelId, options)`
+在地图中添加3D模型的路径动画。
+
+**参数列表：**
+
+*modelId\<string>* 3D模型的ID，**注意：此模型的头部必须朝向正北！**
+
+*options\<object>* 所有配置项都是可选的
+|  名称   | 描述  |
+|  ----  | ----  |
+| **path\<Array\<number>>** default: [] | 路径对象，由[Navigation](/api-reference/common-class.html#navigation)对象产生 |
+| **speed\<number>** default: 0 | 模型移动速度，单位：km/h |
+
+**返回值：**
+
+pathMoving 对象，有一个实例方法`changeStatus(status)`，其中status控制是否播放状态，`true`为开始播放。
+
+**示例：**
+```js
+const car = await arkmap.loadObj("car.obj");
+const modelId = map.add3DModel(
+  {
+    color: "#fff",
+    rotation: [
+      {
+        axis: "x",
+        angle: Math.PI / 2,
+      },
+      {
+        axis: "y",
+        angle: Math.PI / 2,
+      },
+    ],
+    scale: 0.000001,
+  }
+);
+const navigation = new arkmap.Navigation(network)
+const { path } = await navigation.findWayFuzzy(start, end);
+const pm = map.pathMoving(modelId, {
+  path,
+  speed: 140,
+});
+pm.changeStatus(true);
+```
+
+### `addWall(obj, options)`
 在地图中添加光墙。
 
 **参数列表：**

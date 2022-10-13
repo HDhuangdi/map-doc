@@ -25,7 +25,6 @@ module.exports = {
       {
         text: "样例",
         items: [
-          { text: "中心高光", target:"_blank", link: BASE_URL + "examples/center-lighting" },
           { text: "天空盒", target:"_blank",link: BASE_URL + "examples/skybox" },
           { text: "空中飞线", target:"_blank",link: BASE_URL + "examples/flyline" },
           { text: "打点", target:"_blank",link: BASE_URL + "examples/point" },

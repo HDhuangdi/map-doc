@@ -22,6 +22,7 @@ export default {
       antialias: true,
       fixedZoom: true,
       devicePixelRatio: 2,
+      staticDraw: true
     });
   },
   beforeDestroy() {

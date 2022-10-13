@@ -22,11 +22,6 @@ export default {
       style,
       hash: false,
       antialias: true,
-      vignetting: {
-        enable: true,
-        lightHeight: 170,
-        strength: 2
-      },
       devicePixelRatio: 2,
     });
     this.map.on("map.ready", () => {

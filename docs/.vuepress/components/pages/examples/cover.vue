@@ -22,12 +22,7 @@ export default {
       style,
       hash: false,
       antialias: true,
-      devicePixelRatio: 2,
-      vignetting: {
-        enable: true,
-        lightHeight: 170,
-        strength: 2,
-      },
+      devicePixelRatio: 2
     });
     this.map.on("map.ready", () => {
       this.addSkyBox();

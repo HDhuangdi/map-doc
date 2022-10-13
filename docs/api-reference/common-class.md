@@ -30,7 +30,7 @@ const info = Navigation.genDirvingInfo(way);
 
 ### 实例方法
 #### `findWay(point1, point2)`
-根据俩个经纬度点，在路网中寻找连接路线。
+根据俩个经纬度点，两点必须在给定的路网GEOJSON内，在路网中寻找连接路线。
 
 **参数列表：**
 
@@ -46,6 +46,24 @@ ways 一个由众多点组成的导航路线。
 ```js
 const navigation = new arkmap.Navigation(network)
 const way = navigation.findWay(start, end);
+```
+
+#### `findWayFuzzy(point1, point2)`
+根据俩个经纬度点，在路网中模糊查询，寻找路线。
+
+**参数列表：**
+
+*point1\<Array\<number>>* 一个经纬度数组
+
+*point2\<Array\<number>>* 一个经纬度数组
+
+**返回值：**
+一个 pending状态的Promise，full filed后传递一个路线对象，
+
+**示例：**
+```js
+const navigation = new arkmap.Navigation(network)
+const { path } = await navigation.findWayFuzzy(start, end);
 ```
 
 ## AnimationOptions
