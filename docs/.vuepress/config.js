@@ -58,6 +58,13 @@ module.exports = {
           path: "projections",
         },
       ],
+      "/style-specification/": [
+        {
+          title: "Layers",
+          collapsable: true,
+          path: "layers",
+        },
+      ],
       "/api-reference/": [
         {
           title: "构造配置",
