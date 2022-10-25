@@ -48,9 +48,9 @@ export default {
       this.map.addBuildings({
         textures: textures.slice(0, 6),
         roofcolor: "#777880",
-        sourceLayer: "building",
-        before: "poi-railway-zh",
-        heightField: "render_height",
+        sourceLayer: "building_3d",
+        before: "place_city_name",
+        heightField: "height",
         buildingColor: "#fff",
         mixinStrength: 3,
       });

@@ -113,22 +113,20 @@ export default {
     },
     addBuildings() {
       this.map.addBuildings({
-        layerId: 'bb',
-        activeZoom: 9,
-        removeZoom: 7,
+        layerId: "bb",
         opacity: 1,
-        sourceLayer: "building",
-        heightField: "render_height",
-        before: "highway_name_other",
-        buildingColor: "#fff",
+        sourceLayer: "building_3d",
+        heightField: "height",
+        before: "highway_motorway_ramp",
+        buildingColor: ['#000', '#fff'],
       });
     },
     setDOF() {
       this.map.setDOF({
         enable: true,
         blurRadius: 8,
-        near: 0.55,
-        nearRange: 0.1,
+        near: 0.6,
+        nearRange: 0.5,
         far: 0.65,
         farRange: 0.15,
       });

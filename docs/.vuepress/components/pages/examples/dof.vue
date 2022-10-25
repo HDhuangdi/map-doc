@@ -36,9 +36,9 @@ export default {
         activeZoom: 12,
         removeZoom: 7,
         opacity: 1,
-        sourceLayer: "building",
-        before: "poi-railway-zh",
-        heightField: "render_height",
+        sourceLayer: "building_3d",
+        before: "place_city_name",
+        heightField: "height",
       });
     },
     setDOF() {

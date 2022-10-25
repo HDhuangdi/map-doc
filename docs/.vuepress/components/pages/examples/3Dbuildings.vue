@@ -1,12 +1,11 @@
 <template>
-  <div id="map-container2"></div>
+  <div id="map-container"></div>
 </template>
 
 <script>
 import arkmap from "ark-map";
 import "ark-map/dist/ark-map.css";
 import style from "./style.js";
-import { resolveImages } from "./utils";
 
 export default {
   data: () => ({
@@ -14,42 +13,44 @@ export default {
   }),
   mounted() {
     this.map = new arkmap.Map({
-      container: "map-container2",
-      zoom: 13.14,
-      center: [120.18885, 30.20573],
-      pitch: 66,
-      bearing: -18.4,
+      container: "map-container",
+      zoom: 14.97,
+      center: [120.21798, 30.20305],
+      pitch: 52,
+      bearing: -27.8,
       style,
       hash: false,
       antialias: true,
-      devicePixelRatio: 2
+      devicePixelRatio: 2,
+      staticDraw: true,
     });
     this.map.on("map.ready", () => {
       this.addBuildings();
     });
   },
   methods: {
-    async addBuildings() {
-      const textures = await resolveImages([
-        require("docs/assets/images/building9.png"),
-        require("docs/assets/images/building10.png"),
-        require("docs/assets/images/building12.png"),
-        require("docs/assets/images/building11.png"),
-        require("docs/assets/images/building13.png"),
-        require("docs/assets/images/building14.png"),
-      ]);
-      this.map.addBuildings({
-        textures,
-        roofcolor: "#0b65bb",
-        sourceLayer: "building",
-        before: "poi-railway-zh",
-        heightField: "render_height",
-        buildingColor: "#fff",
-        mixinStrength: 4,
-        light: {
-          color: "#0885F4",
-          strength: 1.3
+    addBuildings() {
+      this.map.addLayer({
+        id: "roof",
+        type: "line",
+        source: "composite",
+        "source-layer": "building_3d",
+        paint: {
+          "line-altitude": ["get", "height"],
+          "line-color": "#fff",
+          "line-width": 0.5,
+          "line-opacity": 0.1,
         },
+      });
+      this.map.addBuildings({
+        layerId: "bbbbbb",
+        activeZoom: 12.9,
+        removeZoom: 7,
+        opacity: 1,
+        sourceLayer: "building_3d",
+        heightField: "height",
+        before: "place_city_name",
+        buildingColor: ["rgba(255, 255, 255, 0.4)", "rgba(53, 77, 127, 0.4)"],
       });
     },
   },
@@ -60,7 +61,7 @@ export default {
 </script>
 
 <style lang="less" scoped>
-#map-container2 {
+#map-container {
   height: 500px;
 }
 </style>

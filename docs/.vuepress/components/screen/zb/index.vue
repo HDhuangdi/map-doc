@@ -37,9 +37,6 @@ export default {
       hash: false,
       antialias: false,
       qualityPreset: "high",
-      vignetting: {
-        enable: false,
-      },
     });
     this.map.on("map.ready", () => {
       this.addBuildings();
@@ -66,12 +63,13 @@ export default {
         activeZoom: 12.9,
         removeZoom: 7,
         opacity: 1,
-        sourceLayer: "building",
-        heightField: "render_height",
-        before: "poi-railway-zh",
+        sourceLayer: "building_3d",
+        heightField: "height",
+        before: "place_city_name",
         buildingColor: "#fff",
         mixinStrength: 4,
         roofcolor: "#0b65bb",
+        vignetting: true,
         light: {
           color: "#0885F4",
           strength: 1.3,

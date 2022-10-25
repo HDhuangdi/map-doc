@@ -42,9 +42,9 @@ export default {
       this.map.addBuildings({
         textures,
         roofcolor: "auto",
-        sourceLayer: "building",
-        heightField: "render_height",
-        before: "poi-railway-zh",
+        sourceLayer: "building_3d",
+        heightField: "height",
+        before: "place_city_name",
       });
     },
     lightup() {

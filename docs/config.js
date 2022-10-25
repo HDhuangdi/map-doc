@@ -1,2 +1,2 @@
-export const TILE_SRC = 'https://nssa.dbappsecurity.com.cn:40012/tiles/{z}/{x}/{y}.pbf?ak=999d505c2d83bfaade9a79f21a57104e4ab122703539cf9e61ae35cbb01de8cfc1bce8cc715104c0b00b23c2669eaa49'
+export const TILE_SRC = 'https://hzwateritzx.com/tile/{z}/{x}/{y}.pbf'
 export const GLYPHS_SRC = 'https://nssa.dbappsecurity.com.cn:40012/fonts/{fontstack}/{range}.pbf'

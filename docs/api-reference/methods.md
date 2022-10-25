@@ -16,12 +16,13 @@ sidebarDepth: 2
 | **roofcolor\<string>** default: 'auto' | 屋顶色，若未设置`textures`则忽略此项。 |
 | **activeZoom\<number>** default: 13 | 在此缩放值显示建筑。 |
 | **removeZoom\<number>** default: 7 | 在此缩放值删除建筑。 |
-| **buildingColor\<string>** default: '#fff' | 建筑色，若设置`textures`则改颜色和贴图进行混合，混合参数为`mixinStrength` |
+| **buildingColor\<\<string>\|\|Array\<string>>** default: '#fff' | 建筑颜色。若为数组，则为渐变色，第一个元素为底部颜色，第二个元素为顶部颜色。若设置`textures`则改颜色和贴图进行混合，混合参数为`mixinStrength`。 |
 | **opacity\<string>** default: 1 | 建筑透明度 |
 | **sourceLayer\<string>** default: 'buildings' | 适量瓦片源图层。 |
 | **heightField\<string>** default: 'height' | 源数据中用于生成建筑高度的字段。 |
 | **before\<string>** default: null | 将建筑图层添加到那个图层之前，默认添加在图层列表末尾。 |
 | **mixinStrength\<number>** default: 1 | 混合建筑贴图和建筑颜色的参数。 |
+| **vignetting\<number>** default: false | 是否开启边缘暗角特效 |
 | **light\<object>** default: {color: '#000'} | 建筑打光配置，注：颜色采用加法算法，故如不需打光，设置`color: '#000'`即可 |
 
 
