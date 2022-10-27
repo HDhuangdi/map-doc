@@ -14,8 +14,8 @@ sidebarDepth: 2
 |  ----  | ----  |
 | **textures\<Array\<HTMLImageElement>>** | 建筑贴图，必须为6张或者0张 |
 | **roofcolor\<string>** default: 'auto' | 屋顶色，若未设置`textures`则忽略此项。 |
-| **activeZoom\<number>** default: 13 | 在此缩放值显示建筑。 |
-| **removeZoom\<number>** default: 7 | 在此缩放值删除建筑。 |
+| **minzoom\<number>** default: 10 | 在此缩放层级开始显示建筑图层。 |
+| **maxzoom\<number>** default: 20 | 建筑图层最大可以显示到此缩放层级。 |
 | **buildingColor\<\<string>\|\|Array\<string>>** default: '#fff' | 建筑颜色。若为数组，则为渐变色，第一个元素为底部颜色，第二个元素为顶部颜色。若设置`textures`则改颜色和贴图进行混合，混合参数为`mixinStrength`。 |
 | **opacity\<string>** default: 1 | 建筑透明度 |
 | **sourceLayer\<string>** default: 'buildings' | 适量瓦片源图层。 |

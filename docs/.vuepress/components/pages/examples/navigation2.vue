@@ -37,7 +37,7 @@ export default {
   },
   methods: {
     async initModel() {
-      const van = await arkmap.loadObj("/van.obj");
+      const van = await arkmap.loadObj("/map-doc/van.obj");
       const { image } = await resolveImage(
         require("docs/assets/images/van.jpg")
       );

@@ -23,7 +23,7 @@ module.exports = {
         ]
       },
       {
-        text: "样例",
+        text: "demos",
         items: [
           { text: "天空盒", target:"_blank",link: BASE_URL + "examples/skybox" },
           { text: "空中飞线", target:"_blank",link: BASE_URL + "examples/flyline" },
@@ -39,6 +39,11 @@ module.exports = {
           { text: "光墙", target:"_blank",link: BASE_URL + "examples/wall" },
         ],
       },
+      { text: "样式参考", items: [
+        { text: "苹果地图-暗色", target:"_blank", link: BASE_URL + "style-demo/apple-dark" },
+        { text: "苹果地图-亮色", target:"_blank", link: BASE_URL + "style-demo/apple-light" },
+      ]
+    },
     ],
     sidebar: {
       "/guide/": [
