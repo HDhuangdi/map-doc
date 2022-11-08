@@ -499,6 +499,8 @@ map.removeStreamer(id);
 | **scale\<number>** default: 1 | 模型缩放数值 |
 | **coord\<Array\<number>>** default: [0, 0] | 模型所在经纬度 |
 | **altitude\<number>** default: 0 | 模型所在海拔高度 |
+| **onClick\<Function>** default: (delta, obj) => {} | 模型点击事件 |
+| **doublePrecision\<boolean>** default: false | 是否启用双精度浮点数运算。若不启用，在高缩放等级下模型会不可避免的产生抖动；如果启用此项，可避免抖动，但是会消耗一定的性能 |
 | **animate\<Function>** default: (delta, obj) => {} | 每帧渲染时会执行的函数，传递参数：帧间隔时间，单位ms；3D模型对象 |
 
 **返回值：**
