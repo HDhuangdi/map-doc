@@ -194,9 +194,13 @@ map.addMarker({
 
 *id\<string>* 打点id。
 
+**返回值：**
+
+一个Promise对象，fulfilled后移除打点。
+
 **示例：**
 ```js
-map.removeMarker(id);
+await map.removeMarker(id);
 ```
 
 ### `addPopup(options)`
