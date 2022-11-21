@@ -23,6 +23,7 @@ export default {
       hash: false,
       antialias: true,
       devicePixelRatio: 2,
+      staticDraw: true
     });
     this.map.on("map.ready", () => {
       this.addMarker();

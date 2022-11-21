@@ -92,6 +92,11 @@ module.exports = {
           path: "common-class",
         },
         {
+          title: "内部类",
+          collapsable: true,
+          path: "inner-class",
+        },
+        {
           title: "事件",
           collapsable: true,
           path: "events",

@@ -62,7 +62,7 @@ map.removeBuilding();
 
 **返回值：**
 
-防护罩唯一id。
+Cover内部类实例
 
 
 **示例：**
@@ -72,17 +72,17 @@ map.addCover({
 });
 ```
 
-### `removeCover(id)`
+### `removeCover(cover)`
 在地图中移除防护罩。
 
 **参数列表：**
 
-*id\<string>* 要移除的防护罩的id
+*cover\<Cover>* 要移除的Cover的对象
 
 
 **示例：**
 ```js
-map.addCover(id);
+map.removeCover(cover);
 ```
 
 ### `addSkyBox(options)`
@@ -154,7 +154,7 @@ map.addCover({
 
 **返回值：**
 
-打点唯一id。
+[Marker内部类实例](/api-reference/inner-class.html#marker)
 
 
 **示例：**
@@ -187,12 +187,12 @@ map.addMarker({
 });
 ```
 
-### `removeMarker(id)`
+### `removeMarker(marker)`
 在地图上移除打点。
 
 **参数列表：**
 
-*id\<string>* 打点id。
+*marker\<Marker>* Marker对象。
 
 **返回值：**
 
@@ -200,7 +200,7 @@ map.addMarker({
 
 **示例：**
 ```js
-await map.removeMarker(id);
+await map.removeMarker(marker);
 ```
 
 ### `addPopup(options)`
@@ -220,7 +220,7 @@ await map.removeMarker(id);
 
 **返回值：**
 
-浮窗唯一id。
+Popup内部类实例
 
 **示例：**
 ```js
@@ -237,16 +237,16 @@ map.addPopup({
 })
 ```
 
-### `removePopup(id)`
+### `removePopup(popup)`
 地图移除popup浮窗。
 
 **参数列表：**
 
-*id\<string>* 浮窗唯一id。
+*popup\<Popup>* 浮窗对象popup。
 
 **示例：**
 ```js
-map.removePopup(id)
+map.removePopup(popup)
 ```
 
 ### `lightUpBuilding(options)`
@@ -261,6 +261,9 @@ map.removePopup(id)
 | **raduis\<number>** default: 0.000006 | 点亮半径 |
 | **color\<string>** default: 'yellow' | 点亮颜色 |
 
+**返回值：**
+
+Emitter内部类实例
 
 **示例：**
 ```js
@@ -286,6 +289,10 @@ map.lightUpBuilding({
 | **perSecond\<number>** default: 200 | 每秒钟发射漂浮物的个数 |
 | **sizeRange\<Array\<number>>** default: [10, 30] | 漂浮物的的大小范围 |
 
+**返回值：**
+
+Emitter内部类实例
+
 **示例：**
 ```js
 map.setFlotsam({
@@ -297,6 +304,18 @@ map.setFlotsam({
     perSecond: 200,
     sizeRange: [10, 50]
 })
+```
+
+### `removeEmitter(emitter)`
+地图移除emitter粒子发射器。
+
+**参数列表：**
+
+*emitter\<Emitter>* emitter对象
+
+**示例：**
+```js
+map.removeEmitter(emitter)
 ```
 
 ### `focus(options, callback)`
@@ -350,7 +369,7 @@ map.setFlotsam({
 
 **返回值：**
 
-飞线的唯一id。
+FlyLine内部类实例
 
 **示例：**
 ```js
@@ -366,16 +385,16 @@ map.setFlotsam({
 });
 ```
 
-### `removeFlyLine(id)`
+### `removeFlyLine(flyLine)`
 在地图中移除飞线
 
 **参数列表：**
 
-*id\<string>* 飞线的唯一id
+*flyLine\<FlyLine>* 飞线对象
 
 **示例：**
 ```js
- map.removeFlyLine(id);
+ map.removeFlyLine(flyLine);
 ```
 
 ### `setDOF(options)`
@@ -462,7 +481,7 @@ map.setFlotsam({
 
 **返回值：**
 
-流光特效唯一id。
+Streamer内部类实例
 
 **示例：**
 ```js
@@ -475,16 +494,16 @@ map.addStreamerLayer(geojson, {
 });
 ```
 
-### `removeStreamer(id)`
+### `removeStreamer(streamer)`
 在地图中移除地面流光。
 
 **参数列表：**
 
-*id\<string>* 流光特效唯一id。
+*streamer\<Streamer>* 流光特效对象streamer。
 
 **示例：**
 ```js
-map.removeStreamer(id);
+map.removeStreamer(streamer);
 ```
 
 ### `add3DModel(obj, options)`
@@ -509,12 +528,12 @@ map.removeStreamer(id);
 
 **返回值：**
 
-模型唯一id。
+Model内部类实例
 
 **示例：**
 ```js
 const car = await arkmap.loadObj("car.obj");
-const modelId = map.add3DModel(
+const model = map.add3DModel(
   {
     color: "#fff",
     rotation: [
@@ -532,25 +551,25 @@ const modelId = map.add3DModel(
 );
 ```
 
-### `remove3DModel(id)`
+### `remove3DModel(model)`
 在地图中移除3D模型。
 
 **参数列表：**
 
-*id\<string>* 要移除的模型的id
+*model\<Model>* 模型对象model
 
 
 **示例：**
 ```js
-map.remove3DModel(id);
+map.remove3DModel(model);
 ```
 
-### `pathMoving(modelId, options)`
+### `pathMoving(model, options)`
 在地图中添加3D模型的路径动画。
 
 **参数列表：**
 
-*modelId\<string>* 3D模型的ID，**注意：此模型的头部必须朝向正北！**
+*model\<Model>* 3D模型对象，**注意：此模型的头部必须朝向正北！**
 
 *options\<object>* 所有配置项都是可选的
 |  名称   | 描述  |
@@ -560,12 +579,12 @@ map.remove3DModel(id);
 
 **返回值：**
 
-pathMoving 对象，有一个实例方法`changeStatus(status)`，其中status控制是否播放状态，`true`为开始播放。
+[PathMoving内部类实例](/api-reference/inner-class.html#pathmoving)
 
 **示例：**
 ```js
 const car = await arkmap.loadObj("car.obj");
-const modelId = map.add3DModel(
+const model = map.add3DModel(
   {
     color: "#fff",
     rotation: [
@@ -583,11 +602,24 @@ const modelId = map.add3DModel(
 );
 const navigation = new arkmap.Navigation(network)
 const { path } = await navigation.findWayFuzzy(start, end);
-const pm = map.pathMoving(modelId, {
+const pm = map.pathMoving(model, {
   path,
   speed: 140,
 });
 pm.changeStatus(true);
+```
+
+### `removePathMoving(pathMoving)`
+在地图中移除路径动画。
+
+**参数列表：**
+
+*pathMoving\<PathMoving>* 路径动画对象pathMoving
+
+
+**示例：**
+```js
+map.removePathMoving(pathMoving);
 ```
 
 ### `addWall(obj, options)`
@@ -607,11 +639,11 @@ pm.changeStatus(true);
 
 **返回值：**
 
-光墙唯一id。
+Wall内部类实例
 
 **示例：**
 ```js
-const id = map.addWall({
+const wall = map.addWall({
   path: [
       [120.18964919661755, 30.199703307742638],
       [120.19642321440693, 30.202811279073572],
@@ -627,17 +659,17 @@ const id = map.addWall({
 });
 ```
 
-### `removeWall(id)`
+### `removeWall(wall)`
 在地图中移除光墙。
 
 **参数列表：**
 
-*id\<string>* 要移除的光墙的id
+*wall\<Wall>* 要移除的光墙对象
 
 
 **示例：**
 ```js
-map.removeWall(id);
+map.removeWall(wall);
 ```
 
 ## 容器
