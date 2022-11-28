@@ -53,7 +53,7 @@ export default {
           image: image,
         },
         coord: [120.20853164716578, 30.25113591444385],
-        altitude: 400,
+        height: 400,
         onclick: (e) => {
           console.log(e);
         },

@@ -120,7 +120,8 @@ map.addCover({
 | **body\<{show: boolean, width: number, color: string}>** | 打点中部的配置，`show`为是否显示 ，`width`为中部宽度，`color`为中部整体颜色|
 | **base\<{show: boolean, image: HTMLImageElement, size: Array\<number>}>** | 打点底部的配置，`show`为是否显示 ，`image`为图片对象，`size`为图片大小|
 | **coord\<Array\<number>>** | 打点经纬度 |
-| **altitude\<number>** | 打点整体高度 |
+| **altitude\<number>** | 打点海拔高度 |
+| **height\<number>** | 打点整体高度 |
 | **onclick\<Function>** | 点击事件 |
 
 **默认值：**
@@ -564,18 +565,19 @@ const model = map.add3DModel(
 map.remove3DModel(model);
 ```
 
-### `pathMoving(model, options)`
-在地图中添加3D模型的路径动画。
+### `pathMoving(object, options)`
+在地图中添加3D模型或者marker的路径动画。
 
 **参数列表：**
 
-*model\<Model>* 3D模型对象，**注意：此模型的头部必须朝向正北！**
+*object\<Model | Marker>* 3D模型对象，**注意：此模型的头部必须朝向正北！**或者Marker对象
 
 *options\<object>* 所有配置项都是可选的
 |  名称   | 描述  |
 |  ----  | ----  |
 | **path\<Array\<number>>** default: [] | 路径对象，由[Navigation](/api-reference/common-class.html#navigation)对象产生 |
-| **speed\<number>** default: 0 | 模型移动速度，单位：km/h |
+| **speed\<number>** default: 140 | 模型移动速度，单位：km/h |
+| **duration\<number>** default: undefined | 动画持续时间，单位：ms，配置此项后`speed`参数失效 |
 
 **返回值：**
 

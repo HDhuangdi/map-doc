@@ -19,7 +19,7 @@ sidebarDepth: 2
 
 *lat\<number>* 纬度
 
-*lat\<altitude>* 高度，单位：米
+*altitude\<number>* 高度，单位：米
 
 **返回值：**
 
