@@ -6,7 +6,7 @@ sidebarDepth: 2
 
 ## 通用
 ### `resize`
-在地图调整大小后立即触发。
+在地图调整大小后立即触发。 
 
 ### `remove`
 使用`map.destroy`后立即触发。
