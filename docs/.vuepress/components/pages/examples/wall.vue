@@ -22,7 +22,7 @@ export default {
       style,
       hash: false,
       antialias: false,
-      devicePixelRatio: 2,
+      
     });
     this.map.on("map.ready", () => {
       this.addBuildings();
@@ -54,7 +54,7 @@ export default {
         color: "#fff",
         opacity: 1,
         height: 500,
-        flowSpeed: 0.006,
+        flowSpeed: 1,
         flowTexture: image,
       });
     },

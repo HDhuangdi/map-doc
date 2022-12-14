@@ -33,7 +33,7 @@ new Map(options: Object)
 | **minZoom** | 22 | 最小缩放值 |
 | **style** | {} | 样式对象，详见[样式规范](/style-specification/) |
 | **staticDraw** | false | 是否只是渲染静态地图。若配置为`true`，则不会时时渲染动态效果，以节约GPU资源 |
-| **devicePixelRatio** | null | 物理设备像素比，若为空，则自动适配设备像素比 |
+| **fps** | 60 | 锁帧配置，单位：每秒帧数 |
 
 ## 示例
 

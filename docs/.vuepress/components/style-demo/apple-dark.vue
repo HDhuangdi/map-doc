@@ -21,7 +21,7 @@ export default {
       style,
       hash: false,
       antialias: false,
-      devicePixelRatio: 2,
+      
     });
     this.map.on("map.ready", () => {
       this.addBuildings();

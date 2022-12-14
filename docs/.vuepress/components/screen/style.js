@@ -32,7 +32,7 @@ export default {
         id: "background",
         type: "background",
         layout: { visibility: "visible" },
-        paint: { "background-color": "#0B2C43" },
+        paint: { "background-color": "#152026" },
     },
     // 陆地
     {
@@ -42,7 +42,7 @@ export default {
         "source-layer": "land",
         filter: ["all"],
         layout: { visibility: "visible" },
-        paint: { "fill-color": "#020D22" },
+        paint: { "fill-color": "#0E0E13" },
     },
     // 水域
     {
@@ -52,7 +52,7 @@ export default {
         "source-layer": "water_area",
         filter: ["all"],
         layout: { visibility: "visible" },
-        paint: { "fill-color": "rgba(11, 44, 67, 1)" },
+        paint: { "fill-color": "#152026" },
     },
     {
         id: "landcover_grass",

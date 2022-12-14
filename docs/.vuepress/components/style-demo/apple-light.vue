@@ -21,7 +21,7 @@ export default {
       style,
       hash: false,
       antialias: false,
-      devicePixelRatio: 2,
+      
     });
     this.map.on("map.ready", () => {
       this.addBuildings();
@@ -36,7 +36,7 @@ export default {
         sourceLayer: "building_3d",
         heightField: "height",
         before: "pois_other",
-        buildingColor: "rgb(75, 101, 142)",
+        buildingColor: "rgb(236, 236, 234)",
       });
     },
   },

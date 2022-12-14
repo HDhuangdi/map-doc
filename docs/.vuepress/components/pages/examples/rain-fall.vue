@@ -29,7 +29,6 @@ export default {
       style,
       hash: false,
       antialias: false,
-      devicePixelRatio: 1,
       qualityPreset: "low"
     });
     this.map.on("map.ready", () => {

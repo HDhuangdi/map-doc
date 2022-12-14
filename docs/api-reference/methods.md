@@ -117,11 +117,12 @@ map.addCover({
 |  ----  | ----  |
 | **id\<string>** | 打点id |
 | **header\<{show: boolean, fragment: string, style: Object, scale: Stops}>** | 打点头部的配置，`show`为是否显示 ，`fragment`为`HTML`片段，`style`为`css`样式, `scale`为Stops数组 |
-| **body\<{show: boolean, width: number, color: string}>** | 打点中部的配置，`show`为是否显示 ，`width`为中部宽度，`color`为中部整体颜色|
-| **base\<{show: boolean, image: HTMLImageElement, size: Array\<number>}>** | 打点底部的配置，`show`为是否显示 ，`image`为图片对象，`size`为图片大小|
+| **body\<{show: boolean, width: number, color: string, depthTest: boolean}>** | 打点中部的配置，`show`为是否显示 ；`width`为中部宽度；`color`为中部整体颜色；`depthTest`为是否启用深度测试，默认为`false`|
+| **base\<{show: boolean, image: HTMLImageElement, size: Array\<number>, depthTest: boolean}>** | 打点底部的配置，`show`为是否显示 ；`image`为图片对象；`size`为图片大小 ； `depthTest`为是否启用深度测试，默认为`false`|
 | **coord\<Array\<number>>** | 打点经纬度 |
 | **altitude\<number>** | 打点海拔高度 |
 | **height\<number>** | 打点整体高度 |
+| **doublePrecision\<boolean>** default: false | 是否启用双精度浮点数运算。若不启用，在高缩放等级下模型会不可避免的产生抖动；如果启用此项，可避免抖动，但是会消耗一定的性能 |
 | **onclick\<Function>** | 点击事件 |
 
 **默认值：**
@@ -578,6 +579,8 @@ map.remove3DModel(model);
 | **path\<Array\<number>>** default: [] | 路径对象，由[Navigation](/api-reference/common-class.html#navigation)对象产生 |
 | **speed\<number>** default: 140 | 模型移动速度，单位：km/h |
 | **duration\<number>** default: undefined | 动画持续时间，单位：ms，配置此项后`speed`参数失效 |
+| **onRender\<function>** default: () => {} | 每一帧会触发的回调函数 |
+| **onEnd\<function>** default: () => {} | 每次轨迹动画结束后会触发的回调函数 |
 
 **返回值：**
 
@@ -637,7 +640,7 @@ map.removePathMoving(pathMoving);
 | **opacity\<number>** default: 1 | 墙体的透明度 |
 | **height\<number>** default: 100 | 墙体的高度，单位：米 |
 | **flowTexture\<HTMLImageElement>** default: null | 墙体的浮动纹理贴图 |
-| **flowSpeed\<number>** default: 0.006 | 墙体的浮动纹理的浮动速度 |
+| **flowSpeed\<number>** default: 1 | 墙体的浮动纹理的浮动速度 |
 
 **返回值：**
 
@@ -656,7 +659,7 @@ const wall = map.addWall({
   color: "#f00",
   opacity: 1,
   height: 500,
-  flowSpeed: 0.006,
+  flowSpeed: 1,
   flowTexture: image,
 });
 ```

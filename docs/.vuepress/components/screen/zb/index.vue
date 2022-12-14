@@ -27,7 +27,7 @@ export default {
   mounted() {
     adapteSize();
     this.map = new arkmap.Map({
-      devicePixelRatio: 2,
+      
       container: "map",
       zoom: 13.14,
       center: [120.18885, 30.20573],
@@ -50,30 +50,29 @@ export default {
   methods: {
     async addBuildings() {
       const textures = await resolveImages([
-        require("docs/assets/images/building9.png"),
-        require("docs/assets/images/building10.png"),
-        require("docs/assets/images/building12.png"),
-        require("docs/assets/images/building11.png"),
-        require("docs/assets/images/building13.png"),
-        require("docs/assets/images/building14.png"),
+        require("docs/assets/images/1.png"),
+        require("docs/assets/images/2.png"),
+        require("docs/assets/images/3.png"),
+        require("docs/assets/images/4.png"),
+        require("docs/assets/images/5.png"),
+        require("docs/assets/images/6.png"),
       ]);
       this.map.addBuildings({
+        maxzoom: 22,
         textures,
         layerId: "bbbbbb",
-        activeZoom: 12.9,
-        removeZoom: 7,
         opacity: 1,
         sourceLayer: "building_3d",
         heightField: "height",
-        before: "place_city_name",
+        before: "border_china",
         buildingColor: "#fff",
-        mixinStrength: 4,
-        roofcolor: "#0b65bb",
+        mixinStrength: 1.5,
+        roofcolor: "#21414B",
         vignetting: true,
-        light: {
-          color: "#0885F4",
-          strength: 1.3,
-        },
+        // light: {
+        //   color: "#0885F4",
+        //   strength: 1.3,
+        // },
       });
     },
     addStreamers() {
@@ -106,20 +105,21 @@ export default {
             `,
             style: {
               color: "#fff",
-              display: "flex",
-              "flex-direction": "column",
-              "align-items": "center",
+              "text-align": "center",
             },
           },
           body: {
-            width: 2,
+            width: 1.5,
             color: unit.type === "danger" ? "red" : "#FFB557",
+            depthTest: true
           },
           base: {
             image: unit.type === "danger" ? bases[1] : bases[0],
+            depthTest: true
           },
           coord: unit.lnglat,
-          altitude: 400,
+          doublePrecision: true,
+          height: 400,
           onclick: (e) => {
             console.log(e);
           },
