@@ -8,6 +8,7 @@ navbar: false
     <div class="mask"></div>
     <div class="center">
       <h1>ARK MAP</h1>
+      <span style="display: inline-block;color: #fff; margin-bottom: 20px">{{ version }}</span>
       <p>杭水科技出品</p>
       <div class="buttons">
         <button @click="$router.push('/api-reference/map')">配置指南</button>
@@ -19,6 +20,7 @@ navbar: false
 
 <script>
 import "ark-map/dist/ark-map.css";
+import version from './version.js'
 import style from "./mapStyle.js";
 import geojson from "docs/assets/json/hangzhou_motorway.json";
 
@@ -28,7 +30,8 @@ export default {
     blur: 50,
     duration: 1000,
     frameId: 0,
-    timer: 0
+    timer: 0,
+    version
   }),
   mounted() {
     import('ark-map').then(module => {
