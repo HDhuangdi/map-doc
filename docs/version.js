@@ -1,1 +1,5 @@
-export default '0.1.0-beta.1';
+import { dependencies } from "../package.json";
+
+const v = "v" + dependencies['ark-map'];
+
+export default v;

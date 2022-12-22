@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "node bin/version-getter.js && vuepress dev docs",
-    "build": "node bin/version-getter.js && vuepress build docs"
+    "dev": "vuepress dev docs",
+    "build": "vuepress build docs"
   },
   "author": "",
   "license": "ISC",
