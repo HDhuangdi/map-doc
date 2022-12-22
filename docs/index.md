@@ -126,11 +126,11 @@ export default {
     setDOF() {
       this.map.setDOF({
         enable: true,
-        blurRadius: 8,
-        near: 0.6,
-        nearRange: 0.5,
-        far: 0.65,
-        farRange: 0.15,
+        blurRadius: 6,
+        near: 0.1,
+        nearRange: 0.4,
+        far: 0.5,
+        farRange: 0.5,
       });
     },
     setRotate() {

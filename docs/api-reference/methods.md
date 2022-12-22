@@ -473,13 +473,12 @@ FlyLine内部类实例
 *options\<object>* 所有配置项都是可选的
 |  名称   | 描述  |
 |  ----  | ----  |
-| **lineWidth\<number>** default: 1 | 流光线条宽度，如需线宽1以上，必须配置`fatLine: true` |
+| **lineWidth\<number>** default: 1 | 流光线条宽度 |
 | **length\<number>** default: 0.3 | 流光线段占总线长百分比 |
 | **minLength\<number>** default: 0 | 该线条长度以下的线条不展示流光效果，单位：米 |
 | **lineColor\<color>** default: "#fff" | 流光线条颜色 |
 | **blurRadius\<number>** default: 10 | 流光发光半径 |
 | **blurStrength\<number>** default: 3 | 流光发光强度 |
-| **fatLine\<boolean>** default: false | 是否启用线宽大于1的线条 |
 
 **返回值：**
 

@@ -50,12 +50,12 @@ export default {
   methods: {
     async addBuildings() {
       const textures = await resolveImages([
-        require("docs/assets/images/1.png"),
-        require("docs/assets/images/2.png"),
-        require("docs/assets/images/3.png"),
-        require("docs/assets/images/4.png"),
-        require("docs/assets/images/5.png"),
-        require("docs/assets/images/6.png"),
+        require("docs/assets/images/building9.png"),
+        require("docs/assets/images/building10.png"),
+        require("docs/assets/images/building11.png"),
+        require("docs/assets/images/building12.png"),
+        require("docs/assets/images/building13.png"),
+        require("docs/assets/images/building14.png"),
       ]);
       this.map.addBuildings({
         maxzoom: 22,
@@ -69,21 +69,20 @@ export default {
         mixinStrength: 1.5,
         roofcolor: "#21414B",
         vignetting: true,
-        // light: {
-        //   color: "#0885F4",
-        //   strength: 1.3,
-        // },
+        light: {
+          color: "#0885F4",
+          strength: 1.3,
+        },
       });
     },
     addStreamers() {
       this.map.addStreamer(roads, {
-        lineColor: "#FFF",
-        blurRadius: 10,
+        lineColor: "#fff",
+        blurRadius: 3,
         blurStrength: 2,
         length: 0.5,
         minLength: 1500,
-        // fatLine: true,
-        // lineWidth: 3
+        lineWidth: 2
       });
     },
     async addMarkers() {
