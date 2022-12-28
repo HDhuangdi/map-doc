@@ -47,3 +47,17 @@ marker.setPosition(120.05, 30.3, 1000)
 ```js
 pm.changeStatus(true)
 ```
+
+## Emitter
+
+粒子发射器内部类，用于控制粒子的发射
+
+### 实例方法
+#### `fire()`
+
+开始发射粒子。
+
+**示例：**
+```js
+emitter.fire()
+```

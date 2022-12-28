@@ -4,6 +4,90 @@ sidebarDepth: 2
 
 # 实例方法
 ## 高级
+### `getParticleEmitter(options)`
+获取一个例子发射器。
+
+**参数列表：**
+
+*options\<object>* 所有配置项都是可选的
+|  名称   | 描述  |
+|  ----  | ----  |
+| **coord\<Array\<number>>** default: [0, 0]| 粒子坐标，经纬度。 |
+| **altitude\<string>** default: 0 | 粒子整体海拔。 |
+| **texture\<HTMLImageElement>** default: null | 单个粒子的贴图。 |
+| **particlesPerSecond\<number>** default: 100 | 每秒发射的粒子数。 |
+| **positionRange\<object>** | 生成粒子的发射初始位置范围，具体配置见下表。 |
+| **directionRange\<object>** | 粒子的发射方向范围，具体配置见下表。 |
+| **speedRange\<Array\<number>>** default: [8, 8] | 粒子发射速度的随机生成范围。 |
+| **sizeRange\<Array\<number>>** default: [100, 100] | 粒子大小的随机生成范围。 |
+| **opacityTween\<Tween>** default: [[0, 10], [1, 0]] | 粒子透明度Tween函数。如：[[0, 10], [1, 0]]的意思是0秒时粒子的透明度为1，10秒时粒子的透明度为0，2~9秒时间的粒子透明度进行线性插值。 |
+| **blendMode\<string>** default: 'AdditiveBlending' | 表示粒子如何与其他图层进行混合。具体枚举见[混合模式](https://threejs.org/docs/index.html?q=materi#api/zh/constants/Materials) |
+| **depthTest\<boolean>** default: true | 是否开启深度测试 |
+
+
+**参数详情：**
+*positionRange\<object>* 粒子的发射初始位置生成范围
+|  名称   | 描述  |
+|  ----  | ----  |
+| **center\<Array\<number>>** default: [0, 0, 0]| 粒子的发射中心，一个相对坐标，相对于coord进行偏移。 |
+| **radius\<number>** default: 0 | 用于生成粒子随机发射初始位置的半径变量。 |
+| **phiLimit\<<Array\<number>>** default: [Math.PI / 2, Math.PI / 2] | 用于生成粒子随机发射初始位置的绕X轴角度范围。 |
+| **thetaLimit\<<Array\<number>>** default: [0, Math.PI * 2] | 用于生成粒子随机发射初始位置的绕Y轴角度范围。 |
+
+*directionRange\<object>* 粒子的发射方向范围
+|  名称   | 描述  |
+|  ----  | ----  |
+| **phiLimit\<<Array\<number>>** default: [-Math.PI / 8, Math.PI / 8] | 用于生成粒子随机发射方向的绕X轴角度范围。 |
+| **thetaLimit\<<Array\<number>>** default: [0, Math.PI * 2] | 用于生成粒子随机发射方向的绕Y轴角度范围。 |
+
+**返回值：**
+
+Emitter内部类实例。
+[Emitter内部类实例](/api-reference/inner-class.html#emitter)
+
+**示例：**
+```js
+const emitter = map.getParticleEmitter({
+  coord: [120.17056998973987, 30.24025318112949],
+  altitude: 0,
+  texture: textures[6],
+  particlesPerSecond: 100,
+  particleDeathAge: 10,
+  positionRange: {
+      center: [0, 0, 0],
+      radius: 0,
+      phiLimit: [Math.PI / 2, Math.PI / 2],
+      thetaLimit: [0, Math.PI * 2],
+  },
+  directionRange: {
+      phiLimit: [-Math.PI / 8, Math.PI / 8],
+      thetaLimit: [0, Math.PI * 2],
+  },
+  speedRange: [8, 8],
+  sizeRange: [100, 100],
+  color: "#ccc",
+  colorRangeRadius: 0.2,
+  opacityTween: [
+      [0, 3],
+      [1, 0],
+  ],
+  blendMode: "AdditiveBlending",
+  depthTest: true,
+});
+```
+
+### `removeEmitter(emitter)`
+移除一个例子发射器。
+
+**参数列表：**
+
+*emitter\<Emitter>* 要移除的Emitter的对象
+
+**示例：**
+```js
+map.removeEmitter(emitter)
+```
+
 ### `addBuildings(options)`
 在地图中添加3D建筑。
 
