@@ -37,6 +37,7 @@ module.exports = {
           { text: "热力图", target:"_blank",link: BASE_URL + "examples/heatmap" },
           { text: "路网导航", target:"_blank",link: BASE_URL + "examples/navigation" },
           { text: "光墙", target:"_blank",link: BASE_URL + "examples/wall" },
+          { text: "粒子系统", target:"_blank",link: BASE_URL + "examples/particles" },
         ],
       },
       { text: "样式参考", items: [

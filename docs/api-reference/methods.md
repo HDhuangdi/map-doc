@@ -20,8 +20,13 @@ sidebarDepth: 2
 | **directionRange\<object>** | 粒子的发射方向范围，具体配置见下表。 |
 | **speedRange\<Array\<number>>** default: [8, 8] | 粒子发射速度的随机生成范围。 |
 | **sizeRange\<Array\<number>>** default: [100, 100] | 粒子大小的随机生成范围。 |
-| **opacityTween\<Tween>** default: [[0, 10], [1, 0]] | 粒子透明度Tween函数。如：[[0, 10], [1, 0]]的意思是0秒时粒子的透明度为1，10秒时粒子的透明度为0，2~9秒时间的粒子透明度进行线性插值。 |
-| **blendMode\<string>** default: 'AdditiveBlending' | 表示粒子如何与其他图层进行混合。具体枚举见[混合模式](https://threejs.org/docs/index.html?q=materi#api/zh/constants/Materials) |
+| **sizeTween\<Tween>** default: null | 粒子大小Tween函数。设置改项后`sizeRange`无效。如：`[[0, 10], [20, 80]`的意思是0秒时粒子的大小为20，10秒时粒子的颜色为80，并对2~9秒时的粒子大小进行线性插值。 |
+| **color\<string>** default: `"#fff"` | 粒子的基础颜色。 |
+| **colorRangeRadius\<number>** default: 0 | 用于生产粒子随机颜色的半径变量，若为0，则表示颜色固定，不随机。 |
+| **colorTween\<Tween>** default: null | 粒子颜色Tween函数。设置改项后`color`、`colorRangeRadius`无效。如：`[[0, 10], ["#fff", "#f00"]`的意思是0秒时粒子的颜色为`#fff`，10秒时粒子的颜色为`#f00`，并对2~9秒时的粒子颜色进行线性插值。 |
+| **opacityRange\<Array\<number>>** default: [1, 1] | 粒子透明度的随机生成范围。 |
+| **opacityTween\<Tween>** default: null | 粒子透明度Tween函数。设置改项后`opacityRange`无效。如：`[[0, 10], [1, 0]]`的意思是0秒时粒子的透明度为1，10秒时粒子的透明度为0，并对2~9秒时间的粒子透明度进行线性插值。 |
+| **blendMode\<string>** default: `"AdditiveBlending"` | 表示粒子如何与其他图层进行混合。具体枚举见[混合模式](https://threejs.org/docs/index.html?q=materi#api/zh/constants/Materials) |
 | **depthTest\<boolean>** default: true | 是否开启深度测试 |
 
 
@@ -42,7 +47,6 @@ sidebarDepth: 2
 
 **返回值：**
 
-Emitter内部类实例。
 [Emitter内部类实例](/api-reference/inner-class.html#emitter)
 
 **示例：**

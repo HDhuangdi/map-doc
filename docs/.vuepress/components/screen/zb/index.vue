@@ -27,7 +27,6 @@ export default {
   mounted() {
     adapteSize();
     this.map = new arkmap.Map({
-      
       container: "map",
       zoom: 13.14,
       center: [120.18885, 30.20573],
@@ -77,12 +76,13 @@ export default {
     },
     addStreamers() {
       this.map.addStreamer(roads, {
-        lineColor: "#fff",
-        blurRadius: 3,
-        blurStrength: 2,
+        lineColor: "#0098FF",
+        blurRadius: 10,
+        blurStrength: 3,
         length: 0.5,
-        minLength: 1500,
-        lineWidth: 2
+        minLength: 1000,
+        lineWidth: 2,
+        speed: 0.5
       });
     },
     async addMarkers() {
@@ -110,11 +110,11 @@ export default {
           body: {
             width: 1.5,
             color: unit.type === "danger" ? "red" : "#FFB557",
-            depthTest: true
+            depthTest: true,
           },
           base: {
             image: unit.type === "danger" ? bases[1] : bases[0],
-            depthTest: true
+            depthTest: true,
           },
           coord: unit.lnglat,
           doublePrecision: true,
