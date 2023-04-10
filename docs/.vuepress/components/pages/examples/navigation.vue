@@ -11,10 +11,11 @@
 </template>
 
 <script>
-import arkmap from "ark-map";
+import arkmap from "@ark-org/map";
+import "@ark-org/map/dist/index.css"
 import { point } from "@turf/helpers";
 import distance from "@turf/distance";
-import "ark-map/dist/ark-map.css";
+
 import style from "./style.js";
 import routeNetwork from "docs/assets/json/hangzhou_route_network.js";
 
@@ -41,7 +42,7 @@ export default {
       hash: false,
       antialias: true,
       
-      staticDraw: true
+      passiveRendering: true
     });
     this.map.on("click", this.drawPoint.bind(this));
   },

@@ -3,8 +3,8 @@
 </template>
 
 <script>
-import arkmap from "ark-map";
-import "ark-map/dist/ark-map.css";
+import arkmap from "@ark-org/map";
+
 import style from "./style.js";
 
 export default {
@@ -12,17 +12,17 @@ export default {
     map: null,
   }),
   mounted() {
+    const modifiedStyle = style
+    delete modifiedStyle.light
     this.map = new arkmap.Map({
       container: "map-container",
       zoom: 14.97,
       center: [120.21798, 30.20305],
       pitch: 52,
       bearing: -27.8,
-      style,
+      style: modifiedStyle,
       hash: false,
-      antialias: true,
-      
-      staticDraw: true,
+      passiveRendering: true,
     });
     this.map.on("map.ready", () => {
       this.addBuildings();
@@ -50,7 +50,7 @@ export default {
         sourceLayer: "building_3d",
         heightField: "height",
         before: "place_city_name",
-        buildingColor: ["rgba(255, 255, 255, 0.4)", "rgba(53, 77, 127, 0.4)"],
+        buildingColor: ["rgba(255, 255, 255, 0.8)", "rgba(53, 77, 127, 0.8)"],
       });
     },
   },

@@ -3,8 +3,8 @@
 </template>
 
 <script>
-import arkmap from "ark-map";
-import "ark-map/dist/ark-map.css";
+import arkmap from "@ark-org/map";
+
 import style from "./style.js";
 import rainFall from "docs/assets/json/rain_fall.json";
 import hangzhou from "docs/assets/json/hangzhou";

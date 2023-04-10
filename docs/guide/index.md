@@ -11,12 +11,12 @@ windows7操作系统需要进行设置才能启用浏览器的`WebGL`功能。
 ## 安装
 使用模块化：
 ```bash
-npm i ark-map -S
+npm i @ark-org/map -S
 ```
 ## 使用
-`import arkmap from "ark-map"`导入模块
+`import arkmap from "@ark-org/map"`导入模块
 
-`import "ark-map/dist/ark-map.css"` 导入样式
+`import "@ark-org/map/dist/index.css"` 导入样式
 
 ::: tip
 在离开页面时，需要调用`map.destroy()` 销毁地图

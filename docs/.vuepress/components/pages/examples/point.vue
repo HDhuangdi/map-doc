@@ -3,8 +3,8 @@
 </template>
 
 <script>
-import arkmap from "ark-map";
-import "ark-map/dist/ark-map.css";
+import arkmap from "@ark-org/map";
+
 import style from "./style.js";
 import { resolveImage } from "./utils";
 
@@ -21,9 +21,7 @@ export default {
       bearing: -20.8,
       style,
       hash: false,
-      antialias: true,
-      
-      staticDraw: true
+      passiveRendering: true
     });
     this.map.on("map.ready", () => {
       this.addMarker();
@@ -36,8 +34,10 @@ export default {
         id: "markerTest",
         header: {
           fragment: `
-            <p>这是1号打点</p>
-            <img src="${require('docs/assets/images/icon.png')}" />
+            <div style="transform: translate(0, -20px)">
+              <p>这是1号打点</p>
+              <img src="${require('docs/assets/images/icon.png')}" />
+            </div>
           `,
           style: {
             color: "#fff",
@@ -45,13 +45,14 @@ export default {
           },
         },
         body: {
+          width: 2,
           color: "#FFB557",
         },
         base: {
           image: image,
         },
         coord: [120.20853164716578, 30.25113591444385],
-        height: 400,
+        height: 500,
         onclick: (e) => {
           console.log(e);
         },

@@ -31,8 +31,6 @@ module.exports = {
           { text: "街景", target:"_blank",link: BASE_URL + "examples/3Dbuildings" },
           { text: "景深", target:"_blank",link: BASE_URL + "examples/dof" },
           { text: "雪天", target:"_blank",link: BASE_URL + "examples/flotsam" },
-          { text: "点亮建筑", target:"_blank",link: BASE_URL + "examples/lightup" },
-          { text: "聚焦", target:"_blank",link: BASE_URL + "examples/focus" },
           { text: "防护罩", target:"_blank",link: BASE_URL + "examples/cover" },
           { text: "热力图", target:"_blank",link: BASE_URL + "examples/heatmap" },
           { text: "路网导航", target:"_blank",link: BASE_URL + "examples/navigation" },

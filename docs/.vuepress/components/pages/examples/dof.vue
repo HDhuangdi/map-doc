@@ -1,21 +1,22 @@
 <template>
   <div class="container">
     <div id="map-container"></div>
-    <button @click="focus">聚焦</button>
   </div>
 </template>
 
 <script>
-import arkmap from "ark-map";
-import "ark-map/dist/ark-map.css";
+import arkmap from "@ark-org/map";
+
 import style from "./style.js";
+
+let map;
 
 export default {
   data: () => ({
     map: null,
   }),
   mounted() {
-    this.map = new arkmap.Map({
+    map = new arkmap.Map({
       container: "map-container",
       zoom: 15.9,
       center: [120.168788, 30.230241],
@@ -23,16 +24,15 @@ export default {
       bearing: 161.1,
       style,
       hash: false,
-      antialias: true,
-      
     });
-    this.map.on("map.ready", () => {
+    map.on("map.ready", () => {
       this.addBuildings();
+      this.setDOF();
     });
   },
   methods: {
     async addBuildings() {
-      this.map.addBuildings({
+      map.addBuildings({
         activeZoom: 12,
         removeZoom: 7,
         opacity: 1,
@@ -42,43 +42,19 @@ export default {
       });
     },
     setDOF() {
-      this.map.setDOF({
+      map.setDOF({
         enable: true,
-        blurRadius: 8,
-        near: 0.42,
-        nearRange: 0.17,
-        far: 0.59,
-        farRange: 0.1,
+        blurRadius: 4,
+        near: 0.4,
+        nearRange: 0.0,
+        far: 0.5,
+        farRange: 0.3,
       });
-    },
-    focus() {
-      this.setDOF();
-      this.map.once("click", this.unfocus);
-      this.map.once("wheel", this.unfocus);
-      this.map.focus(
-        {
-          center: [120.20853164716578, 30.25113591444385],
-          zoom: 15.5,
-          pitch: 63,
-          // rotation: false,
-          lightOptions: {
-            enable: true,
-            height: 70,
-          },
-        },
-        () => {}
-      );
-    },
-    unfocus() {
-      this.map.unfocus();
-      this.map.setDOF({
-        enable: false,
-      });
-    },
+    }
   },
 
   beforeDestroy() {
-    if (this.map) this.map.destroy();
+    if (map) map.destroy();
   },
 };
 </script>
@@ -86,17 +62,6 @@ export default {
 <style lang="less" scoped>
 .container {
   text-align: center;
-  button {
-    margin: 10px 0;
-    width: 100px;
-    height: 30px;
-    font-size: 18px;
-    border-radius: 5px;
-    cursor: pointer;
-    background: #4954e6;
-    border: 1px solid #4954e6;
-    color: #fff;
-  }
 }
 #map-container {
   height: 500px;

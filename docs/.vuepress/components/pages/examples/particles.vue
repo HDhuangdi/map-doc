@@ -3,8 +3,8 @@
 </template>
 
 <script>
-import arkmap from "ark-map";
-import "ark-map/dist/ark-map.css";
+import arkmap from "@ark-org/map";
+
 import style from "./style.js";
 import { resolveImage } from "./utils";
 
@@ -67,8 +67,8 @@ export default {
           [0, 2],
           [1, 0],
         ],
-        blendMode: "AdditiveBlending",
-        depthTest: true,
+        blendMode: "NormalBlending",
+        depthTest: false,
       });
       emitter.fire();
     },

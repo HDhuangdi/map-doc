@@ -377,7 +377,8 @@ map.lightUpBuilding({
 | **raduis\<number>** default: 0.0002 | 漂浮物开始发射的半径 |
 | **deathAge\<number>** default: 10 | 漂浮物从开始到消失的时间 |
 | **perSecond\<number>** default: 200 | 每秒钟发射漂浮物的个数 |
-| **sizeRange\<Array\<number>>** default: [10, 30] | 漂浮物的的大小范围 |
+| **sizeRange\<Array\<number>>** default: [10, 30] | 漂浮物的大小范围 |
+| **speedRange\<Array\<number>>** default: [1, 1] | 漂浮物下落的速度范围 |
 
 **返回值：**
 

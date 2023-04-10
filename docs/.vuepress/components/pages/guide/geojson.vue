@@ -3,8 +3,8 @@
 </template>
 
 <script>
-import arkmap from "ark-map";
-import "ark-map/dist/ark-map.css";
+import arkmap from "@ark-org/map";
+
 import style from "./quick-start-style.js";
 import geojson from "docs/assets/json/hangzhou_motorway.json";
 
@@ -24,7 +24,7 @@ export default {
       antialias: true,
       fixedZoom: true,
       
-      staticDraw: true
+      passiveRendering: true
     });
     this.map.on("map.ready", () => {
       this.addRoads();

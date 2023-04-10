@@ -19,7 +19,7 @@ navbar: false
 </template>
 
 <script>
-import "ark-map/dist/ark-map.css";
+
 import version from './version.js'
 import style from "./mapStyle.js";
 import geojson from "docs/assets/json/hangzhou_motorway.json";

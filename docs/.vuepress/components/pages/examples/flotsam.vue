@@ -3,8 +3,8 @@
 </template>
 
 <script>
-import arkmap from "ark-map";
-import "ark-map/dist/ark-map.css";
+import arkmap from "@ark-org/map";
+
 import style from "./style.js";
 import { resolveImages, resolveImage } from "./utils";
 
@@ -23,12 +23,6 @@ export default {
       antialias: true,
       minZoom: 15,
       maxZoom: 15,
-      vignetting: {
-        enable: true,
-        lightHeight: 170,
-        strength: 2,
-      },
-      
     });
     this.map.on("map.ready", () => {
       this.addBuildings();
@@ -56,15 +50,18 @@ export default {
       });
     },
     async snow() {
-      const { image } = await resolveImage(require("docs/assets/images/snow.png"));
+      const { image } = await resolveImage(
+        require("docs/assets/images/snow.png")
+      );
       this.map.setFlotsam({
         coord: [120.20853164716578, 30.25113591444385],
         texture: image,
-        altitude: 800,
-        raduis: 0.0002,
-        deathAge: 10,
-        perSecond: 400,
-        sizeRange: [10, 50],
+        altitude: 500,
+        raduis: 200,
+        deathAge: 100,
+        perSecond: 500,
+        sizeRange: [5, 20],
+        speedRange: [1, 2],
       }); // 设置雪花
     },
   },

@@ -3,8 +3,8 @@
 </template>
 
 <script>
-import arkmap from "ark-map";
-import "ark-map/dist/ark-map.css";
+import arkmap from "@ark-org/map";
+
 import style from "./quick-start-style.js";
 
 export default {
@@ -22,7 +22,7 @@ export default {
       antialias: true,
       fixedZoom: true,
       
-      staticDraw: true
+      passiveRendering: true
     });
   },
   beforeDestroy() {

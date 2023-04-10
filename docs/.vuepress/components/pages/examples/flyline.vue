@@ -3,8 +3,8 @@
 </template>
 
 <script>
-import arkmap from "ark-map";
-import "ark-map/dist/ark-map.css";
+import arkmap from "@ark-org/map";
+
 import style from "./style.js";
 
 export default {
@@ -33,7 +33,7 @@ export default {
         dest: [120.20853164716578, 30.25113591444385],
         lineColor: "#FB5431",
         backgroundColor: "#FB5431",
-        backgroundOpacity: 0.5,
+        backgroundOpacity: 1,
         size: 5,
         altitude: 6000000,
         points: 10000,

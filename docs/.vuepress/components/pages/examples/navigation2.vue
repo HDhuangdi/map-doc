@@ -5,9 +5,9 @@
 </template>
 
 <script>
-import arkmap from "ark-map";
+import arkmap from "@ark-org/map";
 import { resolveImage } from "./utils";
-import "ark-map/dist/ark-map.css";
+
 import style from "./style.js";
 import routeNetwork from "docs/assets/json/hangzhou_route_network.js";
 
@@ -31,7 +31,9 @@ export default {
       
     });
     this.map.on("map.ready", async () => {
+     
       await this.initModel();
+      console.log(111);
       this.pathMoving();
     });
   },
@@ -51,7 +53,7 @@ export default {
             angle: Math.PI / 2,
           },
         ],
-        scale: 0.000004,
+        scale: 7,
         altitude: 20,
       });
     },
