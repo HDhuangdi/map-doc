@@ -44,8 +44,8 @@ export default {
         bearing: 0,
         style,
         hash: false,
-        antialias: true,
-        fixedZoom: true,
+        fps: 60,
+        qualityPreset: 'high',
       });
       this.map.on("map.ready", () => {
         this.addBuildings()
@@ -135,7 +135,7 @@ export default {
     },
     setRotate() {
       const bearing = this.map.getBearing();
-      this.map.rotateTo(bearing + 0.1, { duration: 0 });
+      this.map.rotateTo(bearing + 0.02, { duration: 0 });
       this.frameId = requestAnimationFrame(() => this.setRotate.call(this, false));
     },
     setBreath() {
