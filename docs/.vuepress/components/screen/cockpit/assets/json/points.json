@@ -1,0 +1,16 @@
+{
+"type": "FeatureCollection",
+"name": "points",
+"features": [
+{ "type": "Feature", "properties": { "name": "点位2" }, "geometry": { "type": "Point", "coordinates": [ 119.330653031618496, 29.69689721642019 ] } },
+{ "type": "Feature", "properties": { "name": "点位1" }, "geometry": { "type": "Point", "coordinates": [ 119.610354869612763, 29.90701469471832 ] } },
+{ "type": "Feature", "properties": { "name": "点位3" }, "geometry": { "type": "Point", "coordinates": [ 119.77408277478014, 29.964319461526898 ] } },
+{ "type": "Feature", "properties": { "name": "点位5" }, "geometry": { "type": "Point", "coordinates": [ 119.968469128989298, 30.248005571196774 ] } },
+{ "type": "Feature", "properties": { }, "geometry": { "type": "Point", "coordinates": [ 120.046962616725764, 30.234470505053068 ] } },
+{ "type": "Feature", "properties": { }, "geometry": { "type": "Point", "coordinates": [ 120.170787795707966, 30.319795674352839 ] } },
+{ "type": "Feature", "properties": { }, "geometry": { "type": "Point", "coordinates": [ 120.096080988275972, 30.229012908214155 ] } },
+{ "type": "Feature", "properties": { }, "geometry": { "type": "Point", "coordinates": [ 120.201352943308052, 30.266142051271089 ] } },
+{ "type": "Feature", "properties": { }, "geometry": { "type": "Point", "coordinates": [ 120.055149011984128, 30.196267327180681 ] } },
+{ "type": "Feature", "properties": { }, "geometry": { "type": "Point", "coordinates": [ 120.156566077825502, 30.173416576476143 ] } }
+]
+}

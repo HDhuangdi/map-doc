@@ -34,7 +34,7 @@ export default {
     version
   }),
   mounted() {
-    import('ark-map').then(module => {
+    import('@ark-org/map').then(module => {
       const arkmap = module.default
       this.map = new arkmap.Map({
         container: "map-container",

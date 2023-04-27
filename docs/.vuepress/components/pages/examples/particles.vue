@@ -42,7 +42,7 @@ export default {
         coord: [120.20768, 30.25281],
         altitude: 0,
         texture: image,
-        particlesPerSecond: 80,
+        particlesPerSecond: 20,
         particleDeathAge: 2,
         positionRange: {
           center: [0, 0, 0],
@@ -57,7 +57,7 @@ export default {
         speedRange: [5, 6],
         sizeTween: [
           [0, 1, 2],
-          [80, 150, 0],
+          [40, 70, 0],
         ],
         colorTween: [
           [0, 1.8, 2],
@@ -67,8 +67,7 @@ export default {
           [0, 2],
           [1, 0],
         ],
-        blendMode: "NormalBlending",
-        depthTest: false,
+        depthTest: true,
       });
       emitter.fire();
     },
@@ -80,7 +79,7 @@ export default {
         coord: [120.21211069738536, 30.252747960379494],
         altitude: 0,
         texture: image,
-        particlesPerSecond: 400,
+        particlesPerSecond: 100,
         particleDeathAge: 1,
         positionRange: {
           center: [0, 0, 0],
@@ -93,11 +92,10 @@ export default {
           thetaLimit: [0, Math.PI * 2],
         },
         speedRange: [5, 20],
-        sizeRange: [40, 50],
+        sizeRange: [20, 50],
         color: "#000",
         colorRangeRadius: 4,
         opacityRange: [0.5, 1],
-        blendMode: "AdditiveBlending",
         depthTest: true,
       });
       emitter.fire();
@@ -110,7 +108,7 @@ export default {
         coord: [120.20270585611576, 30.25260449218905],
         altitude: 0,
         texture: image,
-        particlesPerSecond: 50,
+        particlesPerSecond: 20,
         particleDeathAge: 2,
         positionRange: {
           center: [0, 0, 0],
@@ -130,7 +128,6 @@ export default {
           [0, 2],
           [1, 0],
         ],
-        blendMode: "AdditiveBlending",
         depthTest: true,
       });
       emitter.fire();
@@ -160,10 +157,9 @@ export default {
         color: "#4DFF99",
         colorRangeRadius: 1,
         opacityTween: [
-          [0, 1, 2, 4, ],
+          [0, 1, 2, 4],
           [0, 1, 0.5, 0],
         ],
-        blendMode: "NormalBlending",
         depthTest: true,
       });
       emitter.fire();

@@ -30,6 +30,20 @@ ways 一个由众多点组成的导航路线。
 marker.setPosition(120.05, 30.3, 1000)
 ```
 
+#### `setVisible(visible)`
+
+控制该Marker是否显示。
+
+**参数列表：**
+
+*visible\<boolean>* 是否显示
+
+
+**示例：**
+```js
+marker.setVisible(false)
+```
+
 ## PathMoving
 
 路径动画类
@@ -60,4 +74,22 @@ pm.changeStatus(true)
 **示例：**
 ```js
 emitter.fire()
+```
+
+## Streamer
+
+流光线条类
+
+### 实例方法
+#### `changeStatic(isStatic)`
+
+调整流光线条的动画是否播放.
+
+**参数列表：**
+
+*isStatic\<boolean>* 是否播放
+
+**示例：**
+```js
+streamer.changeStatic(true)
 ```

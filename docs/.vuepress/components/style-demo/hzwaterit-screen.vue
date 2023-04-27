@@ -5,7 +5,7 @@
 <script>
 import arkmap from "@ark-org/map";
 
-import style from "./styles/apple-light.js";
+import style from "./styles/hzwaterit-screen.js";
 
 export default {
   data: () => ({
@@ -20,8 +20,6 @@ export default {
       bearing: -26.2,
       style,
       hash: false,
-      antialias: false,
-      
     });
     this.map.on("map.ready", () => {
       this.addBuildings();
@@ -31,12 +29,12 @@ export default {
     addBuildings() {
       this.map.addBuildings({
         layerId: "building-layer",
-        minzoom: 15.5,
+        minzoom: 10,
         opacity: 1,
         sourceLayer: "building_3d",
         heightField: "height",
-        before: "pois_other",
-        buildingColor: "rgb(236, 236, 234)",
+        before: "border_china",
+        buildingColor: "#8BA8C8",
       });
     },
   },

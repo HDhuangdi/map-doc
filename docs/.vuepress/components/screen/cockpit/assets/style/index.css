@@ -1,0 +1,129 @@
+@font-face {
+  font-family: PangMenZhengDao;
+  src: url(../fonts/PangMenZhengDaoBiaoTiTi-1.ttf);
+}
+
+.marker-container {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.marker-header {
+  align-items: center;
+  display: flex;
+  height: 32px;
+  position: relative;
+  width: 200px;
+}
+
+.marker-header span {
+  align-items: center;
+  background: rgb(2 21 29 / 70%);
+  display: flex;
+  font-family: PangMenZhengDao;
+  font-size: 20px;
+  height: 32px;
+  justify-content: center;
+  left: 31px;
+  position: absolute;
+  text-align: center;
+  width: calc(100% - 31px);
+}
+
+.marker-header img {
+  height: 32px;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 48px;
+  z-index: 2;
+}
+
+.marker-footer {
+  width: 16px;
+}
+
+.popup-container {
+  background-image: url(../images/popup-bg.png);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  box-sizing: border-box;
+  height: 320px;
+  padding: 17px 24px;
+  position: absolute;
+  right: -20px;
+  top: 0;
+  transform: translate(100%, 0);
+  width: 480px;
+}
+
+.popup-header {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+}
+
+.popup-header img.close {
+  cursor: pointer;
+  width: 20px;
+}
+
+.popup-title {
+  font-size: 20px;
+  font-weight: bold;
+  position: relative;
+  text-align: left;
+}
+
+.popup-title img {
+  bottom: -7px;
+  cursor: pointer;
+  left: 0;
+  position: absolute;
+  width: 120px;
+  z-index: -1;
+}
+
+.popup-subtitle {
+  align-items: center;
+  display: flex;
+  justify-content: flex-start;
+  margin-top: 20px;
+}
+
+.popup-subtitle div {
+  background: linear-gradient(180deg, rgb(54 235 247 / 0%) 0%, #19d2eb 100%);
+  height: 16px;
+  width: 10px;
+}
+
+.popup-subtitle span {
+  display: inline-block;
+  font-size: 16px;
+  margin-left: 11px;
+}
+
+.popup-body-row {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.popup-body-row-item {
+  align-items: center;
+  color: rgb(255 255 255 / 80%);
+  display: flex;
+  font-size: 16px;
+  width: 50%;
+}
+
+.popup-body-row-item span:nth-child(2) {
+  color: #fff;
+  display: inline-block;
+  font-family: Futura-HeavyOblique, Futura;
+  font-size: 16px;
+  margin: 0 8px;
+}

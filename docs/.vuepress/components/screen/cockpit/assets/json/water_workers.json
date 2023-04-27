@@ -1,0 +1,17 @@
+{
+"type": "FeatureCollection",
+"name": "water_workers",
+"features": [
+{ "type": "Feature", "properties": { "name": "点位2", "addr": null, "type": "制水厂" }, "geometry": { "type": "Point", "coordinates": [ 120.214783719522288, 30.036632619642511 ] } },
+{ "type": "Feature", "properties": { "name": "点位1", "addr": null, "type": "制水厂" }, "geometry": { "type": "Point", "coordinates": [ 119.914615893382106, 30.047547813320335 ] } },
+{ "type": "Feature", "properties": { "name": "点位4", "addr": null, "type": "制水厂" }, "geometry": { "type": "Point", "coordinates": [ 119.625363260919741, 29.777396769794169 ] } },
+{ "type": "Feature", "properties": { "name": "点位3", "addr": null, "type": "制水厂" }, "geometry": { "type": "Point", "coordinates": [ 120.07288620171056, 29.932938279703173 ] } },
+{ "type": "Feature", "properties": { "name": "点位6", "addr": null, "type": "制水厂" }, "geometry": { "type": "Point", "coordinates": [ 119.936446280737755, 30.29041087265194 ] } },
+{ "type": "Feature", "properties": { "name": "点位5", "addr": "", "type": "净水厂" }, "geometry": { "type": "Point", "coordinates": [ 119.38250020158813, 30.036632619642511 ] } },
+{ "type": "Feature", "properties": { "name": "点位8", "addr": "", "type": "净水厂" }, "geometry": { "type": "Point", "coordinates": [ 120.296647672105976, 30.222190912165534 ] } },
+{ "type": "Feature", "properties": { "name": "点位7", "addr": null, "type": "净水厂" }, "geometry": { "type": "Point", "coordinates": [ 119.756345585053637, 30.216733315326621 ] } },
+{ "type": "Feature", "properties": { "name": "点位10", "addr": null, "type": "制水厂" }, "geometry": { "type": "Point", "coordinates": [ 119.390686596846507, 29.553635299398756 ] } },
+{ "type": "Feature", "properties": { "name": "点位9", "addr": "", "type": "制水厂" }, "geometry": { "type": "Point", "coordinates": [ 119.041400399156103, 29.799227157149819 ] } },
+{ "type": "Feature", "properties": { "name": "点位11", "addr": null, "type": "制水厂" }, "geometry": { "type": "Point", "coordinates": [ 119.098109476457196, 30.186642870081158 ] } }
+]
+}

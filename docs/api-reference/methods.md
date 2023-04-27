@@ -26,7 +26,7 @@ sidebarDepth: 2
 | **colorTween\<Tween>** default: null | 粒子颜色Tween函数。设置改项后`color`、`colorRangeRadius`无效。如：`[[0, 10], ["#fff", "#f00"]`的意思是0秒时粒子的颜色为`#fff`，10秒时粒子的颜色为`#f00`，并对2~9秒时的粒子颜色进行线性插值。 |
 | **opacityRange\<Array\<number>>** default: [1, 1] | 粒子透明度的随机生成范围。 |
 | **opacityTween\<Tween>** default: null | 粒子透明度Tween函数。设置改项后`opacityRange`无效。如：`[[0, 10], [1, 0]]`的意思是0秒时粒子的透明度为1，10秒时粒子的透明度为0，并对2~9秒时间的粒子透明度进行线性插值。 |
-| **blendMode\<string>** default: `"AdditiveBlending"` | 表示粒子如何与其他图层进行混合。具体枚举见[混合模式](https://threejs.org/docs/index.html?q=materi#api/zh/constants/Materials) |
+| **premultipliedAlpha\<boolean>** default: `true` | 是否要开启alpha预乘。开启后，低透明度的颜色会偏黑，但是透明叠加会更加自然。 |
 | **depthTest\<boolean>** default: true | 是否开启深度测试 |
 
 
@@ -171,6 +171,79 @@ map.addCover({
 **示例：**
 ```js
 map.removeCover(cover);
+```
+
+### `addMeshLine(geojson, options)`
+在地图中添加带宽度、带高度、带海拔的线条。
+
+**参数列表：**
+
+*geojson\<geojson>* 需要添加的地理线条，其类型必须为`MultiLineString`，格式如下：
+```json
+{
+  "type": "FeatureCollection",
+  "name": "xxxx",
+  "crs": {
+    "type": "name",
+    "properties": { },
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "properties": { },
+      "geometry": {
+          "type": "MultiLineString",
+          "coordinates": [
+            [
+              [119.857096, 30.259975],
+              [119.853097, 30.259962]
+            ],
+            [
+              [119.857365, 30.259774],
+              [119.857187, 30.259771]
+            ]
+          ]
+      }
+    }
+  ]
+}
+```
+
+*options\<object>* 所有配置项都是可选的
+|  名称   | 描述  |
+|  ----  | ----  |
+| **lineWidth\<string>** | 线宽 |
+| **color\<color>** default: '#fff' | 线条颜色 |
+| **opacity\<number>** default: 1 | 线条透明度 |
+| **height\<number>** default: 0 | 线条高度，单位：米 |
+| **altitude\<number>** default: 0| 线条海拔，单位：米 |
+
+**返回值：**
+
+MeshLine内部类实例
+
+
+**示例：**
+```js
+map.addMeshLine(line, {
+  color: 'red',
+  opacity: 0.5,
+  height: 100,
+  altitude: 1000
+});
+```
+
+### `removeMeshLine(meshLine)`
+在地图中移除MeshLine。
+
+**参数列表：**
+
+*meshLine\<MeshLine>* 要移除的MeshLine的对象
+
+
+**示例：**
+```js
+map.removeCover(meshLine);
 ```
 
 ### `addSkyBox(options)`
@@ -545,12 +618,12 @@ FlyLine内部类实例
           "type": "MultiLineString",
           "coordinates": [
             [
-              [119.857096, 30.259975],
-              [119.853097, 30.259962]
+              [119.857096, 30.259975, 1000],
+              [119.853097, 30.259962, 1000]
             ],
             [
-              [119.857365, 30.259774],
-              [119.857187, 30.259771]
+              [119.857365, 30.259774, 1000],
+              [119.857187, 30.259771, 1000]
             ]
           ]
       }
@@ -571,7 +644,7 @@ FlyLine内部类实例
 
 **返回值：**
 
-Streamer内部类实例
+[Streamer内部类实例](/api-reference/inner-class.html#streamer)
 
 **示例：**
 ```js
@@ -1253,7 +1326,7 @@ const features = map.querySourceFeatures('your-source-id', {
 
 **参数列表：**
 
-*style\<object | string | null>*: 详见[样式规范](/style-specification/)
+*style\<object | string | null>*: 详见[样式规范](https://docs.mapbox.com/mapbox-gl-js/style-spec/)
 
 *options\<object>*
 
@@ -1489,7 +1562,7 @@ const allImages = map.listImages();
 
 **参数列表：**
 
-*layer\<string>*: 样式对象。详见[样式规范](/style-specification/)。
+*layer\<string>*: 样式对象。详见[样式规范](https://docs.mapbox.com/mapbox-gl-js/style-spec/)。
 
 *beforeId\<string>*: 现有图层的 ID，新图层将在此图层之前插入，从而使新图层显示在这个图层之下。如果没有指定这个参数，图层将被追加到图层数组的末尾，并在所有其他图层之上显示。
 
@@ -1579,7 +1652,7 @@ map.setLayerZoomRange('my-layer', 2, 5);
 
 *layerId\<string>*: 图层id。
 
-*filter\<Array | null | undefined>*: 过滤器对象，详见[样式规范](/style-specification/)。
+*filter\<Array | null | undefined>*: 过滤器对象，详见[样式规范](https://docs.mapbox.com/mapbox-gl-js/style-spec/)。
 
 **返回值：**
 
@@ -1688,7 +1761,7 @@ const layoutProperty = map.getLayoutProperty('mySymbolLayer', 'icon-anchor');
 
 **参数列表：**
 
-*light\<LightSpecification>*: 详见[样式规范](/style-specification/)。
+*light\<LightSpecification>*: 详见[样式规范](https://docs.mapbox.com/mapbox-gl-js/style-spec/)。
 
 **返回值：**
 
@@ -1720,7 +1793,7 @@ const light = map.getLight();
 
 **参数列表：**
 
-*fog\<FogSpecification>*: 详见[样式规范](/style-specification/)。
+*fog\<FogSpecification>*: 详见[样式规范](https://docs.mapbox.com/mapbox-gl-js/style-spec/)。
 
 **返回值：**
 

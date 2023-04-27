@@ -11,7 +11,7 @@
 <script>
 import arkmap from "@ark-org/map";
 
-import style from "../style.js";
+import style from "./style.js";
 import Bottom from "./bottom.vue";
 import Left from "./left.vue";
 import Right from "./right.vue";
@@ -69,6 +69,7 @@ export default {
         roofcolor: "#21414B",
         vignetting: true,
         light: {
+          enable: true,
           color: "#0885F4",
           strength: 1.3,
         },
@@ -77,8 +78,8 @@ export default {
     addStreamers() {
       this.map.addStreamer(roads, {
         lineColor: "#0098FF",
-        blurRadius: 10,
-        blurStrength: 3,
+        blurRadius: 3,
+        blurStrength: 2,
         length: 0.5,
         minLength: 1000,
         lineWidth: 2,
@@ -95,12 +96,14 @@ export default {
           id: "markerTest",
           header: {
             fragment: `
-              <p>${unit.name}</p>
-              <img src=${
-                unit.type === "danger"
-                  ? require("./images/marker_icon_danger.png")
-                  : require("./images/marker_icon.png")
-              } />
+              <div style="transform: translate(0, -20px)">
+                <p>${unit.name}</p>
+                <img src=${
+                  unit.type === "danger"
+                    ? require("./images/marker_icon_danger.png")
+                    : require("./images/marker_icon.png")
+                } />
+              </div>
             `,
             style: {
               color: "#fff",

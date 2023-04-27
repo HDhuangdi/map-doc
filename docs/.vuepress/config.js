@@ -17,9 +17,10 @@ module.exports = {
     nav: [
       { text: "教程", link: "/guide/" },
       { text: "API参考", link: "/api-reference/map" },
-      { text: "样式规范", link: "/style-specification/" },
+      { text: "样式规范", link: "https://docs.mapbox.com/mapbox-gl-js/style-spec/" },
       { text: "大屏", items: [
           { text: "重大安保", target:"_blank", link: BASE_URL + "screen/zb" },
+          { text: "驾驶舱", target:"_blank", link: BASE_URL + "screen/cockpit" },
         ]
       },
       {
@@ -41,6 +42,7 @@ module.exports = {
       { text: "样式参考", items: [
         { text: "苹果地图-暗色", target:"_blank", link: BASE_URL + "style-demo/apple-dark" },
         { text: "苹果地图-亮色", target:"_blank", link: BASE_URL + "style-demo/apple-light" },
+        { text: "综合大屏", target:"_blank", link: BASE_URL + "style-demo/hzwaterit-screen" },
       ]
     },
     ],

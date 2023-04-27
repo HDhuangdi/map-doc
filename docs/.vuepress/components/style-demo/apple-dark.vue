@@ -30,7 +30,7 @@ export default {
   methods: {
     addBuildings() {
       this.map.addBuildings({
-        layerId: "bbbbbb",
+        layerId: "building-layer",
         minzoom: 15.5,
         opacity: 1,
         sourceLayer: "building_3d",
