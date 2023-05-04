@@ -111,7 +111,7 @@ map.removeEmitter(emitter)
 | **before\<string>** default: null | 将建筑图层添加到那个图层之前，默认添加在图层列表末尾。 |
 | **mixinStrength\<number>** default: 1 | 混合建筑贴图和建筑颜色的参数。 |
 | **vignetting\<number>** default: false | 是否开启边缘暗角特效 |
-| **light\<object>** default: {color: '#000'} | 建筑打光配置，注：颜色采用加法算法，故如不需打光，设置`color: '#000'`即可 |
+| **light\<object>** default: {enable: false, color: '#000', strength: 1.0} | 建筑打光配置，注：颜色采用加法算法。 |
 
 
 **示例：**
@@ -283,8 +283,9 @@ map.addCover({
 | **coord\<Array\<number>>** | 打点经纬度 |
 | **altitude\<number>** | 打点海拔高度 |
 | **height\<number>** | 打点整体高度 |
-| **doublePrecision\<boolean>** default: false | 是否启用双精度浮点数运算。若不启用，在高缩放等级下模型会不可避免的产生抖动；如果启用此项，可避免抖动，但是会消耗一定的性能 |
-| **onclick\<Function>** | 点击事件 |
+| **onclick\<Function>** | 点击事件回调函数 |
+| **minzoom\<number>** | 最小显示层级 |
+| **maxzoom\<number>** | 最大显示层级 |
 
 **默认值：**
 ```js
@@ -470,18 +471,6 @@ map.setFlotsam({
 })
 ```
 
-### `removeEmitter(emitter)`
-地图移除emitter粒子发射器。
-
-**参数列表：**
-
-*emitter\<Emitter>* emitter对象
-
-**示例：**
-```js
-map.removeEmitter(emitter)
-```
-
 ### `focus(options, callback)`
 让地图聚焦某处。
 
@@ -641,6 +630,7 @@ FlyLine内部类实例
 | **lineColor\<color>** default: "#fff" | 流光线条颜色 |
 | **blurRadius\<number>** default: 10 | 流光发光半径 |
 | **blurStrength\<number>** default: 3 | 流光发光强度 |
+| **speed\<number>** default: 1 | 流光流动的速度 |
 
 **返回值：**
 
@@ -686,7 +676,6 @@ map.removeStreamer(streamer);
 | **coord\<Array\<number>>** default: [0, 0] | 模型所在经纬度 |
 | **altitude\<number>** default: 0 | 模型所在海拔高度 |
 | **onClick\<Function>** default: (delta, obj) => {} | 模型点击事件 |
-| **doublePrecision\<boolean>** default: false | 是否启用双精度浮点数运算。若不启用，在高缩放等级下模型会不可避免的产生抖动；如果启用此项，可避免抖动，但是会消耗一定的性能 |
 | **animate\<Function>** default: (delta, obj) => {} | 每帧渲染时会执行的函数，传递参数：帧间隔时间，单位ms；3D模型对象 |
 
 **返回值：**
@@ -742,6 +731,7 @@ map.remove3DModel(model);
 | **duration\<number>** default: undefined | 动画持续时间，单位：ms，配置此项后`speed`参数失效 |
 | **onRender\<function>** default: () => {} | 每一帧会触发的回调函数 |
 | **onEnd\<function>** default: () => {} | 每次轨迹动画结束后会触发的回调函数 |
+| **loop\<boolean>** default: true | 每次轨迹动画结束后是否会从头开始播放 |
 
 **返回值：**
 
@@ -802,6 +792,7 @@ map.removePathMoving(pathMoving);
 | **height\<number>** default: 100 | 墙体的高度，单位：米 |
 | **flowTexture\<HTMLImageElement>** default: null | 墙体的浮动纹理贴图 |
 | **flowSpeed\<number>** default: 1 | 墙体的浮动纹理的浮动速度 |
+| **altitude\<number>** default: 0 | 墙体的整体海拔高度，单位：米 |
 
 **返回值：**
 

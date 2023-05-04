@@ -32,7 +32,7 @@ new Map(options: Object)
 | **minPitch** | 85 | 最小俯仰角 |
 | **minZoom** | 22 | 最小缩放值 |
 | **style** | {} | 样式对象，详见[样式规范](https://docs.mapbox.com/mapbox-gl-js/style-spec/) |
-| **passiveRendering** | false | 是否开启被动渲染。若配置为`true`，则不会时时渲染动态效果，以节约GPU资源 |
+| **passiveRendering** | false | 是否开启被动渲染。若配置为`true`，则不会实时渲染动态效果，以节约GPU资源 |
 | **fps** | 60 | 锁帧配置，单位：每秒帧数 |
 
 ## 示例

@@ -120,7 +120,6 @@ export default {
             depthTest: true,
           },
           coord: unit.lnglat,
-          doublePrecision: true,
           height: 400,
           onclick: (e) => {
             console.log(e);
