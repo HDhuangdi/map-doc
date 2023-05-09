@@ -8,8 +8,7 @@ new Map(options: Object)
 ## 参数
 |  名称   | 默认值  | 描述  |
 |  ----  | ----  | ----  |
-| **qualityPreset** | 'high' | 画面质量预设。可选值：low（低质量）, hgih（高质量） |
-| **antialias** | true | 开启抗锯齿 |
+| **qualityPreset** | 'high' | 画面质量预设。可选值：low（低质量）, high（高质量） |
 | **bearing** | 0 | 地图旋转角度。如果在构造函数中没有指定，地图会从样式对象中寻找，如果还没有找到，就赋值为0 |
 | **bearingSnap** | 7 | 地图旋转角度矫正阈值。假如设置为7，则用户将地图旋转到正北`bearing: ±7`时，地图会自动归正为正北`bearing:0` |
 | **pitch** | 0 | 地图的俯仰角 |
@@ -34,6 +33,10 @@ new Map(options: Object)
 | **style** | {} | 样式对象，详见[样式规范](https://docs.mapbox.com/mapbox-gl-js/style-spec/) |
 | **passiveRendering** | false | 是否开启被动渲染。若配置为`true`，则不会实时渲染动态效果，以节约GPU资源 |
 | **fps** | 60 | 锁帧配置，单位：每秒帧数 |
+| **sourceDebug** | false | 开启source日志 |
+| **stageAntialias** | true | 是否开启抗锯齿 |
+| **offscreenAntialias** | true | 离屏图层是否开启抗锯齿 |
+| **buildingAntialias** | false | 建筑图层是否开启抗锯齿 |
 
 ## 示例
 

@@ -3,6 +3,109 @@ sidebarDepth: 2
 ---
 
 # 公用类
+## CustomStageUtils
+自定义图层工具类
+### `StageMouseEvent`
+自定义图层鼠标事件类
+
+**构造参数列表：**
+
+*map\<ArkMap>* [ArkMap底图实例对象](/api-reference/map.html)
+
+*camera\<THREE.Camera>* 由[customStageInstance](/api-reference/methods.html#addcustomstage-customstageinstance)传入的camera对象
+
+*scene\<THREE.Scene>* 由[customStageInstance](/api-reference/methods.html#addcustomstage-customstageinstance)传入的scene对象
+
+**方法：**
+
+`onHover(obj3D, callback)`
+
+鼠标移入`obj3D`对象后（类型为`THREE.Object3D`），会触发`callback`参数。
+
+`callback`函数接收两个参数：
+- `e: MouseEvent`：表示鼠标原生事件；
+- `intersects: THREE.Object3D[]`：表示当前鼠标位置往屏幕内投射，穿越的所有物体（`obj3D`本身及`obj3D.children`）
+
+**示例：**
+```js
+const geo = new THREE.BoxGeometry(10, 10, 10)
+const mat = new THREE.MeshBasicMaterial()
+const mesh = new THREE.Mesh(geo, mat)
+
+const eventCenter =  new CustomStageUtils.StageMouseEvent(map, camera, scene)
+eventCenter.onHover(mesh, (e, intersects) => {
+  if (intersects.length) {
+    console.log('鼠标有拾取到mesh物体哦')
+  }
+});
+
+```
+
+`onClick(obj3D, callback)`
+
+鼠标点击`obj3D`对象后（类型为`THREE.Object3D`），会触发`callback`参数。
+
+`callback`函数接收两个参数：
+- `e: MouseEvent`：表示鼠标原生事件；
+- `intersects: THREE.Object3D[]`：表示当前鼠标位置往屏幕内投射，穿越的所有物体（`obj3D`本身及`obj3D.children`）
+
+**示例：**
+```js
+const geo = new THREE.BoxGeometry(10, 10, 10)
+const mat = new THREE.MeshBasicMaterial()
+const mesh = new THREE.Mesh(geo, mat)
+
+const eventCenter =  new CustomStageUtils.StageMouseEvent(map, camera, scene)
+eventCenter.onHover(mesh, (e, intersects) => {
+  if (intersects.length) {
+    console.log('鼠标有点击到mesh物体哦')
+  }
+});
+
+```
+
+
+### `convertLnglatToWorld(lnglat)`
+将经纬度映射到世界坐标
+
+**参数列表：**
+
+*lnglat\<number[ ] \|\| number[ ][ ]>* 经度、纬度、海拔(可选)坐标，或者是经度、纬度、海拔(可选)坐标数组
+
+**返回值：**
+传入经纬度坐标，返回一个世界坐标`{x: xxx, y: xxx, z: xxx}`；传入一个经度、纬度、海拔(可选)坐标数组，返回两个值：
+- `vertices`: 以`position`为中心的相对坐标数组
+- `position`: 中心坐标
+
+**示例：**
+```js
+const coords = [
+  [120.1896, 30.1997],
+  [120.1964, 30.2028],
+  [120.1981, 30.1943],
+  [120.1909, 30.1937],
+  [120.1896, 30.1997],
+]
+const pos = CustomStageUtils.convertLnglatToWorld(coords)
+const shp = new THREE.Shape()
+
+let isFirst
+for (coord of pos.vertices) {
+  if (isFirst) {
+    isFirst = false
+    shp.moveTo(coord.x, coord.y)
+  } else {
+    shp.lineTo(coord.x, coord.y)
+  }
+}
+
+const geo = new THREE.ExtrudeGeometry(shp, {bevelEnabled: false, depth: 10})
+const mat = new THREE.MeshBasicMaterial()
+const mesh = new THREE.Mesh(mat)
+mesh.position.copy(pos.position)
+
+world.add(mesh)
+```
 
 ## Navigation
 导航类，用于根据geojson路网计算导航路径
