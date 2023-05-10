@@ -4,6 +4,43 @@ sidebarDepth: 2
 
 # 实例方法
 ## 高级
+### `addCustomStage(customStageInstance)`
+在地图中添加自定义图层。
+
+**参数列表：**
+
+*customStageInstance\<CustomStageInterface>* 
+自定义图层实例对象，需要实现以下接口。
+
+```typescript
+interface CustomStageInterface {
+  onAdd: (map: ArkMap, renderer: THREE.WebGLRenderer, world: THREE.Group, scene: THREE.Scene, camera: THREE.Camera);
+  render: (delta: number);
+}
+```
+::: tip
+如需在地图中添加自定义Three.js物体，需要使用`world.add()`而非`scene.add()`
+:::
+
+**示例：**
+```js
+class CustomStage {
+  onAdd(map, renderer, world, scene, camera) {
+    const geo = new THREE.BoxGeometry(10, 10, 10)
+    const mat = new THREE.MeshBasicMaterial()
+    const mesh = new THREE.Mesh(geo, mat)
+    world.add(mesh)
+    console.log('onAdded!')
+  }
+
+  render(delta) {
+    console.log('CustomStage rendered!')
+  }
+}
+const customStageInstance = new CustomStage()
+map.addCustomStage(customStageInstance);
+```
+
 ### `getParticleEmitter(options)`
 获取一个例子发射器。
 
@@ -286,6 +323,7 @@ map.addCover({
 | **onclick\<Function>** | 点击事件回调函数 |
 | **minzoom\<number>** | 最小显示层级 |
 | **maxzoom\<number>** | 最大显示层级 |
+| **zIndex\<number>** | marker.header.style的z-index值 |
 
 **默认值：**
 ```js

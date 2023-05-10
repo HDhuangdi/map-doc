@@ -30,6 +30,20 @@ ways 一个由众多点组成的导航路线。
 marker.setPosition(120.05, 30.3, 1000)
 ```
 
+#### `setZIndex(zIndex)`
+
+更改当前marker.header.style的z-index属性。
+
+**参数列表：**
+
+*zIndex\<number>* z-index值
+
+
+**示例：**
+```js
+marker.setZIndex(10)
+```
+
 #### `setVisible(visible)`
 
 控制该Marker是否显示。
