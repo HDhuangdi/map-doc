@@ -10,10 +10,10 @@
     "@jridgewell/gen-mapping" "^0.3.0"
     "@jridgewell/trace-mapping" "^0.3.9"
 
-"@ark-org/map@0.0.1-beta.28":
-  "integrity" "sha512-28kuA9RX+S/4KctARel7k/3p63qZ5jgz8Ivy7FJf+JOYL+SA1roTronFmaS6kmJirn5nfDsLan5LFiKnZsRvfg=="
-  "resolved" "https://registry.npmjs.org/@ark-org/map/-/map-0.0.1-beta.28.tgz"
-  "version" "0.0.1-beta.28"
+"@ark-org/map@0.0.1-beta.29":
+  "integrity" "sha512-4WPjAz6flEC3EAt9vwnDYU4xYPA9jenVxrfWmZX5KigfDvUgyEfTm4FExA/EVjvHQNOHVx3B0qeRVis4SvCq8w=="
+  "resolved" "https://registry.npmjs.org/@ark-org/map/-/map-0.0.1-beta.29.tgz"
+  "version" "0.0.1-beta.29"
   dependencies:
     "@ark-org/three" "0.0.2"
     "@mapbox/geojson-rewind" "^0.5.1"
