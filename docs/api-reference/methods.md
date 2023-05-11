@@ -13,9 +13,17 @@ sidebarDepth: 2
 自定义图层实例对象，需要实现以下接口。
 
 ```typescript
-interface CustomStageInterface {
-  onAdd: (map: ArkMap, renderer: THREE.WebGLRenderer, world: THREE.Group, scene: THREE.Scene, camera: THREE.Camera);
-  render: (delta: number);
+interface ICustomStage {
+  id: String;
+  onAdd: (
+    map: ArkMap,
+    renderer: THREE.WebGLRenderer,
+    world: THREE.Group,
+    scene: THREE.Scene,
+    camera: THREE.Camera
+  ) => void;
+  render: (delta: number) => void;
+  destroy: () => void;
 }
 ```
 ::: tip
