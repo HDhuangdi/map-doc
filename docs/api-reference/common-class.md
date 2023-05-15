@@ -22,9 +22,17 @@ sidebarDepth: 2
 
 鼠标移入`obj3D`对象后（类型为`THREE.Object3D`），会触发`callback`参数。
 
+**方法签名：**
+```typescript
+interface IMouseEventCallback {
+  (e: MouseEvent, intersects: THREE.Intersection<THREE.Object3D>[]): void;
+}
+onHover(obj: THREE.Object3D, callback: IMouseEventCallback): void;
+```
+
 `callback`函数接收两个参数：
 - `e: MouseEvent`：表示鼠标原生事件；
-- `intersects: THREE.Object3D[]`：表示当前鼠标位置往屏幕内投射，穿越的所有物体（`obj3D`本身及`obj3D.children`）
+- `intersects: THREE.Intersection<THREE.Object3D>[]`：表示当前鼠标位置往屏幕内投射，穿越的所有物体（`obj3D`本身及`obj3D.children`）
 
 **示例：**
 ```js
@@ -45,9 +53,17 @@ eventCenter.onHover(mesh, (e, intersects) => {
 
 鼠标点击`obj3D`对象后（类型为`THREE.Object3D`），会触发`callback`参数。
 
+**方法签名：**
+```typescript
+interface IMouseEventCallback {
+  (e: MouseEvent, intersects: THREE.Intersection<THREE.Object3D>[]): void;
+}
+onClick(obj: THREE.Object3D, callback: IMouseEventCallback): void;
+```
+
 `callback`函数接收两个参数：
 - `e: MouseEvent`：表示鼠标原生事件；
-- `intersects: THREE.Object3D[]`：表示当前鼠标位置往屏幕内投射，穿越的所有物体（`obj3D`本身及`obj3D.children`）
+- `intersects: THREE.Intersection<THREE.Object3D>[]`：表示当前鼠标位置往屏幕内投射，穿越的所有物体（`obj3D`本身及`obj3D.children`）
 
 **示例：**
 ```js
@@ -64,9 +80,14 @@ eventCenter.onHover(mesh, (e, intersects) => {
 
 ```
 
-
 ### `convertLnglatToWorld(lnglat)`
 将经纬度映射到世界坐标
+
+**方法签名：**
+```typescript
+type TConvertLnglatToWorldResult = THREE.Vector3 | {vertices: THREE.Vector3[]; position: THREE.Vector3};
+convertLnglatToWorld(lnglat: number[] | number[][]) => TConvertLnglatToWorldResult
+```
 
 **参数列表：**
 
@@ -116,6 +137,16 @@ world.add(mesh)
 #### `genDirvingInfo(path)`
 根据传入的导航路线数组，输出每个点和下一个点之间需要变换的角度、两点之间的距离的信息集合。
 
+**方法签名：**
+```typescript
+type TDrivingInfo = {
+  dist: number;
+  bearing: number;
+  coord: GeoJSON.Position;
+};
+static genDrivingInfo(path: [number, number][]): TDrivingInfo[]
+```
+
 **参数列表：**
 
 *path\<Array\<Array\<number>>>* 一个导航路线数组
@@ -135,6 +166,11 @@ const info = Navigation.genDirvingInfo(way);
 #### `findWay(point1, point2)`
 根据俩个经纬度点，两点必须在给定的路网GEOJSON内，在路网中寻找连接路线。
 
+**方法签名：**
+```typescript
+findWay(point1: number[], point2: number[]): undefined | number[][];
+```
+
 **参数列表：**
 
 *point1\<Array\<number>>* 一个经纬度数组
@@ -153,6 +189,11 @@ const way = navigation.findWay(start, end);
 
 #### `findWayFuzzy(point1, point2)`
 根据俩个经纬度点，在路网中模糊查询，寻找路线。
+
+**方法签名：**
+```typescript
+findWayFuzzy(point1: number[], point2: number[]): Promise<undefined | { path: number[][] }>;
+```
 
 **参数列表：**
 

@@ -726,7 +726,7 @@ map.removeStreamer(streamer);
 
 **返回值：**
 
-Model内部类实例
+[Model内部类实例](/api-reference/inner-class.html#model)
 
 **示例：**
 ```js
