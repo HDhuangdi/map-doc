@@ -20,7 +20,7 @@ export default {
       pitch: 0,
       bearing: -26.2,
       style,
-      hash: true,
+      hash: false,
     });
     const resizeObserver = new ResizeObserver(() => {
       this.map.resize()

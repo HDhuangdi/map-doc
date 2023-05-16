@@ -372,8 +372,8 @@ export default {
           stops: [
             [7, 9],
             [9, 12],
-            [11, 25],
-            [14, 30],
+            [11, 18],
+            [14, 20],
           ],
         },
         "text-transform": "uppercase",
@@ -422,8 +422,8 @@ export default {
         "text-allow-overlap": true,
         "text-size": {
           stops: [
-            [4, 20],
-            [6, 25],
+            [4, 12],
+            [6, 18],
             [9, 30],
           ],
         },
@@ -603,7 +603,7 @@ export default {
         visibility: "visible",
       },
       paint: {
-        "line-color": "rgba(93, 124, 164, 0.91)",
+        "line-color": "#444",
         "line-width": {
           base: 1.1,
           stops: [
