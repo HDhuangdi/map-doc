@@ -5,49 +5,7 @@ sidebarDepth: 2
 # 实例方法
 ## 高级
 ### `addCustomStage(customStageInstance)`
-在地图中添加自定义图层。
-
-**参数列表：**
-
-*customStageInstance\<CustomStageInterface>* 
-自定义图层实例对象，需要实现以下接口。
-
-```typescript
-interface ICustomStage {
-  id: String;
-  onAdd: (
-    map: ArkMap,
-    renderer: THREE.WebGLRenderer,
-    world: THREE.Group,
-    scene: THREE.Scene,
-    camera: THREE.Camera
-  ) => void;
-  render: (delta: number) => void;
-  destroy: () => void;
-}
-```
-::: tip
-如需在地图中添加自定义Three.js物体，需要使用`world.add()`而非`scene.add()`
-:::
-
-**示例：**
-```js
-class CustomStage {
-  onAdd(map, renderer, world, scene, camera) {
-    const geo = new THREE.BoxGeometry(10, 10, 10)
-    const mat = new THREE.MeshBasicMaterial()
-    const mesh = new THREE.Mesh(geo, mat)
-    world.add(mesh)
-    console.log('onAdded!')
-  }
-
-  render(delta) {
-    console.log('CustomStage rendered!')
-  }
-}
-const customStageInstance = new CustomStage()
-map.addCustomStage(customStageInstance);
-```
+在地图中添加自定义图层。详见[自定义图层](/api-reference/custom-stage.html)
 
 ### `getParticleEmitter(options)`
 获取一个例子发射器。
@@ -145,13 +103,15 @@ map.removeEmitter(emitter)
 *options\<object>* 所有配置项都是可选的
 |  名称   | 描述  |
 |  ----  | ----  |
+| **layerId\<string>** | 图层id |
 | **textures\<Array\<HTMLImageElement>>** | 建筑贴图，必须为6张或者0张 |
 | **roofcolor\<string>** default: 'auto' | 屋顶色，若未设置`textures`则忽略此项。 |
 | **minzoom\<number>** default: 10 | 在此缩放层级开始显示建筑图层。 |
 | **maxzoom\<number>** default: 20 | 建筑图层最大可以显示到此缩放层级。 |
 | **buildingColor\<\<string>\|\|Array\<string>>** default: '#fff' | 建筑颜色。若为数组，则为渐变色，第一个元素为底部颜色，第二个元素为顶部颜色。若设置`textures`则改颜色和贴图进行混合，混合参数为`mixinStrength`。 |
 | **opacity\<string>** default: 1 | 建筑透明度 |
-| **sourceLayer\<string>** default: 'buildings' | 适量瓦片源图层。 |
+| **sourceLayer\<string>** default: 'buildings' | 矢量瓦片内部图层。 |
+| **source\<string>** default: 'composite' | 矢量瓦片源 |
 | **heightField\<string>** default: 'height' | 源数据中用于生成建筑高度的字段。 |
 | **before\<string>** default: null | 将建筑图层添加到那个图层之前，默认添加在图层列表末尾。 |
 | **mixinStrength\<number>** default: 1 | 混合建筑贴图和建筑颜色的参数。 |

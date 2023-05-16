@@ -1,9 +1,10 @@
 <template>
-  <div id="map-container"></div>
+  <div id="map-container" ref="root"></div>
 </template>
 
 <script>
 import arkmap from "@ark-org/map";
+import "@ark-org/map/dist/index.css"
 
 import style from "./style.js";
 
@@ -24,6 +25,10 @@ export default {
       hash: false,
       passiveRendering: true,
     });
+    const resizeObserver = new ResizeObserver(() => {
+      this.map.resize()
+    });
+    resizeObserver.observe(this.$refs.root);
     this.map.on("map.ready", () => {
       this.addBuildings();
     });
@@ -62,6 +67,7 @@ export default {
 
 <style lang="less" scoped>
 #map-container {
-  height: 500px;
+  height: 100%;
+  min-height: 500px;
 }
 </style>

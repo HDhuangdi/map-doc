@@ -1,11 +1,12 @@
 <template>
-  <div class="container">
+  <div class="container" ref="root">
     <div id="map-container2"></div>
   </div>
 </template>
 
 <script>
 import arkmap from "@ark-org/map";
+import "@ark-org/map/dist/index.css"
 import { resolveImage } from "./utils";
 
 import style from "./style.js";
@@ -27,13 +28,13 @@ export default {
       bearing: -37.6,
       style,
       hash: false,
-      antialias: true,
-      
     });
+    const resizeObserver = new ResizeObserver(() => {
+      this.map.resize()
+    });
+    resizeObserver.observe(this.$refs.root);
     this.map.on("map.ready", async () => {
-     
       await this.initModel();
-      console.log(111);
       this.pathMoving();
     });
   },
@@ -79,8 +80,11 @@ export default {
 .container {
   text-align: center;
   position: relative;
+  height: 100%;
+  min-height: 500px;
 }
 #map-container2 {
-  height: 500px;
+  height: 100%;
+  min-height: 500px;
 }
 </style>

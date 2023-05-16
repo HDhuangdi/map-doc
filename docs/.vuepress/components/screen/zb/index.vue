@@ -10,6 +10,7 @@
 
 <script>
 import arkmap from "@ark-org/map";
+import "@ark-org/map/dist/index.css"
 
 import style from "./style.js";
 import Bottom from "./bottom.vue";

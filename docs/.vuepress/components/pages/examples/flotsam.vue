@@ -1,9 +1,10 @@
 <template>
-  <div id="map-container4"></div>
+  <div id="map-container4" ref="root"></div>
 </template>
 
 <script>
 import arkmap from "@ark-org/map";
+import "@ark-org/map/dist/index.css"
 
 import style from "./style.js";
 import { resolveImages, resolveImage } from "./utils";
@@ -20,10 +21,14 @@ export default {
       pitch: 61,
       bearing: -20,
       style,
-      antialias: true,
       minZoom: 15,
       maxZoom: 15,
+      qualityPreset: 'high'
     });
+    const resizeObserver = new ResizeObserver(() => {
+      this.map.resize()
+    });
+    resizeObserver.observe(this.$refs.root);
     this.map.on("map.ready", () => {
       this.addBuildings();
       this.snow();
@@ -58,9 +63,9 @@ export default {
         texture: image,
         altitude: 500,
         raduis: 200,
-        deathAge: 100,
+        deathAge: 10,
         perSecond: 500,
-        sizeRange: [5, 20],
+        sizeRange: [10, 20],
         speedRange: [1, 2],
       }); // 设置雪花
     },
@@ -73,6 +78,7 @@ export default {
 
 <style lang="less" scoped>
 #map-container4 {
-  height: 500px;
+  height: 100%;
+  min-height: 500px;
 }
 </style>

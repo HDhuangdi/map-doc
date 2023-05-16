@@ -6,7 +6,7 @@ export default {
   sources: {
       composite: {
           type: "vector",
-          attribution: "&copy; DBappSecurity",
+          attribution: "&copy; hzwaterit",
           maxzoom: 14,
           minzoom: 0,
           tiles: [TILE_SRC],

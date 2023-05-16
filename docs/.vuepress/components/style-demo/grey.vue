@@ -4,10 +4,9 @@
 
 <script>
 import arkmap from "@ark-org/map";
-import "@ark-org/map/dist/index.css"
+import "@ark-org/map/dist/index.css";
 
-import style from "./style.js";
-import { resolveImage } from "./utils";
+import style from "./styles/grey.js";
 
 export default {
   data: () => ({
@@ -17,31 +16,30 @@ export default {
     this.map = new arkmap.Map({
       container: "map-container",
       zoom: 11,
-      center: [120.1693, 30.3025],
-      pitch: 85,
+      center: [120.2059, 30.24757],
+      pitch: 0,
+      bearing: -26.2,
       style,
-      hash: false,
+      hash: true,
     });
     const resizeObserver = new ResizeObserver(() => {
       this.map.resize()
     });
     resizeObserver.observe(this.$refs.root);
     this.map.on("map.ready", () => {
-      this.addSkyBox();
+      this.addBuildings();
     });
   },
   methods: {
-    async addSkyBox() {
-      const { image } = await resolveImage(require("docs/assets/images/sky.png"));
-      this.map.addSkyBox({
-        textures: [
-          image, // 右
-          image, // 左
-          image, // 上
-          image, // 下
-          image, // 前
-          image, // 后
-        ],
+    addBuildings() {
+      this.map.addBuildings({
+        layerId: "building-layer",
+        minzoom: 15.5,
+        opacity: 1,
+        sourceLayer: "building_3d",
+        heightField: "height",
+        before: "pois_other",
+        buildingColor: "rgb(236, 236, 234)",
       });
     },
   },

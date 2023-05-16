@@ -5,7 +5,7 @@ const BASE_URL = '/map-doc/'
 module.exports = {
   base: BASE_URL,
   title: "ARK MAP",
-  description: "新监管态势出品",
+  description: "杭水科技出品",
   configureWebpack: {
     resolve: {
       alias: {
@@ -42,6 +42,7 @@ module.exports = {
       { text: "底图预设", items: [
         { text: "苹果地图-暗色", target:"_blank", link: BASE_URL + "style-demo/apple-dark" },
         { text: "苹果地图-亮色", target:"_blank", link: BASE_URL + "style-demo/apple-light" },
+        { text: "灰色", target:"_blank", link: BASE_URL + "style-demo/grey" },
         { text: "综合大屏", target:"_blank", link: BASE_URL + "style-demo/hzwaterit-screen" },
       ]
     },
@@ -101,6 +102,11 @@ module.exports = {
           title: "事件",
           collapsable: true,
           path: "events",
+        },
+        {
+          title: "自定义图层",
+          collapsable: true,
+          path: "custom-stage",
         },
       ],
     },

@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="container" ref="root">
     <div id="map-container2"></div>
     <button @click="focus">聚焦</button>
   </div>
@@ -7,6 +7,7 @@
 
 <script>
 import arkmap from "@ark-org/map";
+import "@ark-org/map/dist/index.css"
 
 import style from "./style.js";
 import { resolveImages } from "./utils";
@@ -23,14 +24,11 @@ export default {
       pitch: 38,
       style,
       hash: false,
-      antialias: true,
-      vignetting: {
-        enable: true,
-        lightHeight: 170,
-        strength: 2
-      },
-      
     });
+    const resizeObserver = new ResizeObserver(() => {
+      this.map.resize()
+    });
+    resizeObserver.observe(this.$refs.root);
     this.map.on("map.ready", () => {
       this.addBuildings();
     });
@@ -77,6 +75,8 @@ export default {
 <style lang="less" scoped>
 .container {
   text-align: center;
+  height: 100%;
+  min-height: 500px;
   button {
     margin: 10px 0;
     width: 100px;
@@ -90,6 +90,6 @@ export default {
   }
 }
 #map-container2 {
-  height: 500px;
+  height: 100%;
 }
 </style>

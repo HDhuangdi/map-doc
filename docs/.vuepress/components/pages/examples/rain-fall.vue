@@ -1,9 +1,10 @@
 <template>
-  <div id="map-container2"></div>
+  <div id="map-container2" ref="root"></div>
 </template>
 
 <script>
 import arkmap from "@ark-org/map";
+import "@ark-org/map/dist/index.css"
 
 import style from "./style.js";
 import rainFall from "docs/assets/json/rain_fall.json";
@@ -28,9 +29,12 @@ export default {
       bearing: -14.4,
       style,
       hash: false,
-      antialias: false,
       qualityPreset: "low"
     });
+    const resizeObserver = new ResizeObserver(() => {
+      this.map.resize()
+    });
+    resizeObserver.observe(this.$refs.root);
     this.map.on("map.ready", () => {
       this.dataProcess();
       this.addBoundary();
@@ -177,6 +181,7 @@ export default {
 
 <style lang="less" scoped>
 #map-container2 {
-  height: 500px;
+  height: 100%;
+  min-height: 500px;
 }
 </style>

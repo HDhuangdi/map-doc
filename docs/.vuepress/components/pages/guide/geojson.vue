@@ -1,9 +1,10 @@
 <template>
-  <div id="map-container"></div>
+  <div id="map-container" ref="root"></div>
 </template>
 
 <script>
 import arkmap from "@ark-org/map";
+import "@ark-org/map/dist/index.css"
 
 import style from "./quick-start-style.js";
 import geojson from "docs/assets/json/hangzhou_motorway.json";
@@ -21,11 +22,12 @@ export default {
       bearing: -17.6,
       style,
       hash: false,
-      antialias: true,
-      fixedZoom: true,
-      
       passiveRendering: true
     });
+    const resizeObserver = new ResizeObserver(() => {
+      this.map.resize()
+    });
+    resizeObserver.observe(this.$refs.root);
     this.map.on("map.ready", () => {
       this.addRoads();
     });
@@ -87,6 +89,7 @@ export default {
 
 <style lang="less" scoped>
 #map-container {
-  height: 500px;
+  height: 100%;
+  min-height: 500px;
 }
 </style>

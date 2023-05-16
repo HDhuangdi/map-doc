@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="container" ref="root">
     <div id="map-container"></div>
     <button @click="clear">清除路线</button>
     <div class="tips">
@@ -40,10 +40,12 @@ export default {
       bearing: 0,
       style,
       hash: false,
-      antialias: true,
-      
       passiveRendering: true
     });
+    const resizeObserver = new ResizeObserver(() => {
+      this.map.resize()
+    });
+    resizeObserver.observe(this.$refs.root);
     this.map.on("click", this.drawPoint.bind(this));
   },
   methods: {
@@ -170,6 +172,8 @@ export default {
 .container {
   text-align: center;
   position: relative;
+  height: 100%;
+  min-height: 500px;
   button {
     margin: 10px 0;
     width: 100px;
@@ -196,6 +200,7 @@ export default {
   }
 }
 #map-container {
-  height: 500px;
+  height: 100%;
+  min-height: 500px;
 }
 </style>

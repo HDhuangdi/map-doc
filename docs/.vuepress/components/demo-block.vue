@@ -5,8 +5,15 @@
     @mouseenter="hovering = true"
     @mouseleave="hovering = false"
   >
-    <div class="source-bg" v-if="isMounted">
-      <slot name="source"></slot>
+    <img
+      @click="fullScreen"
+      class="full-screen"
+      ref="fullScreenBtn"
+      :src="require('docs/assets/images/全屏.png')"
+      alt=""
+    />
+    <div ref="sourceBg" class="source-bg" v-if="isMounted">
+      <slot name="source" ref="source"></slot>
     </div>
     <div class="meta" ref="meta">
       <div class="description" v-if="$slots.default">
@@ -30,6 +37,7 @@
 export default {
   data() {
     return {
+      isFullScreen: false,
       isMounted: false,
       hovering: false,
       isExpanded: false,
@@ -60,6 +68,30 @@ export default {
     removeScrollHandler() {
       this.scrollParent &&
         this.scrollParent.removeEventListener("scroll", this.scrollHandler);
+    },
+    fullScreen() {
+      const el = this.$refs.sourceBg;
+      const button = this.$refs.fullScreenBtn;
+
+      if (!this.isFullScreen) {
+        el.style.position = "fixed";
+        el.style.top = "0";
+        el.style.left = "0";
+        el.style.right = "0";
+        el.style.bottom = "0";
+        el.style.zIndex = "100";
+        button.style.position = "fixed";
+        button.style.top = "10px";
+        button.style.right = "10px";
+        button.style.zIndex = "101";
+        this.isFullScreen = true;
+      } else {
+        el.style.position = "static";
+        el.style.zIndex = "1";
+        button.style.position = "absolute";
+        button.style.zIndex = "2";
+        this.isFullScreen = false;
+      }
     },
   },
 
@@ -143,6 +175,16 @@ export default {
   border-radius: 5px;
   transition: 0.2s;
   margin-bottom: 1.5rem;
+  position: relative;
+
+  .full-screen {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 2;
+    cursor: pointer;
+    width: 20px;
+  }
 
   code {
     font-family: Menlo, Monaco, Consolas, Courier, monospace;

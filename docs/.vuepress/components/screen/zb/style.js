@@ -2,17 +2,12 @@ import { TILE_SRC, GLYPHS_SRC } from "docs/config";
 
 export default {
   version: 8,
-  name: "DARK BLUE CUT",
-  metadata: {
-    "mapbox:autocomposite": false,
-    "mapbox:type": "template",
-    "maputnik:renderer": "mbgljs",
-    "maptiles:version": "3.x",
-  },
+  name: "ARK MAP STYLE",
+  metadata: {},
   sources: {
     composite: {
       type: "vector",
-      attribution: "&copy; DBappSecurity",
+      attribution: "&copy; hzwaterit",
       maxzoom: 14,
       minzoom: 0,
       tiles: [TILE_SRC],
