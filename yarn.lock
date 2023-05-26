@@ -10,12 +10,12 @@
     "@jridgewell/gen-mapping" "^0.3.0"
     "@jridgewell/trace-mapping" "^0.3.9"
 
-"@ark-org/map@^0.0.1-beta.38":
-  version "0.0.1-beta.38"
-  resolved "https://registry.yarnpkg.com/@ark-org/map/-/map-0.0.1-beta.38.tgz#babf6c258d9b4b36f58a2b9e75137bead1a9d9f8"
-  integrity sha512-AwJPhVQFlfvMtPWVSQ+B/AdT7VpCnctSuyjV7SI5/pCRSnz/mqQE6C3hCxyD3y08Kj/I25ll/oTZFFfBDPJKyw==
+"@ark-org/map@^0.0.1-beta.39":
+  version "0.0.1-beta.39"
+  resolved "https://registry.yarnpkg.com/@ark-org/map/-/map-0.0.1-beta.39.tgz#274c679bb9d13cc49ad2aa38890f901f4c2840d1"
+  integrity sha512-NTXQR1olVUenNbSXUwZYItEIIAfyudGJ03PQblLy4sv5KY6xuw5IMG72Lmjc5J54n8T3wuVxusDqBR4pxGONKw==
   dependencies:
-    "@ark-org/three" "0.0.5"
+    "@ark-org/three" "^0.0.6"
     "@mapbox/geojson-rewind" "^0.5.1"
     "@mapbox/geojson-types" "^1.0.2"
     "@mapbox/jsonlint-lines-primitives" "^2.0.2"
@@ -44,10 +44,10 @@
     uuid "^8.3.2"
     vt-pbf "^3.1.3"
 
-"@ark-org/three@0.0.5":
-  version "0.0.5"
-  resolved "https://registry.yarnpkg.com/@ark-org/three/-/three-0.0.5.tgz#d397a2f020396b59dc91871724e7d99a19a9774d"
-  integrity sha512-4yAWe2F8LegyDZ3zy7TCLhtzWAeiJREjcNu54lmrnrVhOCGOTy1lDZM648MlmpMxpTGRswJ5Qx9eVOMxr2fSsg==
+"@ark-org/three@^0.0.6":
+  version "0.0.6"
+  resolved "https://registry.yarnpkg.com/@ark-org/three/-/three-0.0.6.tgz#07ee7667766a1339603a8ba24f975ed45c44b4f9"
+  integrity sha512-IBETHC04h8DnK1aUYQvXXnu0bLkxNw4S3wI0do41YFVa0kSTxEPazCtRWGTDPke5zlUDXOvMQZA3LrSY/IF9EQ==
 
 "@babel/code-frame@^7.18.6", "@babel/code-frame@^7.21.4":
   version "7.21.4"

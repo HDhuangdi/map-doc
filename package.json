@@ -17,7 +17,7 @@
     "vuepress-theme-reco": "1.6.13"
   },
   "dependencies": {
-    "@ark-org/map": "^0.0.1-beta.38",
+    "@ark-org/map": "^0.0.1-beta.39",
     "three": "^0.132.1",
     "turf": "^3.0.14"
   }
