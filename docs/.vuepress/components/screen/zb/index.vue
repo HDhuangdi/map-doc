@@ -40,8 +40,8 @@ export default {
     });
     this.map.on("map.ready", () => {
       this.addBuildings();
-      this.addStreamers();
-      this.addMarkers();
+      // this.addStreamers();
+      // this.addMarkers();
     });
     this.map.on("click", (e) => {
       console.log(e);

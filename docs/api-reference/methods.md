@@ -4,6 +4,27 @@ sidebarDepth: 2
 
 # 实例方法
 ## 高级
+### `addDirectionalLight(options)`
+在地图中添加平行光。
+
+**参数列表：**
+
+*options\<object>* 所有配置项都是可选的
+|  名称   | 描述  |
+|  ----  | ----  |
+| **position\<Array\<number>>** default: [1000, 1000, 1000]| 平行光的位置，详情请参照[three.js文档](https://threejs.org/docs/index.html?q=dir#api/zh/lights/DirectionalLight.position)。 |
+
+**返回值：**
+
+平行光类实例
+
+**示例：**
+```js
+const light = map.addDirectionalLight({
+  position: [1000,1000, 1000],
+});
+```
+
 ### `addCustomStage(customStageInstance)`
 在地图中添加自定义图层。详见[自定义图层](/api-reference/custom-stage.html)
 

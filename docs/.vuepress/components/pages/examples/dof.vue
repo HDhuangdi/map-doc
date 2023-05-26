@@ -24,6 +24,7 @@ export default {
       pitch: 71,
       bearing: 161.1,
       style,
+      qualityPreset: 'high',
       hash: false,
     });
     const resizeObserver = new ResizeObserver(() => {
@@ -72,5 +73,6 @@ export default {
 }
 #map-container {
   height: 100%;
+  min-height: 500px;
 }
 </style>

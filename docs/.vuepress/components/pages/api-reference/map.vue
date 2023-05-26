@@ -20,7 +20,6 @@ export default {
       pitch: 0,
       style,
       hash: false,
-      antialias: true,
       passiveRendering: true,
     });
     const resizeObserver = new ResizeObserver(() => {
