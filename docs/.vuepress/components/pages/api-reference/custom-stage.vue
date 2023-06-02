@@ -39,11 +39,11 @@ class MyStage1 {
 
   initModel() {
     const dracoLoader = new DRACOLoader();
-    dracoLoader.setDecoderPath(baseURL + "/map-doc/draco/gltf/");
+    dracoLoader.setDecoderPath(baseURL + "/draco/gltf/");
     const loader = new GLTFLoader();
     loader.setDRACOLoader(dracoLoader);
     loader.load(
-      baseURL + "/map-doc/objs/LittlestTokyo.glb",
+      baseURL + "/objs/LittlestTokyo.glb",
       (gltf) => {
         this.model = gltf.scene;
         const pos = this.convertLnglatToWorld([
