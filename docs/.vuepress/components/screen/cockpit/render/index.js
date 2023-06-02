@@ -148,12 +148,12 @@ export default class Render {
     });
 
     this.originWaterStreamer = this.map.addStreamer(originWaterLineJSON, {
-      lineColor: '#2EDEFD',
-      blurRadius: 10,
-      blurStrength: 2,
-      lineWidth: 5,
-      length: 1,
-      speed: 2,
+      lineColor: '#74F1FF',
+        blurRadius: 10,
+        blurStrength: 3,
+        lineWidth: 5,
+        length: 1,
+        speed: 2,
     });
   }
 

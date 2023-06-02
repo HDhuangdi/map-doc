@@ -174,8 +174,8 @@ export default class ChunkMapStage {
     ];
     const textureLoader = new THREE.TextureLoader();
     const g = new THREE.Group();
-    const altitude = this.convertLnglatToWorld([0, 0, MAP_CHUNK_HEIGHT]).straight.z;
-    const maskAltitude = this.convertLnglatToWorld([0, 0, MAP_CHUNK_HEIGHT + 100]).straight.z;
+    const altitude = this.convertLnglatToWorld([0, 0, MAP_CHUNK_HEIGHT]).z;
+    const maskAltitude = this.convertLnglatToWorld([0, 0, MAP_CHUNK_HEIGHT + 100]).z;
 
     for (const feature of hangzhouChildrenJSON.features) {
       const chunkGroup = new THREE.Group();
@@ -187,9 +187,9 @@ export default class ChunkMapStage {
         const pos = this.convertLnglatToWorld([lnglat[0], lnglat[1]]);
         if (isFirst) {
           isFirst = false;
-          shp.moveTo(pos.straight.x, pos.straight.y);
+          shp.moveTo(pos.x, pos.y);
         } else {
-          shp.lineTo(pos.straight.x, pos.straight.y);
+          shp.lineTo(pos.x, pos.y);
         }
       }
 
